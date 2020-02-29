@@ -13,6 +13,12 @@ class KandangController extends Controller
         return view('kandang/index', compact('data_kandang'));
     }
 
+    public function edit($id)
+    {
+        $kandang = Kandang::find($id);
+        return view('kandang/edit', compact('kandang','id'));
+    }
+
     public function show()
     {
         $kandang = Kandang::all();
@@ -35,13 +41,13 @@ class KandangController extends Controller
 
     public function update(request $request, $id)
     {
-        $jumlah_kandang = $request->jumlah_kandang;
+        $jumlah_ternak = $request->jumlah_ternak;
 
         $kandang = Kandang::find($id);
-        $kandang->jumlah_kandang = $jumlah_kandang;
+        $kandang->jumlah_ternak = $jumlah_ternak;
         $kandang->save();
 
-        return 'Data berhasil diubah';
+        return redirect('kandang')-> with('Data berhasil diubah');
     }
 
     public function delete($id)

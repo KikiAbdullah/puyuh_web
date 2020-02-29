@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //API Gaji
 Route::get('gaji','GajiController@show');
 Route::get('/gaji/{id}','GajiController@showById');
-Route::post('gaji','GajiController@create');
 Route::put('/gaji/{id}','GajiController@update');
+Route::post('gaji','GajiController@create');
 Route::delete('/gaji/{id}','GajiController@delete');
 
 //API Kandang

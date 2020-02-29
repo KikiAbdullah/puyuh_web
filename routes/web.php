@@ -14,4 +14,5 @@
 // Route::get('/', function () {
 //     return view('index');
 // });
-Route::get('/', 'KandangController@index');
+Route::get('/kandang', 'KandangController@index');
+Route::get('/kandang/edit/{id}', 'KandangController@edit');
