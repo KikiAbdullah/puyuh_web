@@ -1,3 +1,6 @@
+@if(\Session::has('success'))
+<p>{{\Session::get('success')}}</p>
+@endif
 <form action="{{action('KandangController@update',$id)}}" method="post">
     {{csrf_field()}}
     <input type="hidden" name="_method" value="PUT">

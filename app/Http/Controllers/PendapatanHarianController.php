@@ -7,6 +7,23 @@ use App\PendapatanHarian;
 
 class PendapatanHarianController extends Controller
 {
+    public function index()
+    {
+        $data_pendapatanHarian = PendapatanHarian::simplePaginate(10);
+        return view('pendapatanHarian/index', compact('data_pendapatanHarian'));
+    }
+
+    public function edit($id)
+    {
+        $pendapatanHarian = PendapatanHarian::find($id);
+        return view('pendapatanHarian/edit', compact('pendapatanHarian','id'));
+    }
+
+    public function add()
+    {
+        return view('pendapatanHarian/create');
+    }
+    
     public function show()
     {
         $pendapatanHarian = PendapatanHarian::all();

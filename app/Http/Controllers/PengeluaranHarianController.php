@@ -7,6 +7,23 @@ use App\PengeluaranHarian;
 
 class PengeluaranHarianController extends Controller
 {
+    public function index()
+    {
+        $data_pengeluaranHarian = PengeluaranHarian::simplePaginate(10);
+        return view('pengeluaranHarian/index', compact('data_pengeluaranHarian'));
+    }
+
+    public function edit($id)
+    {
+        $pengeluaranHarian = PengeluaranHarian::find($id);
+        return view('pengeluaranHarian/edit', compact('pengeluaranHarian','id'));
+    }
+
+    public function add()
+    {
+        return view('pengeluaranHarian/create');
+    }
+    
     public function show()
     {
         $pengeluaranHarian = PengeluaranHarian::all();

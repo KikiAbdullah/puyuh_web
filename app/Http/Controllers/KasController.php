@@ -7,6 +7,23 @@ use App\Kas;
 
 class KasController extends Controller
 {
+    public function index()
+    {
+        $data_kas = Kas::simplePaginate(10);
+        return view('kas/index', compact('data_kas'));
+    }
+
+    public function edit($id)
+    {
+        $kas = Kas::find($id);
+        return view('kas/edit', compact('kas','id'));
+    }
+
+    public function add()
+    {
+        return view('kas/create');
+    }
+    
     public function show()
     {
         $kas = Kas::all();

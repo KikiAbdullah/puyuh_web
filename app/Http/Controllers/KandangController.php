@@ -19,6 +19,11 @@ class KandangController extends Controller
         return view('kandang/edit', compact('kandang','id'));
     }
 
+    public function add()
+    {
+        return view('kandang/create');
+    }
+
     public function show()
     {
         $kandang = Kandang::all();
@@ -36,7 +41,7 @@ class KandangController extends Controller
         $kandang->jumlah_ternak = $request->jumlah_ternak;
         $kandang->save();
 
-        return 'Data berhasil ditambahkan';
+        return redirect('kandang')-> with('success','Data berhasil ditambahkan');
     }
 
     public function update(request $request, $id)
@@ -47,7 +52,7 @@ class KandangController extends Controller
         $kandang->jumlah_ternak = $jumlah_ternak;
         $kandang->save();
 
-        return redirect('kandang')-> with('Data berhasil diubah');
+        return redirect('kandang')-> with('success','Data berhasil diubah');
     }
 
     public function delete($id)
@@ -55,6 +60,6 @@ class KandangController extends Controller
         $kandang = Kandang::find($id);
         $kandang->delete();
 
-        return 'Data berhasil dihapus';
+        return redirect('kandang')-> with('success','Data berhasil dihapus');
     }
 }

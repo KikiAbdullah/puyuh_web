@@ -7,6 +7,23 @@ use App\Utang;
 
 class UtangController extends Controller
 {
+    public function index()
+    {
+        $data_utang = Utang::simplePaginate(10);
+        return view('utang/index', compact('data_utang'));
+    }
+
+    public function edit($id)
+    {
+        $utang = Utang::find($id);
+        return view('utang/edit', compact('utang','id'));
+    }
+
+    public function add()
+    {
+        return view('utang/create');
+    }
+    
     public function show()
     {
         $utang = Utang::all();

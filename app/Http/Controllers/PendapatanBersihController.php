@@ -7,6 +7,23 @@ use App\PendapatanBersih;
 
 class PendapatanBersihController extends Controller
 {
+    public function index()
+    {
+        $data_pendapatanBersih = PendapatanBersih::simplePaginate(10);
+        return view('pendapatanBersih/index', compact('data_pendapatanBersih'));
+    }
+
+    public function edit($id)
+    {
+        $pendapatanBersih = PendapatanBersih::find($id);
+        return view('pendapatanBersih/edit', compact('pendapatanBersih','id'));
+    }
+
+    public function add()
+    {
+        return view('pendapatanBersih/create');
+    }
+    
     public function show()
     {
         $pendapatanBersih = PendapatanBersih::all();

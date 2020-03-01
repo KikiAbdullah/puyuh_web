@@ -7,6 +7,23 @@ use App\Gaji;
 
 class GajiController extends Controller
 {
+    public function index()
+    {
+        $data_gaji = Gaji::simplePaginate(10);
+        return view('gaji/index', compact('data_gaji'));
+    }
+
+    public function edit($id)
+    {
+        $gaji = Gaji::find($id);
+        return view('gaji/edit', compact('gaji','id'));
+    }
+
+    public function add()
+    {
+        return view('gaji/create');
+    }
+
     public function show()
     {
         $gaji = Gaji::all();
