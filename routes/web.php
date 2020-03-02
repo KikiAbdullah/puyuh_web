@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 //Route Gaji
 Route::get('/gaji', 'GajiController@index');
@@ -54,3 +54,7 @@ Route::get('/pengeluaranHarian/add', 'PengeluaranHarianController@add');
 Route::get('/utang', 'UtangController@index');
 Route::get('/utang/edit/{id}', 'UtangController@edit');
 Route::get('/utang/add', 'UtangController@add');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
