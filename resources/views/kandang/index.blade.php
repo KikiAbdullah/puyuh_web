@@ -1,7 +1,5 @@
-@if(\Session::has('success'))
-<p>{{\Session::get('success')}}</p>
-@endif
 
+<p>{{\Session::get('success')}}</p>
 <a href="{{action('KandangController@add')}}">ADD</a>
 <table>
     <thead>
