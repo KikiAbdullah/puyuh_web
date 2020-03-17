@@ -40,10 +40,8 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian = new PendapatanHarian;
         $pendapatanHarian->id_user = $request->id_user;
         $pendapatanHarian->tanggal = $request->tanggal;
-        $pendapatanHarian->nama = $request->nama;
         $pendapatanHarian->harga = $request->harga;
         $pendapatanHarian->jumlah = $request->jumlah;
-        $pendapatanHarian->satuan = $request->satuan;
         $pendapatanHarian->total = $request->total;
         $pendapatanHarian->save();
 

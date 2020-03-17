@@ -9,8 +9,8 @@ class LaporanHarianController extends Controller
 {
     public function index()
     {
-        $data_laporanHarian = LaporanHarian::simplePaginate(10);
-        return view('laporanHarian/index', compact('data_laporanHarian'));
+        $data_kandang = LaporanHarian::simplePaginate(10);
+        return view('laporanHarian/index', compact('data_kandang'));
     }
 
     public function edit($id)
@@ -39,7 +39,7 @@ class LaporanHarianController extends Controller
     {
         $laporanHarian = new LaporanHarian;
         $laporanHarian->id_user = $request->id_user;
-        $laporanHarian->id_laporanHarian = $request->id_laporanHarian;
+        $laporanHarian->id_kandang= $request->id_kandang;
         $laporanHarian->tanggal = $request->tanggal;
         $laporanHarian->jumlah_telur = $request->jumlah_telur;
         $laporanHarian->jumlah_kematian = $request->jumlah_kematian;
@@ -51,14 +51,14 @@ class LaporanHarianController extends Controller
     public function update(request $request, $id)
     {
         $id_user = $request->id_user;
-        $id_laporanHarian = $request->id_laporanHarian;
+        $id_kandang = $request->id_kandang;
         $tanggal = $request->tanggal;
         $jumlah_telur = $request->jumlah_telur;
         $jumlah_kematian = $request->jumlah_kematian;
 
         $laporanHarian = LaporanHarian::find($id);
         $laporanHarian->id_user = $id_user;
-        $laporanHarian->id_laporanHarian = $id_laporanHarian;
+        $laporanHarian->id_kandang = $id_kandang;
         $laporanHarian->tanggal = $tanggal;
         $laporanHarian->jumlah_telur = $jumlah_telur;
         $laporanHarian->jumlah_kematian = $jumlah_kematian;
