@@ -10,7 +10,8 @@ class GajiController extends Controller
     public function index()
     {
         $data_gaji = Gaji::simplePaginate(10);
-        return view('gaji/index', compact('data_gaji'));
+        $index = 1;
+        return view('gaji/index', compact('data_gaji','index'));
     }
 
     public function edit($id)
@@ -39,7 +40,7 @@ class GajiController extends Controller
     {
         $gaji = new Gaji;
         $gaji->jumlah_gaji = $request->jumlah_gaji;
-        $gaji->bulan = $request->bulan;
+        $gaji->tanggal = $request->tanggal;
         $gaji->save();
 
         return 'Data berhasil ditambahkan';
@@ -48,14 +49,14 @@ class GajiController extends Controller
     public function update(request $request, $id)
     {
         $jumlah_gaji = $request->jumlah_gaji;
-        $bulan = $request->bulan;
+        $tanggal = $request->tanggal;
 
         $gaji = Gaji::find($id);
         $gaji->jumlah_gaji = $jumlah_gaji;
-        $gaji->bulan = $bulan;
+        $gaji->tanggal = $tanggal;
         $gaji->save();
 
-        return 'Data berhasil diubah';
+        return redirect('gaji')-> with('success','Data berhasil diubah');
     }
 
     public function delete($id)
@@ -63,6 +64,6 @@ class GajiController extends Controller
         $gaji = Gaji::find($id);
         $gaji->delete();
 
-        return 'Data berhasil dihapus';
+        return redirect('gaji')-> with('success','Data berhasil dihapus');
     }
 }

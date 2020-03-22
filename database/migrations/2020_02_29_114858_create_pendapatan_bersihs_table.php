@@ -15,7 +15,7 @@ class CreatePendapatanBersihsTable extends Migration
     {
         Schema::create('pendapatan_bersihs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('bulan');
+            $table->date('tanggal');
             $table->integer('total');
             $table->timestamps();
         });

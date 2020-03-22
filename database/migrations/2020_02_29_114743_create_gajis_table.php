@@ -16,7 +16,7 @@ class CreateGajisTable extends Migration
         Schema::create('gajis', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('jumlah_gaji');
-            $table->integer('bulan');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

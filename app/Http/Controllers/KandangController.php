@@ -10,7 +10,8 @@ class KandangController extends Controller
     public function index()
     {
         $data_kandang = Kandang::simplePaginate(10);
-        return view('kandang/index', compact('data_kandang'));
+        $index = 1;
+        return view('kandang/index', compact('data_kandang','index'));
     }
 
     public function edit($id)
