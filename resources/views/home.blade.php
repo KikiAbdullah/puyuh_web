@@ -371,16 +371,17 @@
                     <p>Form Pengeluaran Operasional</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
-                  <form class="forms-sample">
+                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                  @csrf
                     <div class="form-group">
                       <label for="nama_pengeluaran">Nama Pengeluaran</label>
-                      <input type="text" class="form-control" id="nama_pengeluaran" placeholder="Nama Pengeluaran">
+                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pengeluaran">
                     </div>
                     <div class="form-group">
                       <label for="harga">Harga</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" id="harga" placeholder="Harga">
+                        <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
                       </div>
 
                     </div>
@@ -389,16 +390,16 @@
                         <div class="row">
                           <div class="col-md-6">
                             <label for="jumlah">Jumlah</label>
-                            <input type="number" class="form-control" id="jumlah" placeholder="Jumlah">
+                            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah">
                           </div>
                           <div class="col-md-6">
                             <label for="satuan">Satuan</label>
-                            <input type="text" class="form-control" id="satuan" placeholder="Satuan">
+                            <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Satuan">
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-success mr-2">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
@@ -805,15 +806,6 @@
           </div>
         </div>
         <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="container-fluid clearfix">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2019 <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i>
-            </span>
-          </div>
-        </footer>
-        <!-- partial -->
       </div>
       <!-- main-panel ends -->
     </div>

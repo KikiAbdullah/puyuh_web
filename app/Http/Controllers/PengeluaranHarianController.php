@@ -55,7 +55,8 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian->total = $total;
         $pengeluaranHarian->save();
 
-        return redirect('pengeluaranHarian')-> with('success','Data berhasil ditambahkan');
+        return redirect('home')-> with('success','Data berhasil ditambahkan');
+
     }
 
     public function update(request $request, $id)
