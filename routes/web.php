@@ -12,8 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+
+
+//Auth
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 
 //Route Gaji
 Route::get('/gaji', 'GajiController@index');
@@ -58,3 +64,4 @@ Route::get('/utang/add', 'UtangController@add');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'ProfileController@index')->name('profile');
