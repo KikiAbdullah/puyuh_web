@@ -31,7 +31,7 @@
                 <img src="../assets/images/errors/404.png" alt="logo" height="150dp" />
               </div>
               <div class="col-lg-6 error-page-divider text-lg-left pl-lg-4">
-                <img src="../assets/images/logo.svg" height="150dp" alt="" srcset="">
+                <img src="../assets/images/errors/404sorry.png" height="150dp" alt="" srcset="">
               </div>
             </div>
             <div class="row mt-5">
