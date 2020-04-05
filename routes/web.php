@@ -59,3 +59,4 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@showProfile')->name('profile');
+Route::get('/populasi', 'KandangController@index')->name('populasi');

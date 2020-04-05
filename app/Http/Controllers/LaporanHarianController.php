@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LaporanHarian;
+use Illuminate\Support\Facades\DB;
 
 class LaporanHarianController extends Controller
 {
@@ -13,17 +14,25 @@ class LaporanHarianController extends Controller
         return view('laporanHarian/index', compact('data_kandang'));
     }
 
+    public function kematian()
+    {
+        $kematian = DB::select('SELECT id_kandang, 
+        sum(IF(month(tanggal) = 3, jumlah_kematian, 0)) as maret, 
+        sum(IF(month(tanggal) = 4, jumlah_kematian, 0)) as april FROM `laporan_harians` GROUP BY id_kandang');
+        return view('kandang/populasi', compact('kematian'));
+    }
+
     public function edit($id)
     {
         $laporanHarian = LaporanHarian::find($id);
-        return view('laporanHarian/edit', compact('laporanHarian','id'));
+        return view('laporanHarian/edit', compact('laporanHarian', 'id'));
     }
 
     public function add()
     {
         return view('laporanHarian/create');
     }
-    
+
     public function show()
     {
         $laporanHarian = LaporanHarian::all();
@@ -39,7 +48,7 @@ class LaporanHarianController extends Controller
     {
         $laporanHarian = new LaporanHarian;
         $laporanHarian->id_user = $request->id_user;
-        $laporanHarian->id_kandang= $request->id_kandang;
+        $laporanHarian->id_kandang = $request->id_kandang;
         $laporanHarian->tanggal = $request->tanggal;
         $laporanHarian->jumlah_telur = $request->jumlah_telur;
         $laporanHarian->jumlah_kematian = $request->jumlah_kematian;
@@ -75,4 +84,3 @@ class LaporanHarianController extends Controller
         return 'Data berhasil dihapus';
     }
 }
-
