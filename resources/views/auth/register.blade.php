@@ -33,7 +33,8 @@
           <div class="col-lg-4 mx-auto">
             <h2 class="text-center mb-4">Register</h2>
             <div class="auto-form-wrapper">
-              <form action=method="POST" action="{{ route('register') }}">
+              <form method="POST" action="{{ route('register') }}">
+              {{csrf_field()}}
                 <div class="form-group">
                   <div class="input-group">
                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"

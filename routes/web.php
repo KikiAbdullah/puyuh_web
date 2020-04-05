@@ -10,13 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('home');
-});
-
-
-
 //Auth
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
@@ -63,5 +56,6 @@ Route::get('/utang/add', 'UtangController@add');
 
 Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::get('/profile', 'ProfileController@showProfile')->name('profile');

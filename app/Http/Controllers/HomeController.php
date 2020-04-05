@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Alert;
+use UxWeb\SweetAlert\SweetAlertServiceProvider;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+    //    alert()->success('Data','Judul')->persistent('Close');
         return view('home');
     }
 }

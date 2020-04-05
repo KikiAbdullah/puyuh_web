@@ -224,25 +224,7 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-md-4 grid-margin stretch-card">
-                            <div class="card">
-                                <img src="../assets/images/logo.svg" alt="" width="80%" srcset="">
-                            </div>
-                        </div>
-                        <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <b>
-                                        <h3>Profile</h3>
-                                    </b>
-                                    @foreach($user as $users)
-                                    <h5>Nama : {{$users['name']}}</h5>
-                                    <h6>Email : {{$users['email']}}</h6>
-                                    <h6>No. Telp : {{$users['phone']}}</h6>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 <!-- content-wrapper ends -->

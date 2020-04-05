@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PengeluaranHarian;
+use Alert;
+use UxWeb\SweetAlert\SweetAlertServiceProvider;
 
 class PengeluaranHarianController extends Controller
 {
@@ -11,20 +13,20 @@ class PengeluaranHarianController extends Controller
     {
         $data_pengeluaranHarian = PengeluaranHarian::simplePaginate(10);
         $index = 1;
-        return view('pengeluaranHarian/index', compact('data_pengeluaranHarian','index'));
+        return view('pengeluaranHarian/index', compact('data_pengeluaranHarian', 'index'));
     }
 
     public function edit($id)
     {
         $pengeluaranHarian = PengeluaranHarian::find($id);
-        return view('pengeluaranHarian/edit', compact('pengeluaranHarian','id'));
+        return view('pengeluaranHarian/edit', compact('pengeluaranHarian', 'id'));
     }
 
     public function add()
     {
         return view('pengeluaranHarian/create');
     }
-    
+
     public function show()
     {
         $pengeluaranHarian = PengeluaranHarian::all();
@@ -43,7 +45,7 @@ class PengeluaranHarianController extends Controller
 
         $harga = $request->harga;
         $jumlah = $request->jumlah;
-        $total = $jumlah*$harga;
+        $total = $jumlah * $harga;
 
         $pengeluaranHarian = new PengeluaranHarian;
         $pengeluaranHarian->id_user = 1;
@@ -55,8 +57,8 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian->total = $total;
         $pengeluaranHarian->save();
 
-        return redirect('home')-> with('success','Data berhasil ditambahkan');
-
+        alert()->success('Berhasil menambahkan data pengeluaran', 'Berhasil!')->persistent('Close');
+        return view('home');
     }
 
     public function update(request $request, $id)
@@ -79,7 +81,7 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian->total = $total;
         $pengeluaranHarian->save();
 
-        return redirect('pengeluaranHarian')-> with('success','Data berhasil diubah');
+        return redirect('pengeluaranHarian')->with('success', 'Data berhasil diubah');
     }
 
     public function delete($id)
@@ -87,7 +89,6 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian = PengeluaranHarian::find($id);
         $pengeluaranHarian->delete();
 
-        return redirect('pengeluaranHarian')-> with('success','Data berhasil dihapus');
+        return redirect('pengeluaranHarian')->with('success', 'Data berhasil dihapus');
     }
 }
-

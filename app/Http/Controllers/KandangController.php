@@ -7,6 +7,7 @@ use App\Kandang;
 
 class KandangController extends Controller
 {
+    //
     public function index()
     {
         $data_kandang = Kandang::simplePaginate(10);

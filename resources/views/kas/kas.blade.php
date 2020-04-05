@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Profil | Puyuh.in</title>
+    <title>Kas | Puyuh.in</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
@@ -223,24 +223,31 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-md-4 grid-margin stretch-card">
-                            <div class="card">
-                                <img src="../assets/images/logo.svg" alt="" width="80%" srcset="">
-                            </div>
-                        </div>
-                        <div class="col-md-8 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <b>
-                                        <h3>Profile</h3>
-                                    </b>
-                                    @foreach($user as $users)
-                                    <h5>Nama : {{$users['name']}}</h5>
-                                    <h6>Email : {{$users['email']}}</h6>
-                                    <h6>No. Telp : {{$users['phone']}}</h6>
-                                    @endforeach
-                                </div>
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Hoverable Table</h4>
+                                <p class="card-description"> Add class <code>.table-hover</code> </p>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Tanggal</th>
+                                            <th>Jumlah</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($data_kas as $kas)
+                                        <tr>
+                                            <td>{{ $index++ }}</td>
+                                            <td>{{ $kas->tanggal}}</td>
+                                            <td>Rp. {{$kas->kas_perbulan}},-</td>
+                                            <td>Rp. {{$kas->total_kas}},-</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

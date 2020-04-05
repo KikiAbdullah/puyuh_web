@@ -18,6 +18,7 @@ class CreateKasTable extends Migration
             $table->integer('kas_perbulan');
             $table->integer('total_periode');
             $table->integer('total_kas');
+            $table->date('tanggal');
             $table->timestamps();
         });
     }

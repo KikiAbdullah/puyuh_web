@@ -1,3 +1,9 @@
+@if (session('alert'))
+<div class="alert alert-success">
+  {{ session('alert') }}
+</div>
+@endif
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +29,13 @@
   <link rel="stylesheet" href="../assets/css/demo_1/style.css">
   <!-- End Layout styles -->
   <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+  
+
+  
+  <link rel="stylesheet" type="text/css" href="/pathto/css/sweetalert.css">
 </head>
 
 <body>
@@ -135,6 +148,7 @@
         </button>
       </div>
     </nav>
+
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
@@ -142,7 +156,7 @@
         <ul class="nav">
           <li class="nav-item nav-category">Main Menu</li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('home')}}">
               <i class="menu-icon typcn typcn-document-text"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -224,58 +238,6 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          <!-- Page Title Header Starts-->
-          <div class="row page-title-header">
-            <div class="col-12">
-              <div class="page-header">
-                <h4 class="page-title">Dashboard</h4>
-                <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                  <ul class="quick-links">
-                    <li><a href="#">ICE Market data</a></li>
-                    <li><a href="#">Own analysis</a></li>
-                    <li><a href="#">Historic market data</a></li>
-                  </ul>
-                  <ul class="quick-links ml-auto">
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Watchlist</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="page-header-toolbar">
-                <div class="btn-group toolbar-item" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-secondary"><i class="mdi mdi-chevron-left"></i></button>
-                  <button type="button" class="btn btn-secondary">03/02/2019 - 20/08/2019</button>
-                  <button type="button" class="btn btn-secondary"><i class="mdi mdi-chevron-right"></i></button>
-                </div>
-                <div class="filter-wrapper">
-                  <div class="dropdown toolbar-item">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownsorting" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Day</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownsorting">
-                      <a class="dropdown-item" href="#">Last Day</a>
-                      <a class="dropdown-item" href="#">Last Month</a>
-                      <a class="dropdown-item" href="#">Last Year</a>
-                    </div>
-                  </div>
-                  <a href="#" class="advanced-link toolbar-item">Advanced Options</a>
-                </div>
-                <div class="sort-wrapper">
-                  <button type="button" class="btn btn-primary toolbar-item">New</button>
-                  <div class="dropdown ml-lg-auto ml-3 toolbar-item">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownexport" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownexport">
-                      <a class="dropdown-item" href="#">Export as PDF</a>
-                      <a class="dropdown-item" href="#">Export as DOCX</a>
-                      <a class="dropdown-item" href="#">Export as CDR</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Page Title Header Ends-->
           <div class="row">
             <div class="col-md-12 grid-margin">
               <div class="card">
@@ -372,7 +334,7 @@
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
                   <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
-                  @csrf
+                    @csrf
                     <div class="form-group">
                       <label for="nama_pengeluaran">Nama Pengeluaran</label>
                       <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pengeluaran">
@@ -399,7 +361,7 @@
                         </div>
                       </div>
                     </div>
-                    <button type="submit" name="submit" class="btn btn-success mr-2">Submit</button>
+                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
@@ -825,6 +787,9 @@
   <!-- Custom js for this page-->
   <script src="../assets/js/demo_1/dashboard.js"></script>
   <!-- End custom js for this page-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <script src="/pathto/js/sweetalert.js"></script>
+  @include('sweet::alert')
 </body>
 
 </html>
