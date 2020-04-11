@@ -34,6 +34,7 @@
                     <img src="../assets/images/logo.svg" alt="logo" height="80%" /> </a>
                 <a class="navbar-brand brand-logo-mini" href="{{ route('home')}}">
                     <img src="../assets/images/logo-mini.svg" alt="logo" /> </a>
+                    <a href="">INI LINK</a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
                 <ul class="navbar-nav ml-auto">
