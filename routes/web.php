@@ -56,7 +56,25 @@ Route::get('/utang/add', 'UtangController@add');
 
 Auth::routes();
 
+//NAVBAR
 Route::get('/', 'HomeController@index')->name('home');
+//dashboard
 Route::get('/home', 'HomeController@index')->name('home');
+//profile
 Route::get('/profile', 'ProfileController@showProfile')->name('profile');
+//kandang
 Route::get('/populasi', 'KandangController@index')->name('populasi');
+Route::get('/produksi', 'LaporanHarianController@indexProduksi')->name('produksi');
+//Pendapatan
+Route::get('/pendapatanPerhari', 'PendapatanHarianController@indexPerhari')->name('pendapatanHarian');
+Route::get('/pendapatanPerbulan', 'PendapatanHarianController@indexPerbulan')->name('pendapatanPerbulan');
+Route::get('/pendapatanBersih', 'PendapatanBersihController@index')->name('pendapatanBersih');
+//Pengeluaran
+Route::get('/pengeluaranPerhari', 'PengeluaranHarianController@indexPerhari()')->name('pengeluaranHarian');
+Route::get('/pengeluaranPerbulan', 'PengeluaranHarianController@indexPerbulan()')->name('pengeluaranHarian');
+//Kas
+Route::get('/kas', 'KasController@index()')->name('kas');
+//Hutang
+Route::get('/hutang', 'HutangController@index()')->name('hutang');
+//Gaji
+Route::get('/gaji', 'GajiController@index()')->name('gaji');

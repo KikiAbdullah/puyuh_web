@@ -32,7 +32,7 @@
             <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
                 <a class="navbar-brand brand-logo" href="index.html">
                     <img src="../assets/images/logo.svg" alt="logo" height="80%" /> </a>
-                <a class="navbar-brand brand-logo-mini" href="index.html">
+                <a class="navbar-brand brand-logo-mini" href="{{ route('home')}}">
                     <img src="../assets/images/logo-mini.svg" alt="logo" /> </a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
@@ -155,10 +155,10 @@
                         <div class="collapse" id="kandang-tab">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/ui-features/buttons.html">Telur</a>
+                                    <a class="nav-link" href="/produksi">Produksi</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/ui-features/dropdowns.html">Populasi</a>
+                                    <a class="nav-link" href="/populasi">Populasi</a>
                                 </li>
                             </ul>
                         </div>
@@ -172,13 +172,13 @@
                         <div class="collapse" id="pendapatan-tab">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/ui-features/buttons.html">Pendapatan Perhari</a>
+                                    <a class="nav-link" href="/pendapatanPerhari">Pendapatan Perhari</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/ui-features/dropdowns.html">Pendapatan Kotor</a>
+                                    <a class="nav-link" href="/pendapatanPerbulan">Pendapatan Perbulan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/ui-features/dropdowns.html">Pendapatan Bersih</a>
+                                    <a class="nav-link" href="/pendapatanBersih">Pendapatan Bersih</a>
                                 </li>
                             </ul>
                         </div>
@@ -192,28 +192,28 @@
                         <div class="collapse" id="pengeluaran-tab">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/ui-features/buttons.html">Pengeluaran Perhari</a>
+                                    <a class="nav-link" href="/pengeluaranHarian">Pengeluaran Perhari</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="pages/ui-features/dropdowns.html">Pengeluaran Perbulan</a>
+                                    <a class="nav-link" href="/pengeluaranPerbulan">Pengeluaran Perbulan</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/kas">
                             <i class="menu-icon typcn typcn-document-text"></i>
                             <span class="menu-title">Kas</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/hutang">
                             <i class="menu-icon typcn typcn-document-text"></i>
                             <span class="menu-title">Hutang</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/gaji">
                             <i class="menu-icon typcn typcn-document-text"></i>
                             <span class="menu-title">Gaji</span>
                         </a>
