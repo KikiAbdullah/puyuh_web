@@ -34,6 +34,7 @@
                     <img src="../assets/images/logo.svg" alt="logo" height="80%" /> </a>
                 <a class="navbar-brand brand-logo-mini" href="index.html">
                     <img src="../assets/images/logo-mini.svg" alt="logo" /> </a>
+                    <a href="">INI LINK</a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
                 <ul class="navbar-nav ml-auto">
@@ -300,7 +301,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-md-12 grid-margin stretch-card">
                                 <div class="card">
