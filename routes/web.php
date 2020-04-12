@@ -63,8 +63,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 //profile
 Route::get('/profile', 'ProfileController@showProfile')->name('profile');
 //kandang
-Route::get('/populasi', 'KandangController@index')->name('populasi');
+
+Route::get('/populasi', 'LaporanHarianController@indexPopulasi')->name('populasi');
+Route::get('/populasi/{month}', 'LaporanHarianController@indexPopulasi')->name('populasi');
+
 Route::get('/produksi', 'LaporanHarianController@indexProduksi')->name('produksi');
+Route::get('/produksi/{month}', 'LaporanHarianController@indexProduksi')->name('produksi');
 //Pendapatan
 Route::get('/pendapatanPerhari', 'PendapatanHarianController@indexPerhari')->name('pendapatanHarian');
 Route::get('/pendapatanPerbulan', 'PendapatanHarianController@indexPerbulan')->name('pendapatanPerbulan');

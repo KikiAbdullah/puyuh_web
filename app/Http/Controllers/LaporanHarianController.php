@@ -2,19 +2,92 @@
 
 namespace App\Http\Controllers;
 
+use App\Kandang;
 use Illuminate\Http\Request;
 use App\LaporanHarian;
+use DateTime;
 use Illuminate\Support\Facades\DB;
 
 class LaporanHarianController extends Controller
 {
-    public function index()
+    public function indexProduksi($month=null)
     {
-        $data_kandang = LaporanHarian::simplePaginate(10);
-        return view('laporanHarian/index', compact('data_kandang'));
+        timezone_open("Asia/Jakarta");
+        if ($month == null) {
+            $month = date('m');
+        }
+
+        
+        $date  = date("Y-m-d");
+        $index=1;
+        $dateObj   = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+
+
+        $produksiPerbulan = DB::select('SELECT id_kandang, tanggal, jumlah_telur FROM laporan_harians WHERE month(tanggal) = '.$month);
+
+        $produksiPertahun = DB::select('SELECT id_kandang, 
+        sum(IF(month(tanggal) = 1, jumlah_telur, 0)) as januari, 
+        sum(IF(month(tanggal) = 2, jumlah_telur, 0)) as februari,
+        sum(IF(month(tanggal) = 3, jumlah_telur, 0)) as maret,
+        sum(IF(month(tanggal) = 4, jumlah_telur, 0)) as april,
+        sum(IF(month(tanggal) = 5, jumlah_telur, 0)) as mei,
+        sum(IF(month(tanggal) = 6, jumlah_telur, 0)) as juni,
+        sum(IF(month(tanggal) = 7, jumlah_telur, 0)) as juli,
+        sum(IF(month(tanggal) = 8, jumlah_telur, 0)) as agustus,
+        sum(IF(month(tanggal) = 9, jumlah_telur, 0)) as september,
+        sum(IF(month(tanggal) = 10, jumlah_telur, 0)) as oktober,
+        sum(IF(month(tanggal) = 11, jumlah_telur, 0)) as november,
+        sum(IF(month(tanggal) = 12, jumlah_telur, 0)) as desember ,
+        sum(jumlah_telur) as jumlah
+        FROM `laporan_harians` GROUP BY id_kandang');
+
+        
+
+        return view('kandang/produksi', compact('produksiPerbulan','produksiPertahun','date','index','month','monthName'));
     }
 
-    public function kematian()
+    public function indexPopulasi($month=null)
+    {
+        timezone_open("Asia/Jakarta");
+        if ($month == null) {
+            $month = date('m');
+        }
+
+        
+        $date  = date("Y-m-d");
+        $index=1;
+        $dateObj   = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+
+        $all_kandang = Kandang::simplePaginate(10);
+
+        $populasiPerbulan = DB::select('SELECT id_kandang, tanggal, jumlah_kematian FROM laporan_harians WHERE month(tanggal) = '.$month);
+
+        $populasiPertahun = DB::select('SELECT id_kandang, 
+        sum(IF(month(tanggal) = 1, jumlah_kematian, 0)) as januari, 
+        sum(IF(month(tanggal) = 2, jumlah_kematian, 0)) as februari,
+        sum(IF(month(tanggal) = 3, jumlah_kematian, 0)) as maret,
+        sum(IF(month(tanggal) = 4, jumlah_kematian, 0)) as april,
+        sum(IF(month(tanggal) = 5, jumlah_kematian, 0)) as mei,
+        sum(IF(month(tanggal) = 6, jumlah_kematian, 0)) as juni,
+        sum(IF(month(tanggal) = 7, jumlah_kematian, 0)) as juli,
+        sum(IF(month(tanggal) = 8, jumlah_kematian, 0)) as agustus,
+        sum(IF(month(tanggal) = 9, jumlah_kematian, 0)) as september,
+        sum(IF(month(tanggal) = 10, jumlah_kematian, 0)) as oktober,
+        sum(IF(month(tanggal) = 11, jumlah_kematian, 0)) as november,
+        sum(IF(month(tanggal) = 12, jumlah_kematian, 0)) as desember ,
+        sum(jumlah_kematian) as jumlah
+        FROM `laporan_harians` GROUP BY id_kandang');
+
+        
+
+        return view('kandang/populasi', compact('all_kandang','populasiPerbulan','populasiPertahun','date','index','month','monthName'));
+    }
+
+
+    
+    public function indekematian()
     {
         $kematian = DB::select('SELECT id_kandang, 
         sum(IF(month(tanggal) = 3, jumlah_kematian, 0)) as maret, 

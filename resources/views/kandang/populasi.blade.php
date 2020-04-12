@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Profil | Puyuh.in</title>
+    <title>Produksi | Puyuh.in</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
@@ -34,7 +34,6 @@
                     <img src="../assets/images/logo.svg" alt="logo" height="80%" /> </a>
                 <a class="navbar-brand brand-logo-mini" href="{{ route('home')}}">
                     <img src="../assets/images/logo-mini.svg" alt="logo" /> </a>
-                    <a href="">INI LINK</a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-center">
                 <ul class="navbar-nav ml-auto">
@@ -225,32 +224,26 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
+                        <!-- TABEL PRODUKSI PERBULAN -->
                         <div class="row">
-                            <div class="col-md-8 grid-margin stretch-card">
+                            <div class="col-md-6 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Populasi Kandang</h4>
                                         <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
                                         <table class="table table-hover">
                                             <thead>
-                                                <tr>
-                                                    <th>No.</th>
-                                                    <th>Kandang</th>
-                                                    <th>Action</th>
+                                                <tr align="center">
+                                                    <th>No. Kandang</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Tools</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($data_kandang as $kandangs)
-                                                <tr>
-                                                    <td>{{$index++}}</td>
-                                                    <td>{{$kandangs['jumlah_ternak']}}</td>
-                                                    <td><button><a href="{{action('KandangController@edit',$kandangs['id'])}}">Edit</a></button>
-                                                        <form action="{{action('KandangController@delete',$kandangs['id'])}}" method="post">
-                                                            {{csrf_field()}}
-                                                            <input type="hidden" name="_method" value="DELETE">
-                                                            <button type="submit" onclick="return confirm('Apakah Anda yakin akan menghapus?')">Hapus</button>
-                                                        </form>
-                                                    </td>
+                                                @foreach($all_kandang as $kandangs)
+                                                <tr align="center">
+                                                    <td>{{$kandangs->id}}</td>
+                                                    <td>{{$kandangs->jumlah_ternak}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -258,58 +251,41 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 grid-margin stretch-card">
-                                <div class="card">
-                                    <div class="card-body d-flex flex-column">
-                                        <div class="wrapper">
-                                            <h4 class="card-title mb-0">Pengeluaran</h4>
-                                            <p>Form Pengeluaran Operasional</p>
-                                            <div class="mb-4" id="net-profit-legend"></div>
-                                        </div>
-                                        <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
-                                            @csrf
-                                            <div class="form-group">
-                                                <label for="nama_pengeluaran">Nama Pengeluaran</label>
-                                                <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pengeluaran">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="harga">Harga</label>
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text">Rp.</span>
-                                                    <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
-                                                </div>
-
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label for="jumlah">Jumlah</label>
-                                                            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah">
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="satuan">Satuan</label>
-                                                            <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Satuan">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
-                                            <button class="btn btn-light">Cancel</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 grid-margin stretch-card">
+                            <div class="col-md-6 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Kematian Populasi</h4>
+                                        <h4 class="card-title">Jumlah Kematian /{{ $monthName }}</h4>
                                         <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
                                         <table class="table table-hover">
                                             <thead>
-                                                <tr>
+                                                <tr align="center">
+                                                    <th>No. Kandang</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Jumlah</th>
+                                                    <th>Tools</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($populasiPerbulan as $populasi)
+                                                <tr align="center">
+                                                    <td>{{$populasi->id_kandang}}</td>
+                                                    <td>{{$populasi->tanggal}}</td>
+                                                    <td>{{$populasi->jumlah_kematian}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Kematian Pertahun</h4>
+                                        <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr align="center">
                                                     <th>No Kandang.</th>
                                                     <th>Januari</th>
                                                     <th>Februari</th>
@@ -323,32 +299,26 @@
                                                     <th>Oktober</th>
                                                     <th>November</th>
                                                     <th>Desember</th>
+                                                    <th>Jumlah</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($kematian as $kematians)
+                                                @foreach($populasiPertahun as $populasi)
                                                 <tr align="center">
-                                                    <td>{{$index++}}</td>
-                                                    <td>{{$kematians->januari}}</td>
-                                                    <td>{{$kematians->februari}}</td>
-                                                    <td>{{$kematians->maret}}</td>
-                                                    <td>{{$kematians->april}}</td>
-                                                    <td>{{$kematians->mei}}</td>
-                                                    <td>{{$kematians->juni}}</td>
-                                                    <td>{{$kematians->juli}}</td>
-                                                    <td>{{$kematians->agustus}}</td>
-                                                    <td>{{$kematians->september}}</td>
-                                                    <td>{{$kematians->oktober}}</td>
-                                                    <td>{{$kematians->november}}</td>
-                                                    <td>{{$kematians->desember}}</td>
-
-                                                    <!-- <td><button><a href="{{action('KandangController@edit',$kandangs['id'])}}">Edit</a></button>
-                                                        <form action="{{action('KandangController@delete',$kandangs['id'])}}" method="post">
-                                                            {{csrf_field()}}
-                                                            <input type="hidden" name="_method" value="DELETE">
-                                                            <button type="submit" onclick="return confirm('Apakah Anda yakin akan menghapus?')">Hapus</button>
-                                                        </form>
-                                                    </td> -->
+                                                    <td>{{$populasi->id_kandang}}</td>
+                                                    <td><a style="color: black" href="/populasi/1">{{$populasi->januari}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/2">{{$populasi->februari}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/3">{{$populasi->maret}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/4">{{$populasi->april}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/5">{{$populasi->mei}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/6">{{$populasi->juni}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/7">{{$populasi->juli}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/8">{{$populasi->agustus}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/9">{{$populasi->september}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/10">{{$populasi->oktober}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/11">{{$populasi->november}}</a></td>
+                                                    <td><a style="color: black" href="/populasi/12">{{$populasi->desember}}</a></td>
+                                                    <td><b>{{$populasi->jumlah}}</b></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -357,27 +327,27 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- END TABEL PRODUKSI PERBULAN -->
                     </div>
+                    <!-- content-wrapper ends -->
                 </div>
-                <!-- content-wrapper ends -->
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../../../assets/vendors/js/vendor.bundle.addons.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page-->
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
-    <script src="../../../assets/js/shared/off-canvas.js"></script>
-    <script src="../../../assets/js/shared/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page-->
-    <!-- End custom js for this page-->
+        <!-- container-scroller -->
+        <!-- plugins:js -->
+        <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
+        <script src="../../../assets/vendors/js/vendor.bundle.addons.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page-->
+        <!-- End plugin js for this page-->
+        <!-- inject:js -->
+        <script src="../../../assets/js/shared/off-canvas.js"></script>
+        <script src="../../../assets/js/shared/misc.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <!-- End custom js for this page-->
 </body>
 
 </html>
