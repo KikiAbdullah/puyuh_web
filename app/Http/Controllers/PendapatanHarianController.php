@@ -4,14 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PendapatanHarian;
+use DateTime;
+use Illuminate\Support\Facades\DB;
 
 class PendapatanHarianController extends Controller
 {
-    public function index()
+    public function index($month = null)
     {
-        $data_pendapatanHarian = PendapatanHarian::simplePaginate(10);
-        return view('pendapatanHarian/index', compact('data_pendapatanHarian'));
+        
+
+        timezone_open("Asia/Jakarta");
+        if ($month == null) {
+            $month = date('m');
+        }
+
+        
+        $date  = date("Y-m-d");
+        $index=1;
+        $dateObj   = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+
+        $data_pendapatan = PendapatanHarian::simplePaginate(10);
+
+        $pendapatanPerbulan = DB::select('SELECT id , tanggal, jumlah, harga, total FROM pendapatan_harians WHERE month(tanggal) = '.$month);
+
+        $pendapatanPertahun = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, total FROM `pendapatan_harians`');
+
+        return view('pendapatan/index', compact('data_pendapatan','pendapatanPerbulan','pendapatanPertahun','date','index','month','monthName'));
+
     }
+
 
     public function edit($id)
     {

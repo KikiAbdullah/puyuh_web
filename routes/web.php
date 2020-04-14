@@ -70,7 +70,7 @@ Route::get('/populasi/{month}', 'LaporanHarianController@indexPopulasi')->name('
 Route::get('/produksi', 'LaporanHarianController@indexProduksi')->name('produksi');
 Route::get('/produksi/{month}', 'LaporanHarianController@indexProduksi')->name('produksi');
 //Pendapatan
-Route::get('/pendapatanPerhari', 'PendapatanHarianController@indexPerhari')->name('pendapatanHarian');
+Route::get('/pendapatan', 'PendapatanHarianController@index')->name('pendapatan');
 Route::get('/pendapatanPerbulan', 'PendapatanHarianController@indexPerbulan')->name('pendapatanPerbulan');
 Route::get('/pendapatanBersih', 'PendapatanBersihController@index')->name('pendapatanBersih');
 //Pengeluaran
