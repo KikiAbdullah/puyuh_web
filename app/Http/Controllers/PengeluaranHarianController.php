@@ -5,15 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PengeluaranHarian;
 use Alert;
+use DateTime;
+use Illuminate\Support\Facades\DB;
 use UxWeb\SweetAlert\SweetAlertServiceProvider;
 
 class PengeluaranHarianController extends Controller
 {
-    public function index()
-    {
-        $data_pengeluaranHarian = PengeluaranHarian::simplePaginate(10);
-        $index = 1;
-        return view('pengeluaranHarian/index', compact('data_pengeluaranHarian', 'index'));
+
+
+    public function index($month = null){
+    
+        timezone_open("Asia/Jakarta");
+        if ($month == null) {
+            $month = date('m');
+        }
+
+        
+        $date  = date("Y-m-d");
+        $index0=$index1=$index2=1;
+        $dateObj   = DateTime::createFromFormat('!m', $month);
+        $monthName = $dateObj->format('F');
+
+        $data_pengeluaran = PengeluaranHarian::simplePaginate(10);
+
+        $pengeluaranPerbulan = DB::select('SELECT tanggal, SUM(total) as totalharga FROM `pengeluaran_harians` WHERE month(tanggal) = '.$month.' GROUP BY tanggal');
+
+        $pengeluaranPertahun = DB::select('SELECT MONTHNAME(tanggal) as bulan, YEAR(tanggal) as tahun, SUM(total) as totalharga FROM `pengeluaran_harians` GROUP BY bulan, tahun');
+
+        return view('pengeluaran/index', compact('data_pengeluaran','pengeluaranPerbulan','pengeluaranPertahun','date','index0','index1','index2','month','monthName'));
+
     }
 
     public function edit($id)

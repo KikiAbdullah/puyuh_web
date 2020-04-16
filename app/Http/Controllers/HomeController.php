@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
     //    alert()->success('Data','Judul')->persistent('Close');
+        PendapatanHarianController@index
         return view('home');
     }
 }

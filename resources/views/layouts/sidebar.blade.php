@@ -42,21 +42,10 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#pengeluaran-tab" aria-expanded="false" aria-controls="pengeluaran-tab">
-                <i class="menu-icon typcn typcn-coffee"></i>
+            <a class="nav-link" href="/pengeluaran">
+                <i class="menu-icon typcn typcn-document-text"></i>
                 <span class="menu-title">Pengeluaran</span>
-                <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="pengeluaran-tab">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pengeluaranHarian">Pengeluaran Perhari</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/pengeluaranPerbulan">Pengeluaran Perbulan</a>
-                    </li>
-                </ul>
-            </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/kas">

@@ -71,11 +71,9 @@ Route::get('/produksi', 'LaporanHarianController@indexProduksi')->name('produksi
 Route::get('/produksi/{month}', 'LaporanHarianController@indexProduksi')->name('produksi');
 //Pendapatan
 Route::get('/pendapatan', 'PendapatanHarianController@index')->name('pendapatan');
-Route::get('/pendapatanPerbulan', 'PendapatanHarianController@indexPerbulan')->name('pendapatanPerbulan');
 Route::get('/pendapatanBersih', 'PendapatanBersihController@index')->name('pendapatanBersih');
 //Pengeluaran
-Route::get('/pengeluaranPerhari', 'PengeluaranHarianController@indexPerhari()')->name('pengeluaranHarian');
-Route::get('/pengeluaranPerbulan', 'PengeluaranHarianController@indexPerbulan()')->name('pengeluaranHarian');
+Route::get('/pengeluaran', 'PengeluaranHarianController@index')->name('pengeluaranHarian');
 //Kas
 Route::get('/kas', 'KasController@index()')->name('kas');
 //Hutang

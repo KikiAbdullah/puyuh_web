@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class PendapatanHarianController extends Controller
 {
-    public function index($month = null)
-    {
-        
-
+    public function index($month = null){
+    
         timezone_open("Asia/Jakarta");
         if ($month == null) {
             $month = date('m');
