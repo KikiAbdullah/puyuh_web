@@ -12,7 +12,6 @@ class KandangController extends Controller
     //
     public function index()
     {
-        
         //SELECT DATA KANDANG
         $data_kandang = Kandang::simplePaginate(10);
 //SELECT DATA KEMATIAN
@@ -40,7 +39,7 @@ class KandangController extends Controller
         timezone_open("Asia/Jakarta");
         $date  = date("Y-m-d");
 
-        return view('kandang/populasi', compact('kematian', 'data_kandang', 'index', 'date'));
+        return view('populasi/index', compact('kematian', 'data_kandang', 'index', 'date'));
 
 
         // return view('kandang/populasi', compact('kematian'));
@@ -49,7 +48,7 @@ class KandangController extends Controller
     public function edit($id)
     {
         $kandang = Kandang::find($id);
-        return view('kandang/edit', compact('kandang', 'id'));
+        return view('populasi/edit', compact('kandang', 'id'));
     }
 
     public function add()
@@ -71,10 +70,11 @@ class KandangController extends Controller
     public function create(request $request)
     {
         $kandang = new Kandang;
+        $kandang->id = $request->no_kandang;
         $kandang->jumlah_ternak = $request->jumlah_ternak;
         $kandang->save();
 
-        return redirect('kandang')->with('success', 'Data berhasil ditambahkan');
+        return redirect('populasi')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function update(request $request, $id)

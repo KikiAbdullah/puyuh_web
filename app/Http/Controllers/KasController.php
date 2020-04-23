@@ -11,7 +11,7 @@ class KasController extends Controller
     {
         $data_kas = Kas::simplePaginate(10);
         $index = 1;
-        return view('kas/kas', compact('data_kas','index'));
+        return view('kas/index', compact('data_kas','index'));
     }
 
     public function edit($id)

@@ -12,7 +12,7 @@ class ProfileController extends Controller
     {
         $data_user = User::simplePaginate(10);
         $index = 1;
-        return view('user/profile', compact('data_user','index'));
+        return view('user/index', compact('data_user','index'));
     }
 
     public function show()

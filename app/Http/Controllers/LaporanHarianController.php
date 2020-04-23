@@ -44,7 +44,7 @@ class LaporanHarianController extends Controller
 
         
 
-        return view('kandang/produksi', compact('produksiPerbulan','produksiPertahun','date','index','month','monthName'));
+        return view('produksi/index', compact('produksiPerbulan','produksiPertahun','date','index','month','monthName'));
     }
 
     public function indexPopulasi($month=null)
@@ -82,18 +82,9 @@ class LaporanHarianController extends Controller
 
         
 
-        return view('kandang/populasi', compact('all_kandang','populasiPerbulan','populasiPertahun','date','index','month','monthName'));
+        return view('populasi/index', compact('all_kandang','populasiPerbulan','populasiPertahun','date','index','month','monthName'));
     }
 
-
-    
-    public function indekematian()
-    {
-        $kematian = DB::select('SELECT id_kandang, 
-        sum(IF(month(tanggal) = 3, jumlah_kematian, 0)) as maret, 
-        sum(IF(month(tanggal) = 4, jumlah_kematian, 0)) as april FROM `laporan_harians` GROUP BY id_kandang');
-        return view('kandang/populasi', compact('kematian'));
-    }
 
     public function edit($id)
     {

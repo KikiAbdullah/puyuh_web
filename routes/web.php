@@ -13,47 +13,6 @@
 //Auth
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-
-//Route Gaji
-Route::get('/gaji', 'GajiController@index');
-Route::get('/gaji/edit/{id}', 'GajiController@edit');
-Route::get('/gaji/add', 'GajiController@add');
-
-//Route Kandang
-Route::get('/kandang', 'KandangController@index');
-Route::get('/kandang/edit/{id}', 'KandangController@edit');
-Route::get('/kandang/add', 'KandangController@add');
-
-//Route Kas
-Route::get('/kas', 'KasController@index');
-Route::get('/kas/edit/{id}', 'KasController@edit');
-Route::get('/kas/add', 'KasController@add');
-
-//Route LaporanHarian
-Route::get('/laporanHarian', 'LaporanHarianController@index');
-Route::get('/laporanHarian/edit/{id}', 'LaporanHarianController@edit');
-Route::get('/laporanHarian/add', 'LaporanHarianController@add');
-
-//Route PendapatanBersih
-Route::get('/pendapatanBersih', 'PendapatanBersihController@index');
-Route::get('/pendapatanBersih/edit/{id}', 'PendapatanBersihController@edit');
-Route::get('/pendapatanBersih/add', 'PendapatanBersihController@add');
-
-//Route PendapatanHarian
-Route::get('/pendapatanHarian', 'PendapatanHarianController@index');
-Route::get('/pendapatanHarian/edit/{id}', 'PendapatanHarianController@edit');
-Route::get('/pendapatanHarian/add', 'PendapatanHarianController@add');
-
-//Route PengeluaranHarian
-Route::get('/pengeluaranHarian', 'PengeluaranHarianController@index');
-Route::get('/pengeluaranHarian/edit/{id}', 'PengeluaranHarianController@edit');
-Route::get('/pengeluaranHarian/add', 'PengeluaranHarianController@add');
-
-//Route Utang
-Route::get('/utang', 'UtangController@index');
-Route::get('/utang/edit/{id}', 'UtangController@edit');
-Route::get('/utang/add', 'UtangController@add');
-
 Auth::routes();
 
 //NAVBAR
@@ -74,9 +33,27 @@ Route::get('/pendapatan', 'PendapatanHarianController@index')->name('pendapatan'
 Route::get('/pendapatanBersih', 'PendapatanBersihController@index')->name('pendapatanBersih');
 //Pengeluaran
 Route::get('/pengeluaran', 'PengeluaranHarianController@index')->name('pengeluaranHarian');
+
 //Kas
-Route::get('/kas', 'KasController@index()')->name('kas');
+Route::get('/kas', function () {
+    return view('kas/index');
+});
+Route::get('/kas/edit', function () {
+    return view('kas/edit');
+});
+
 //Hutang
-Route::get('/hutang', 'HutangController@index()')->name('hutang');
+Route::get('/hutang', function () {
+    return view('hutang/index');
+});
+Route::get('/hutang/edit', function () {
+    return view('hutang/edit');
+});
+
 //Gaji
-Route::get('/gaji', 'GajiController@index()')->name('gaji');
+Route::get('/gaji', function () {
+    return view('gaji/index');
+});
+Route::get('/gaji/edit', function () {
+    return view('gaji/edit');
+});

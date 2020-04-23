@@ -39,28 +39,7 @@
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Hoverable Table</h4>
-                                <p class="card-description"> Add class <code>.table-hover</code> </p>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Tanggal</th>
-                                            <th>Jumlah</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($data_kas as $kas)
-                                        <tr>
-                                            <td>{{ $index++ }}</td>
-                                            <td>{{ $kas->tanggal}}</td>
-                                            <td>Rp. {{$kas->kas_perbulan}},-</td>
-                                            <td>Rp. {{$kas->total_kas}},-</td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                
                             </div>
                         </div>
                     </div>
