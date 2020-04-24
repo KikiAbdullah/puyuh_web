@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class ProfileController extends Controller
 {
@@ -28,8 +29,9 @@ class ProfileController extends Controller
 
     public function showProfile()
     {
-        $idUser = Auth::user()->id;
+        $idUser = FacadesAuth::user()->id;
         $user = User::all()->where('id', $idUser);
         return view('user/profile', compact('user'));
+        //show profile
     }
 }
