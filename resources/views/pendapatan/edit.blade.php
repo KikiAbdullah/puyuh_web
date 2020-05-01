@@ -36,6 +36,50 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                <div class="card-body d-flex flex-column">
+                  <div class="wrapper">
+                    <h4 class="card-title mb-0">Edit Pendapatan</h4>
+                    <p>Form Edit Pendapatan</p>
+                    <div class="mb-4" id="net-profit-legend"></div>
+                  </div>
+                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                    @csrf
+                    <div class="form-group">
+                      <label for="nama_pengeluaran">Nama Pendapatan</label>
+                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pendapatan">
+                    </div>
+                    <div class="form-group">
+                      <label for="harga">Nilai</label>
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
+                      </div>
+
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="jumlah">Jumlah</label>
+                            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="satuan">Satuan</label>
+                            <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Satuan">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+                    </div>
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">

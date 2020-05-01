@@ -37,6 +37,27 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
+                    <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                <div class="card-body d-flex flex-column">
+                  <div class="wrapper">
+                    <h4 class="card-title mb-0">Produksi</h4>
+                    <p>Form Produksi</p>
+                    <div class="mb-4" id="net-profit-legend"></div>
+                  </div>
+                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                    @csrf
+                    <div class="form-group">
+                      <label for="nama_pengeluaran">Jumlah Telur</label>
+                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Jumlah Telur">
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+                    </div>
                         <!-- TABEL PRODUKSI PERBULAN -->
                         <div class="row">
                             <div class="col-md-12 grid-margin stretch-card">
