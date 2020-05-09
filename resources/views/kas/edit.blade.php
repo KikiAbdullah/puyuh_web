@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kas | Puyuh.in</title>
+    <title>Edit Kas | Puyuh.in</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
@@ -80,13 +80,13 @@
               </div>
             </div>
                     </div>
-                    <div class="col-lg-12 grid-margin stretch-card">
+                    <!-- <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
                                 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- content-wrapper ends -->
             </div>

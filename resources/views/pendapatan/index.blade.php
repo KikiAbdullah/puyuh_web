@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Produksi | Puyuh.in</title>
+    <title>Pendapatan | Puyuh.in</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
@@ -59,7 +59,7 @@
                       </div>
 
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <div class="col-md-12">
                         <div class="row">
                           <div class="col-md-6">
@@ -72,7 +72,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>

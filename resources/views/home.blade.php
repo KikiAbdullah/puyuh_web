@@ -95,38 +95,38 @@
             <div class="col-md-8 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title mb-0">Sales Statistics Overview</h4>
+                  <h4 class="card-title mb-0">Kondisi Kandang Terkini</h4>
                   <div class="d-flex flex-column flex-lg-row">
-                    <p>Lorem ipsum is placeholder text commonly used</p>
+                    <p>Grafik berdasarkan filter : </p>
                     <ul class="nav nav-tabs sales-mini-tabs ml-lg-auto mb-4 mb-md-0" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link active" id="sales-statistics_switch_1" data-toggle="tab" role="tab" aria-selected="true">1D</a>
+                        <a class="nav-link active" id="sales-statistics_switch_1" data-toggle="tab" role="tab" aria-selected="true">1 Hari</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="sales-statistics_switch_2" data-toggle="tab" role="tab" aria-selected="false">5D</a>
+                        <a class="nav-link" id="sales-statistics_switch_2" data-toggle="tab" role="tab" aria-selected="false">1 Minggu</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="sales-statistics_switch_3" data-toggle="tab" role="tab" aria-selected="false">1M</a>
+                        <a class="nav-link" id="sales-statistics_switch_3" data-toggle="tab" role="tab" aria-selected="false">1 Bulan</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" id="sales-statistics_switch_4" data-toggle="tab" role="tab" aria-selected="false">1Y</a>
+                        <a class="nav-link" id="sales-statistics_switch_4" data-toggle="tab" role="tab" aria-selected="false">1 Tahun</a>
                       </li>
                     </ul>
                   </div>
                   <div class="d-flex flex-column flex-lg-row">
                     <div class="data-wrapper d-flex mt-2 mt-lg-0">
                       <div class="wrapper pr-5">
-                        <h5 class="mb-0">Total Cost</h5>
+                        <h5 class="mb-0">Total Pengeluaran</h5>
                         <div class="d-flex align-items-center">
-                          <h4 class="font-weight-semibold mb-0">15,263</h4>
-                          <small class="ml-2 text-gray d-none d-lg-block"><b>89.5%</b> of 20,000 Total</small>
+                          <h4 class="font-weight-semibold mb-0">Rp. 15.263.912</h4>
+                          <!-- <small class="ml-2 text-gray d-none d-lg-block"><b>89.5%</b> of 20,000 Total</small> -->
                         </div>
                       </div>
                       <div class="wrapper">
-                        <h5 class="mb-0">Total Revenue</h5>
+                        <h5 class="mb-0">Total Pendapatan</h5>
                         <div class="d-flex align-items-center">
-                          <h4 class="font-weight-semibold mb-0">$753,098</h4>
-                          <small class="ml-2 text-gray d-none d-lg-block"><b>10.5%</b> of 20,000 Total</small>
+                          <h4 class="font-weight-semibold mb-0">Rp. 753.098.812</h4>
+                          <!-- <small class="ml-2 text-gray d-none d-lg-block"><b>10.5%</b> of 20,000 Total</small> -->
                         </div>
                       </div>
                     </div>
@@ -179,7 +179,7 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-8">
               <div class="row">
                 <div class="col-md-6 grid-margin stretch-card">
@@ -576,7 +576,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- content-wrapper ends -->
       </div>

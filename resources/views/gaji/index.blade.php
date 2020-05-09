@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Kas | Puyuh.in</title>
+    <title>Gaji | Puyuh.in</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
@@ -48,18 +48,18 @@
                   <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="nama_pengeluaran">Nama Gaji</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Gaji">
+                      <label for="nama_pengeluaran">Nama Pegawai</label>
+                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pegawai">
                     </div>
                     <div class="form-group">
-                      <label for="harga">Nilai</label>
+                      <label for="harga">Jumlah Gaji</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
+                        <input type="text" class="form-control" name="harga" id="harga" placeholder="Jumlah Gaji">
                       </div>
 
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <div class="col-md-12">
                         <div class="row">
                           <div class="col-md-6">
@@ -72,7 +72,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>

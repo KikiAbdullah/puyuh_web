@@ -59,7 +59,7 @@
                       </div>
 
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <div class="col-md-12">
                         <div class="row">
                           <div class="col-md-6">
@@ -72,19 +72,17 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
             </div>
-                    </div>
-                </div>
-                    <div class="col-lg-12 grid-margin stretch-card">
-                        <div class="card">
+            <div class="column">
+                <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Kas</h4>
+                                <h4 class="card-title">Kas Saat Ini</h4>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
@@ -94,9 +92,26 @@
                                             <th>Total</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                       
-                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                </div>
+                    </div>
+                </div>
+                
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Kas Bulan (dropdown mungkin ?)</h4>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Tanggal</th>
+                                            <th>Jumlah</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
                                 </table>
                             </div>
                         </div>

@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Produksi | Puyuh.in</title>
+    <title>Pendapatan Bersih | Puyuh.in</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
@@ -48,8 +48,8 @@
                   <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="nama_pengeluaran">Nama Pendapatan</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pendapatan">
+                      <label for="nama_pengeluaran">Nama Pendapatan Bersih</label>
+                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pendapatan Bersih">
                     </div>
                     <div class="form-group">
                       <label for="harga">Nilai</label>
@@ -59,7 +59,7 @@
                       </div>
 
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <div class="col-md-12">
                         <div class="row">
                           <div class="col-md-6">
@@ -72,7 +72,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
@@ -85,7 +85,7 @@
                             <div class="col-md-6 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Pendapatan Harian</h4>
+                                        <h4 class="card-title">Pendapatan Bersih Harian</h4>
                                         <p class="card-description"> Per tanggal : <b><!-- {{ $date ?? '' }} --></b> </p>
                                         <table class="table table-hover">
                                             <thead>
@@ -117,7 +117,7 @@
                             <div class="col-md-6 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Pendapatan Perbulan / <!-- {{ $monthName ?? '' }} --></h4>
+                                        <h4 class="card-title">Pendapatan Bersih Perbulan  <!-- {{ $monthName ?? '' }} --></h4>
                                         <p class="card-description"> Per tanggal : <b><!--{{ $date ?? '' }}--></b> </p>
                                         <table class="table table-hover">
                                             <thead>
@@ -149,7 +149,7 @@
                             <div class="col-md-12 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Pendapatan Pertahun</h4>
+                                        <h4 class="card-title">Pendapatan Bersih Pertahun</h4>
                                         <p class="card-description"> Per tanggal : <b><!--{{ $date ?? '' }}--></b> </p>
                                         <table class="table table-hover">
                                             <thead>
