@@ -33,6 +33,8 @@ Route::get('/pendapatan', 'PendapatanHarianController@index')->name('pendapatan'
 Route::get('/pendapatanBersih', 'PendapatanBersihController@index')->name('pendapatanBersih');
 //Pengeluaran
 Route::get('/pengeluaran', 'PengeluaranHarianController@index')->name('pengeluaranHarian');
+//
+Route::get('/hutang', 'UtangController@index')->name('utang');
 
 //Kas
 Route::get('/kas', function () {
@@ -42,13 +44,13 @@ Route::get('/kas/edit', function () {
     return view('kas/edit');
 });
 
-//Hutang
-Route::get('/hutang', function () {
-    return view('hutang/index');
-});
-Route::get('/hutang/edit', function () {
-    return view('hutang/edit');
-});
+// //Hutang
+// Route::get('/hutang', function () {
+//     return view('hutang/index');
+// });
+// Route::get('/hutang/edit', function () {
+//     return view('hutang/edit');
+// });
 
 //Gaji
 Route::get('/gaji', function () {

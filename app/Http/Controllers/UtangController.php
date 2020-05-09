@@ -9,8 +9,8 @@ class UtangController extends Controller
 {
     public function index()
     {
-        $data_utang = Utang::simplePaginate(10);
-        return view('utang/index', compact('data_utang'));
+        $data_utang = Utang::all();
+        return view('hutang/index', compact('data_utang'));
     }
 
     public function edit($id)
