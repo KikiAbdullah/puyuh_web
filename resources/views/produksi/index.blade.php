@@ -36,131 +36,125 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <!-- TABEL PRODUKSI PERBULAN -->
                     <div class="row">
-                    <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
-                <div class="card-body d-flex flex-column">
-                  <div class="wrapper">
-                    <h4 class="card-title mb-0">Produksi</h4>
-                    <p>Form Produksi</p>
-                    <div class="mb-4" id="net-profit-legend"></div>
-                  </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
-                    @csrf
-                    <div class="form-group">
-                      <label for="nama_pengeluaran">Jumlah Telur</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Jumlah Telur">
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-                    </div>
-                        <!-- TABEL PRODUKSI PERBULAN -->
-                        <div class="row">
-                            <div class="col-md-12 grid-margin stretch-card">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Produksi Perbulan {{ $monthName }}</h4>
-                                        <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>No. Kandang</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Jumlah</th>
-                                                    <th>Tools</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($produksiPerbulan as $produksi)
-                                                <tr align="center">
-                                                    <td>{{$produksi->id_kandang}}</td>
-                                                    <td>{{$produksi->tanggal}}</td>
-                                                    <td>{{$produksi->jumlah_telur}}</td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Produksi Perbulan {{ $monthName }}</h4>
+                                    <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No. Kandang</th>
+                                                <th>Tanggal</th>
+                                                <th>Jumlah</th>
+                                                <th>Tools</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($produksiPerbulan as $produksi)
+                                            <tr align="center">
+                                                <td>{{$produksi->id_kandang}}</td>
+                                                <td>{{$produksi->tanggal}}</td>
+                                                <td>{{$produksi->jumlah_telur}}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                        <!-- END TABEL PRODUKSI PERBULAN -->
-                        <!-- TABEL PRODUKSI PERTAHUN -->
-                        <div class="row">
-                            <div class="col-md-12 grid-margin stretch-card">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Produksi Tahun</h4>
-                                        <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>No Kandang.</th>
-                                                    <th>Januari</th>
-                                                    <th>Februari</th>
-                                                    <th>Maret</th>
-                                                    <th>April</th>
-                                                    <th>Mei</th>
-                                                    <th>Juni</th>
-                                                    <th>Juli</th>
-                                                    <th>Agustus</th>
-                                                    <th>September</th>
-                                                    <th>Oktober</th>
-                                                    <th>November</th>
-                                                    <th>Desember</th>
-                                                    <th>Jumlah</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach($produksiPertahun as $produksi)
-                                                <tr align="center">
-                                                    <td>{{$produksi->id_kandang}}</td>
-                                                    <td><a style="color: black" href="/produksi/1">{{$produksi->januari}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/2">{{$produksi->februari}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/3">{{$produksi->maret}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/4">{{$produksi->april}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/5">{{$produksi->mei}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/6">{{$produksi->juni}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/7">{{$produksi->juli}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/8">{{$produksi->agustus}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/9">{{$produksi->september}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/10">{{$produksi->oktober}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/11">{{$produksi->november}}</a></td>
-                                                    <td><a style="color: black" href="/produksi/12">{{$produksi->desember}}</a></td>
-                                                    <td><b>{{$produksi->jumlah}}</b></td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
+                    </div>
+                    <!-- END TABEL PRODUKSI PERBULAN -->
+                    <!-- TABEL PRODUKSI PERTAHUN -->
+                    <div class="row">
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Produksi Tahun</h4>
+                                    <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No Kandang.</th>
+                                                <th>Januari</th>
+                                                <th>Februari</th>
+                                                <th>Maret</th>
+                                                <th>April</th>
+                                                <th>Mei</th>
+                                                <th>Juni</th>
+                                                <th>Juli</th>
+                                                <th>Agustus</th>
+                                                <th>September</th>
+                                                <th>Oktober</th>
+                                                <th>November</th>
+                                                <th>Desember</th>
+                                                <th>Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($produksiPertahun as $produksi)
+                                            <tr align="center">
+                                                <td>{{$produksi->id_kandang}}</td>
+                                                <td><a style="color: black"
+                                                        href="/produksi/1">{{$produksi->januari}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/produksi/2">{{$produksi->februari}}</a></td>
+                                                <td><a style="color: black" href="/produksi/3">{{$produksi->maret}}</a>
+                                                </td>
+                                                <td><a style="color: black" href="/produksi/4">{{$produksi->april}}</a>
+                                                </td>
+                                                <td><a style="color: black" href="/produksi/5">{{$produksi->mei}}</a>
+                                                </td>
+                                                <td><a style="color: black" href="/produksi/6">{{$produksi->juni}}</a>
+                                                </td>
+                                                <td><a style="color: black" href="/produksi/7">{{$produksi->juli}}</a>
+                                                </td>
+                                                <td><a style="color: black"
+                                                        href="/produksi/8">{{$produksi->agustus}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/produksi/9">{{$produksi->september}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/produksi/10">{{$produksi->oktober}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/produksi/11">{{$produksi->november}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/produksi/12">{{$produksi->desember}}</a></td>
+                                                <td><b>{{$produksi->jumlah}}</b></td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-                        <!-- END TABEL PRODUKSI PERTAHUN -->
                     </div>
-                    <!-- content-wrapper ends -->
+                    <!-- END TABEL PRODUKSI PERTAHUN -->
                 </div>
-                <!-- main-panel ends -->
+                <!-- content-wrapper ends -->
             </div>
-            <!-- page-body-wrapper ends -->
+            <!-- main-panel ends -->
         </div>
-        <!-- container-scroller -->
-        <!-- plugins:js -->
-        <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
-        <script src="../../../assets/vendors/js/vendor.bundle.addons.js"></script>
-        <!-- endinject -->
-        <!-- Plugin js for this page-->
-        <!-- End plugin js for this page-->
-        <!-- inject:js -->
-        <script src="../../../assets/js/shared/off-canvas.js"></script>
-        <script src="../../../assets/js/shared/misc.js"></script>
-        <!-- endinject -->
-        <!-- Custom js for this page-->
-        <!-- End custom js for this page-->
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="../../../assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../../assets/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="../../../assets/js/shared/off-canvas.js"></script>
+    <script src="../../../assets/js/shared/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <!-- End custom js for this page-->
+
+    <script>
+
+    </script>
 </body>
 
 </html>
