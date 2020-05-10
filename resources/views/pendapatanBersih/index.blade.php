@@ -41,28 +41,21 @@
                     <div class="card">
                 <div class="card-body d-flex flex-column">
                   <div class="wrapper">
-                    <h4 class="card-title mb-0">Pendapatan Harian</h4>
-                    <p>Form Pendapatan Harian</p>
+                    <h4 class="card-title mb-0">Pendapatan Bersih</h4>
+                    <p>Form Pendapatan Bersih</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
                   <form class="forms-sample" method="POST" action="{{ url('api/pendapatanBersih')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="jumlah_harian">Jumlah</label>
-                      <input type="text" class="form-control" name="jumlah_harian" id="jumlah_harian" placeholder="Jumlah Pendapatan">
+                      <label for="tanggal">Tanggal</label>
+                      <input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
                     </div>
                     <div class="form-group">
-                      <label for="harga_harian">Harga</label>
+                      <label for="total_pendapatan">Total Pendapatan</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="harga_harian" id="harga_harian" placeholder="Harga">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="total_harian">Total</label>
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="total_harian" id="total_harian" placeholder="Total">
+                        <input type="text" class="form-control" name="total_pendapatan" id="total_pendapatan" placeholder="Total Pendapatan">
                       </div>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
@@ -85,9 +78,7 @@
                                             <tr align="center">
                                                 <th>No.</th>
                                                 <th>Tanggal</th>
-                                                <th>Jumlah</th>
-                                                <th>Harga</th>
-                                                <th>Total</th>
+                                                <th>Total Pendapatan</th>
                                                 <th>Tools</th>
                                             </tr>
                                         </thead>
@@ -120,9 +111,7 @@
                                             <tr align="center">
                                                 <th>No.</th>
                                                 <th>Tanggal</th>
-                                                <th>Jumlah</th>
-                                                <th>Harga</th>
-                                                <th>Total</th>
+                                                <th>Total Pendapatan</th>
                                                 <th>Tools</th>
                                             </tr>
                                         </thead>
@@ -153,7 +142,7 @@
                                             <tr align="center">
                                                 <th>No.</th>
                                                 <th>Bulan</th>
-                                                <th>Total</th>
+                                                <th>Total Pendapatan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
