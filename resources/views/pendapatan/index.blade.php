@@ -45,34 +45,26 @@
                     <p>Form Pendapatan</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                  <form class="forms-sample" method="POST" action="{{ url('api/pendapatanHarian')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="nama_pengeluaran">Nama Pendapatan</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pendapatan">
+                      <label for="jumlah">Jumlah</label>
+                      <input type="text" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Pendapatan">
                     </div>
                     <div class="form-group">
-                      <label for="harga">Nilai</label>
+                      <label for="harga">Harga</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                         <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
                       </div>
-
                     </div>
-                    <!-- <div class="form-group">
-                      <div class="col-md-12">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <label for="jumlah">Jumlah</label>
-                            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah">
-                          </div>
-                          <div class="col-md-6">
-                            <label for="satuan">Satuan</label>
-                            <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Satuan">
-                          </div>
-                        </div>
+                    <div class="form-group">
+                      <label for="total">Total</label>
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="text" class="form-control" name="total" id="total" placeholder="Total">
                       </div>
-                    </div> -->
+                    </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>

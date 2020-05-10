@@ -36,6 +36,42 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <div class="row">
+                    <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                <div class="card-body d-flex flex-column">
+                  <div class="wrapper">
+                    <h4 class="card-title mb-0">Pendapatan Harian</h4>
+                    <p>Form Pendapatan Harian</p>
+                    <div class="mb-4" id="net-profit-legend"></div>
+                  </div>
+                  <form class="forms-sample" method="POST" action="{{ url('api/pendapatanBersih')}}">
+                    @csrf
+                    <div class="form-group">
+                      <label for="jumlah_harian">Jumlah</label>
+                      <input type="text" class="form-control" name="jumlah_harian" id="jumlah_harian" placeholder="Jumlah Pendapatan">
+                    </div>
+                    <div class="form-group">
+                      <label for="harga_harian">Harga</label>
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="text" class="form-control" name="harga_harian" id="harga_harian" placeholder="Harga">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="total_harian">Total</label>
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="text" class="form-control" name="total_harian" id="total_harian" placeholder="Total">
+                      </div>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+                    </div>
                     <!-- TABEL PRODUKSI PERBULAN -->
                     <div class="row">
                         <div class="col-md-6 grid-margin stretch-card">

@@ -45,14 +45,14 @@
                     <p>Form Edit Pendapatan Bersih</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                  <form class="forms-sample" method="POST" action="{{ url('api/pendapatanBersih')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="nama_pengeluaran">Nama Pendapatan Bersih</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pendapatan Bersih">
+                      <label for="pendapatan_bersih">Nama Pendapatan Bersih</label>
+                      <input type="text" class="form-control" name="pendapatan_bersih" id="pendapatan_bersih" placeholder="Nama Pendapatan Bersih">
                     </div>
                     <div class="form-group">
-                      <label for="harga">Nilai</label>
+                      <label for="harga">Harga</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                         <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">

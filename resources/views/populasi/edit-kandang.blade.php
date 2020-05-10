@@ -45,7 +45,7 @@
                     <p>Form Edit Populasi</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                  <form class="forms-sample" method="POST" action="{{ url('api/kandang')}}">
                     @csrf
                     <div class="form-group">
                       <label for="nama_pengeluaran">Nama Populasi</label>

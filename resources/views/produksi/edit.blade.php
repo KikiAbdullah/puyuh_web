@@ -45,11 +45,11 @@
                     <p>Form Edit Produksi</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                  <form class="forms-sample" method="POST" action="{{ url('api/kandang')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="nama_pengeluaran">Nama Produksi</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Produksi">
+                      <label for="nama_produksi">Nama Produksi</label>
+                      <input type="text" class="form-control" name="nama_produksi" id="nama_produksi" placeholder="Nama Produksi">
                     </div>
                     <div class="form-group">
                       <label for="harga">Nilai</label>

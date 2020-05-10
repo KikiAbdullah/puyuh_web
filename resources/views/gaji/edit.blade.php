@@ -41,37 +41,23 @@
                     <div class="card">
                 <div class="card-body d-flex flex-column">
                   <div class="wrapper">
-                    <h4 class="card-title mb-0">Edit Gaji</h4>
-                    <p>Form Edit Gaji</p>
+                    <h4 class="card-title mb-0">Gaji</h4>
+                    <p>Form Gaji</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                  <form class="forms-sample" method="POST" action="{{ url('api/gaji')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="nama_pengeluaran">Nama Gaji</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Gaji">
-                    </div>
-                    <div class="form-group">
-                      <label for="harga">Nilai</label>
+                      <label for="Jumlah Gaji">Jumlah Gaji Bulan Ini</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
+                        <input type="text" class="form-control" name="jumlah_gaji" id="jumlah_gaji" placeholder="Jumlah Gaji">
                       </div>
-
                     </div>
                     <div class="form-group">
-                      <div class="col-md-12">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <label for="jumlah">Jumlah</label>
-                            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah">
-                          </div>
-                          <div class="col-md-6">
-                            <label for="satuan">Satuan</label>
-                            <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Satuan">
-                          </div>
-                        </div>
-                      </div>
+                      <label for="Tanggal Gaji">Tanggal / Bulan</label>         
+                      <input type="text" class="form-control" name="tanggal_gaji" id="tanggal_gaji" placeholder="Tanggal">
+
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
@@ -80,7 +66,6 @@
               </div>
             </div>
                     </div>
-                </div>
                     <!-- <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">

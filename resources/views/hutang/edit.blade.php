@@ -45,11 +45,11 @@
                     <p>Form Edit Hutang</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                  <form class="forms-sample" method="POST" action="{{ url('api/utang')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="nama_pengeluaran">Nama Hutang</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Hutang">
+                      <label for="hutang">Nama Hutang</label>
+                      <input type="text" class="form-control" name="hutang" id="hutang" placeholder="Nama Hutang">
                     </div>
                     <div class="form-group">
                       <label for="harga">Nilai</label>

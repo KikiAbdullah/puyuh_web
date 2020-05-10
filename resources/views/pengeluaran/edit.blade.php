@@ -52,7 +52,7 @@
                       <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pengeluaran">
                     </div>
                     <div class="form-group">
-                      <label for="harga">Nilai</label>
+                      <label for="harga">Harga</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                         <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">

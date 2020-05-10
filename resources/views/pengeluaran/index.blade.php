@@ -52,7 +52,7 @@
                       <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pengeluaran">
                     </div>
                     <div class="form-group">
-                      <label for="harga">Nilai</label>
+                      <label for="harga">Harga</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                         <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
@@ -106,7 +106,7 @@
                                                     <td>{{$data->tanggal}}</td>
                                                     <td>{{$data->nama}}</td>
                                                     <td>{{$data->jumlah}}</td>
-                                                    <td align="left">Rp. {{$data->harga}}</td>
+                                                    <td align="left"> Rp. {{$data->harga}}</td>
                                                     <td align="left">Rp. {{$data->total}}</td>
                                                     <td></td>
                                                 </tr>

@@ -45,71 +45,39 @@
                     <p>Form Kas</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pengeluaranHarian')}}">
+                  <form class="forms-sample" method="POST" action="{{ url('api/kas')}}">
                     @csrf
                     <div class="form-group">
-                      <label for="nama_pengeluaran">Nama Kas</label>
-                      <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Kas">
-                    </div>
-                    <div class="form-group">
-                      <label for="harga">Nilai</label>
+                      <label for="kas">Nilai Kas</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
+                        <input type="text" class="form-control" name="kas" id="kas" placeholder="Kas">
                       </div>
-
                     </div>
-                    <!-- <div class="form-group">
-                      <div class="col-md-12">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <label for="jumlah">Jumlah</label>
-                            <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah">
-                          </div>
-                          <div class="col-md-6">
-                            <label for="satuan">Satuan</label>
-                            <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Satuan">
-                          </div>
-                        </div>
-                      </div>
-                    </div> -->
+                    <div class="form-group">
+                      <label for="tanggal_kas">Tanggal Kas</label>
+                      <input type="text" class="form-control" name="tanggal_kas" id="tanggal_kas" placeholder="Tanggal Kas">
+                    </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
                 </div>
               </div>
             </div>
-            <div class="column">
-                <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Kas Saat Ini</h4>
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Tanggal</th>
-                                            <th>Jumlah</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-                </div>
                     </div>
                 </div>
-                
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Kas Bulan (dropdown mungkin ?)</h4>
+                                <h4 class="card-title">Kas Bulan Ini</h4>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Tanggal</th>
-                                            <th>Jumlah</th>
-                                            <th>Total</th>
+                                            <th>Periode</th>
+                                            <th>Kas Perbulan</th>
+                                            <th>Total Uang Kas</th>
+                                            <th>Tanggal / Bulan</th>
                                         </tr>
                                     </thead>
                                 </table>
