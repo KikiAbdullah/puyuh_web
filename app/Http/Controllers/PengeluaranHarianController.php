@@ -26,7 +26,7 @@ class PengeluaranHarianController extends Controller
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $data_pengeluaran = PengeluaranHarian::simplePaginate(10);
+        $data_pengeluaran = PengeluaranHarian::whereMonth('tanggal', $month)->get();
 
         $pengeluaranPerbulan = DB::select('SELECT tanggal, SUM(total) as totalharga FROM `pengeluaran_harians` WHERE month(tanggal) = '.$month.' GROUP BY tanggal');
 
@@ -38,8 +38,8 @@ class PengeluaranHarianController extends Controller
 
     public function edit($id)
     {
-        $pengeluaranHarian = PengeluaranHarian::find($id);
-        return view('pengeluaranHarian/edit', compact('pengeluaranHarian', 'id'));
+        $data_pengeluaran = PengeluaranHarian::where('id', $id)->get();
+        return view('pengeluaran/edit', compact('data_pengeluaran','id'));
     }
 
     public function add()
@@ -83,17 +83,15 @@ class PengeluaranHarianController extends Controller
 
     public function update(request $request, $id)
     {
-        $id_user = $request->id_user;
-        $tanggal = $request->tanggal;
+        $id_user = "1";
         $nama = $request->nama;
         $harga = $request->harga;
         $jumlah = $request->jumlah;
         $satuan = $request->satuan;
-        $total = $request->total;
+        $total = $harga * $jumlah;
 
         $pengeluaranHarian = PengeluaranHarian::find($id);
         $pengeluaranHarian->id_user = $id_user;
-        $pengeluaranHarian->tanggal = $tanggal;
         $pengeluaranHarian->nama = $nama;
         $pengeluaranHarian->harga = $harga;
         $pengeluaranHarian->jumlah = $jumlah;
@@ -101,7 +99,7 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian->total = $total;
         $pengeluaranHarian->save();
 
-        return redirect('pengeluaranHarian')->with('success', 'Data berhasil diubah');
+        return redirect('pengeluaran')->with('success', 'Data berhasil diubah');
     }
 
     public function delete($id)

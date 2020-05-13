@@ -108,7 +108,7 @@
                                                     <td>{{$data->jumlah}}</td>
                                                     <td align="left"> Rp. {{$data->harga}}</td>
                                                     <td align="left">Rp. {{$data->total}}</td>
-                                                    <td></td>
+                                                    <td><a class="btn btn-dark" href="/pengeluaran/edit/{{ $data->id }}">Edit</a></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -136,7 +136,6 @@
                                                     <td>{{$index1++}}</td>
                                                     <td>{{$dataPerbulan->tanggal}}</td>
                                                     <td align="left">Rp. {{$dataPerbulan->totalharga}}</td>
-                                                    <td></td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
