@@ -38,14 +38,9 @@ Route::get('/hutang', 'UtangController@index')->name('utang');
 //gaji
 Route::get('/gaji', 'GajiController@index')->name('gaji');
 Route::get('/gaji/edit/{id}','GajiController@edit');
-
 //Kas
-Route::get('/kas', function () {
-    return view('kas/index');
-});
-Route::get('/kas/edit', function () {
-    return view('kas/edit');
-});
+Route::get('/kas', 'KasController@index')->name('kas');
+Route::get('/kas/edit/{id}','KasController@edit');
 
 // //Hutang
 // Route::get('/hutang', function () {

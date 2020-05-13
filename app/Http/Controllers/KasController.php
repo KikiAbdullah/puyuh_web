@@ -4,20 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kas;
+use Illuminate\Support\Facades\DB;
 
 class KasController extends Controller
 {
     public function index()
     {
-        $data_kas = Kas::simplePaginate(10);
+        $data_kas = Kas::all();
+        $kas_pertahun = DB::select('SELECT YEAR(tanggal) as tahun ,sum(kas_perbulan) as total FROM `kas` GROUP BY tahun');
         $index = 1;
-        return view('kas/index', compact('data_kas','index'));
+        return view('kas/index', compact('data_kas', 'kas_pertahun','index'));
     }
 
     public function edit($id)
     {
-        $kas = Kas::find($id);
-        return view('kas/edit', compact('kas','id'));
+        $data_kas = Kas::where('id',$id)->get();
+        return view('kas/edit', compact('data_kas','id'));
     }
 
     public function add()
@@ -50,16 +52,12 @@ class KasController extends Controller
     public function update(request $request, $id)
     {
         $kas_perbulan = $request->kas_perbulan;
-        $total_periode = $request->total_periode;
-        $total_kas = $request->total_kas;
 
         $kas = Kas::find($id);
         $kas->kas_perbulan = $kas_perbulan;
-        $kas->total_periode = $total_periode;
-        $kas->total_kas = $total_kas;
         $kas->save();
 
-        return 'Data berhasil diubah';
+        return redirect('kas')->with(['success' => 'Pesan Berhasil']);
     }
 
     public function delete($id)
