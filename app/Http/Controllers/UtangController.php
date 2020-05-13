@@ -15,8 +15,8 @@ class UtangController extends Controller
 
     public function edit($id)
     {
-        $utang = Utang::find($id);
-        return view('utang/edit', compact('utang','id'));
+        $data_utang = Utang::where('id', $id)->get();
+        return view('hutang/edit', compact('data_utang','id'));
     }
 
     public function add()
@@ -43,7 +43,7 @@ class UtangController extends Controller
         $utang->periode_kurang = $request->periode_kurang;
         $utang->save();
 
-        return 'Data berhasil ditambahkan';
+        return redirect('hutang');
     }
 
     public function update(request $request, $id)
@@ -58,7 +58,7 @@ class UtangController extends Controller
         $utang->periode_kurang = $periode_kurang;
         $utang->save();
 
-        return 'Data berhasil diubah';
+        return redirect('hutang');
     }
 
     public function delete($id)

@@ -77,7 +77,8 @@
                         <tr>
                           <th>No.</th>
                           <th>Jumlah</th>
-                          <th>Periode Kurang</th>
+                          <th>Periode Sudah</th>
+                          <th>Tools</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -86,6 +87,7 @@
                           <td>{{$sudahTerbayar->id}}</td>
                           <td>{{$sudahTerbayar->cicilan_tetap}}</td>
                           <td>{{$sudahTerbayar->periode_sudah}}</td>
+                          <td><a class="btn btn-dark" href="/hutang/edit/{{ $sudahTerbayar->id }}">Edit</a></td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -98,21 +100,23 @@
               <div class="card">
                 <div class="card-body d-flex flex-column">
                   <div class="card-body">
-                    <h4 class="card-title">Hutang Belum Terbayar</h4>
+                    <h4 class="card-title">Hutang</h4>
                     <table class="table table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>
                           <th>Jumlah</th>
-                          <th>Periode Sudah</th>
+                          <th>Jumlah Periode</th>
+                          <th>Tools</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($data_utang as $belumTerbayar)
+                        @foreach($data_utang as $hutang)
                         <tr>
-                          <td>{{$belumTerbayar->id}}</td>
-                          <td>{{$belumTerbayar->cicilan_tetap}}</td>
-                          <td>{{$belumTerbayar->periode_kurang}}</td>
+                          <td>{{$hutang->id}}</td>
+                          <td>{{$hutang->cicilan_tetap}}</td>
+                          <td>{{$hutang->periode_kurang}}</td>
+                          <td><a class="btn btn-dark" href="/hutang/edit/{{ $hutang->id }}">Edit</a></td>
                         </tr>
                         @endforeach
                       </tbody>
