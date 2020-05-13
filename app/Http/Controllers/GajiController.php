@@ -9,15 +9,15 @@ class GajiController extends Controller
 {
     public function index()
     {
-        $data_gaji = Gaji::simplePaginate(10);
+        $data_gaji = Gaji::all();
         $index = 1;
         return view('gaji/index', compact('data_gaji','index'));
     }
 
     public function edit($id)
     {
-        $gaji = Gaji::find($id);
-        return view('gaji/edit', compact('gaji','id'));
+        $data_gaji = Gaji::where('id',$id)->get();
+        return view('gaji/edit', compact('data_gaji','id'));
     }
 
     public function add()
@@ -56,7 +56,8 @@ class GajiController extends Controller
         $gaji->tanggal = $tanggal;
         $gaji->save();
 
-        return redirect('gaji')-> with('success','Data berhasil diubah');
+        
+        return redirect('gaji')->with(['success' => 'Pesan Berhasil']);
     }
 
     public function delete($id)
