@@ -118,7 +118,7 @@ class LaporanHarianController extends Controller
         $laporanHarian->jumlah_kematian = $request->jumlah_kematian;
         $laporanHarian->save();
 
-        return 'Data berhasil ditambahkan';
+        return 'Data berhasil ditambahka';
     }
 
     public function update(request $request, $id)
