@@ -49,7 +49,9 @@
                   <form class="forms-sample" method="POST" action="{{ url('/api/laporanHarian/'. $item['id']) }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="PUT">
-                  <input type="hidden" name="jumlah_kematian" id="jumlah_kematian" value="{{$item['jumlah_kematian']}}">
+                    <input type="hidden" name="jenis" value="produksi">
+                    <input type="hidden" name="jumlah_kematian" id="jumlah_kematian"
+                      value="{{$item['jumlah_kematian']}}">
                     <div class="form-group">
                       <label for="no">No. Kandang : {{ $item['id_kandang']}}</label>
                     </div>
@@ -58,7 +60,8 @@
                     </div>
                     <div class="form-group">
                       <label for="harga">Jumlah Produksi Telur</label>
-                      <input type="number" class="form-control" name="jumlah_telur" id="jumlah_telur" value="{{$item['jumlah_telur']}}">
+                      <input type="number" class="form-control" name="jumlah_telur" id="jumlah_telur"
+                        value="{{$item['jumlah_telur']}}">
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
