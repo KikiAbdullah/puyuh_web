@@ -10,21 +10,21 @@ use Illuminate\Support\Facades\DB;
 
 class LaporanHarianController extends Controller
 {
-    public function indexProduksi($month=null)
+    public function indexProduksi($month = null)
     {
         timezone_open("Asia/Jakarta");
         if ($month == null) {
             $month = date('m');
         }
 
-        
+
         $date  = date("Y-m-d");
-        $index=1;
+        $index = 1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
 
-        $produksiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = '.$month);
+        $produksiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month);
 
         $produksiPertahun = DB::select('SELECT id_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_telur, 0)) as januari, 
@@ -42,27 +42,27 @@ class LaporanHarianController extends Controller
         sum(jumlah_telur) as jumlah
         FROM `laporan_harians` GROUP BY id_kandang');
 
-        
 
-        return view('produksi/index', compact('produksiPerbulan','produksiPertahun','date','index','month','monthName'));
+
+        return view('produksi/index', compact('produksiPerbulan', 'produksiPertahun', 'date', 'index', 'month', 'monthName'));
     }
 
-    public function indexPopulasi($month=null)
+    public function indexPopulasi($month = null)
     {
         timezone_open("Asia/Jakarta");
         if ($month == null) {
             $month = date('m');
         }
 
-        
+
         $date  = date("Y-m-d");
-        $index=1;
+        $index = 1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
         $all_kandang = Kandang::simplePaginate(10);
 
-        $populasiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = '.$month);
+        $populasiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month);
 
         $populasiPertahun = DB::select('SELECT id_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_kematian, 0)) as januari, 
@@ -80,16 +80,22 @@ class LaporanHarianController extends Controller
         sum(jumlah_kematian) as jumlah
         FROM `laporan_harians` GROUP BY id_kandang');
 
-        
 
-        return view('populasi/index', compact('all_kandang','populasiPerbulan','populasiPertahun','date','index','month','monthName'));
+
+        return view('populasi/index', compact('all_kandang', 'populasiPerbulan', 'populasiPertahun', 'date', 'index', 'month', 'monthName'));
     }
 
 
-    public function edit($id)
+    public function editProduksi($id)
     {
-        $data_laporan = LaporanHarian::where('id',$id)->get();
+        $data_laporan = LaporanHarian::where('id', $id)->get();
         return view('produksi/edit', compact('data_laporan', 'id'));
+    }
+
+    public function editKematian($id)
+    {
+        $data_laporan = LaporanHarian::where('id', $id)->get();
+        return view('populasi/edit-kematian', compact('data_laporan', 'id'));
     }
 
     public function add()
@@ -125,14 +131,20 @@ class LaporanHarianController extends Controller
     {
         $jumlah_telur = $request->jumlah_telur;
         $jumlah_kematian = $request->jumlah_kematian;
+        $jenis = $request->jenis;
 
         $laporanHarian = LaporanHarian::find($id);
         $laporanHarian->jumlah_telur = $jumlah_telur;
         $laporanHarian->jumlah_kematian = $jumlah_kematian;
         $laporanHarian->save();
-
-        return redirect('produksi');
+        if ($jenis === 'kematian') {
+            return redirect('populasi');
+        } else {
+            return redirect('produksi');
+        }
+        
     }
+
 
     public function delete($id)
     {

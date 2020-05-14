@@ -14,7 +14,7 @@ class KandangController extends Controller
     {
         //SELECT DATA KANDANG
         $data_kandang = Kandang::simplePaginate(10);
-//SELECT DATA KEMATIAN
+        //SELECT DATA KEMATIAN
         $kematian = DB::select('SELECT id_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_kematian, 0)) as januari, 
         sum(IF(month(tanggal) = 2, jumlah_kematian, 0)) as februari,
@@ -32,7 +32,7 @@ class KandangController extends Controller
         FROM `laporan_harians` GROUP BY id_kandang');
 
         //SELECT DATA KEMATIAN HARI INI
-        
+
 
         $index = 1;
 
@@ -47,8 +47,8 @@ class KandangController extends Controller
 
     public function edit($id)
     {
-        $kandang = Kandang::find($id);
-        return view('populasi/edit', compact('kandang', 'id'));
+        $data_kandang = Kandang::where('id', $id)->get();
+        return view('populasi/edit-kandang', compact('data_kandang', 'id'));
     }
 
     public function add()
@@ -85,7 +85,7 @@ class KandangController extends Controller
         $kandang->jumlah_ternak = $jumlah_ternak;
         $kandang->save();
 
-        return redirect('kandang')->with('success', 'Data berhasil diubah');
+        return redirect('populasi')->with('success', 'Data berhasil diubah');
     }
 
     public function delete($id)

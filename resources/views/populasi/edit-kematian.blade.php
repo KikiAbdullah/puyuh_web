@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Edit Kematian Kandang | Puyuh.in</title>
+    <title>Edit Produksi | Puyuh.in</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../../assets/vendors/iconfonts/ionicons/css/ionicons.css">
@@ -36,10 +36,40 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="col-lg-12 grid-margin stretch-card">
-                        <div class="card">
-                            <div class="card-body">
-                                
+                    <div class="row">
+                        <div class="col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="wrapper">
+                                        <h4 class="card-title mb-0">Edit Kematian</h4>
+                                        <p>Form Edit Produksi</p>
+                                        <div class="mb-4" id="net-profit-legend"></div>
+                                    </div>
+                                    @foreach ($data_laporan as $item)
+                                    <form class="forms-sample" method="POST"
+                                        action="{{ url('/api/laporanHarian/'. $item['id']) }}">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="_method" value="PUT">
+                                        <input type="hidden" name="jenis" value="kematian">
+                                        <input type="hidden" name="jumlah_telur" id="jumlah_telur"
+                                            value="{{$item['jumlah_telur']}}">
+                                        <div class="form-group">
+                                            <label for="no">No. Kandang : {{ $item['id_kandang']}}</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Tanggal">Tanggal : {{$item['tanggal']}}</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="harga">Jumlah Kematian</label>
+                                            <input type="number" class="form-control" name="jumlah_kematian"
+                                                id="jumlah_kematian" value="{{$item['jumlah_kematian']}}">
+                                        </div>
+                                        <button type="submit" name="submit" class="btn btn-success mr-2"
+                                            onclick="alert">Submit</button>
+                                        <button class="btn btn-light">Cancel</button>
+                                    </form>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

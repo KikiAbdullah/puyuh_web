@@ -1,4 +1,3 @@
-
 @if (session('alert'))
 <div class="alert alert-success">
     {{ session('alert') }}
@@ -32,7 +31,8 @@
     <link rel="shortcut icon" href="../assets/images/favicon.ico" />
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 
 
 
@@ -51,25 +51,29 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                        <div class="col-md-6 grid-margin stretch-card">
+                        <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <h4 class="card-title">Populasi Kandang</h4>
                                             <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
                                         </div>
-                                        <div class="col-md-3">
-                                            <button type="button" class="btn btn-success mr-2" data-toggle="modal" data-target="#addKandangModal">
+                                        <div class="col-md-2">
+                                            <button type="button" class="btn btn-success mr-2" data-toggle="modal"
+                                                data-target="#addKandangModal">
                                                 Tambah Kandang
                                             </button>
 
-                                            <div class="modal fade" id="addKandangModal" tabindex="-1" role="dialog" aria-labelledby="addKandangModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="addKandangModal" tabindex="-1" role="dialog"
+                                                aria-labelledby="addKandangModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="addKandangModalLabel">Tambah Kandang</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <h5 class="modal-title" id="addKandangModalLabel">Tambah
+                                                                Kandang</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
@@ -79,18 +83,25 @@
 
                                                                 <div class="form-group">
                                                                     <label for="noKandang">No. Kandang</label>
-                                                                    <input type="text" class="form-control" name="no_kandang" id="no_kandang" placeholder="Nomor Kandang">
+                                                                    <input type="text" class="form-control"
+                                                                        name="no_kandang" id="no_kandang"
+                                                                        placeholder="Nomor Kandang">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="jumlahTernak">Jumlah Ternak</label>
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control" name="jumlah_ternak" id="jumlah_ternak" placeholder="Jumlah Ternak">
+                                                                        <input type="text" class="form-control"
+                                                                            name="jumlah_ternak" id="jumlah_ternak"
+                                                                            placeholder="Jumlah Ternak">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                                                <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
+                                                                <button type="button" class="btn btn-light"
+                                                                    data-dismiss="modal">Close</button>
+                                                                <button type="submit" name="submit"
+                                                                    class="btn btn-success mr-2"
+                                                                    onclick="alert">Submit</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -111,31 +122,12 @@
                                             <tr align="center">
                                                 <td>{{$kandangs->id}}</td>
                                                 <td>{{$kandangs->jumlah_ternak}}</td>
+                                                <td><a class="btn btn-dark"
+                                                    href="/populasi/edit-kandang/{{ $kandangs->id }}">Edit</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form class="forms-sample" method="POST" action="{{ url('api/kandang')}}">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="noKandang">No. Kandang</label>
-                                            <input type="text" class="form-control" name="no_kandang" id="no_kandang" placeholder="Nomor Kandang">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jumlahTernak">Jumlah Ternak</label>
-                                            <div class="input-group-prepend">
-                                                <input type="text" class="form-control" name="jumlah_ternak" id="jumlah_ternak" placeholder="Jumlah Ternak">
-                                            </div>
-                                        </div>
-                                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                                        <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
-                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -159,6 +151,8 @@
                                                 <td>{{$populasi->id_kandang}}</td>
                                                 <td>{{$populasi->tanggal}}</td>
                                                 <td>{{$populasi->jumlah_kematian}}</td>
+                                                <td><a class="btn btn-dark"
+                                                    href="/populasi/edit-kematian/{{ $populasi->id }}">Edit</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -194,18 +188,30 @@
                                             @foreach($populasiPertahun as $populasi)
                                             <tr align="center">
                                                 <td>{{$populasi->id_kandang}}</td>
-                                                <td><a style="color: black" href="/populasi/1">{{$populasi->januari}}</a></td>
-                                                <td><a style="color: black" href="/populasi/2">{{$populasi->februari}}</a></td>
-                                                <td><a style="color: black" href="/populasi/3">{{$populasi->maret}}</a></td>
-                                                <td><a style="color: black" href="/populasi/4">{{$populasi->april}}</a></td>
-                                                <td><a style="color: black" href="/populasi/5">{{$populasi->mei}}</a></td>
-                                                <td><a style="color: black" href="/populasi/6">{{$populasi->juni}}</a></td>
-                                                <td><a style="color: black" href="/populasi/7">{{$populasi->juli}}</a></td>
-                                                <td><a style="color: black" href="/populasi/8">{{$populasi->agustus}}</a></td>
-                                                <td><a style="color: black" href="/populasi/9">{{$populasi->september}}</a></td>
-                                                <td><a style="color: black" href="/populasi/10">{{$populasi->oktober}}</a></td>
-                                                <td><a style="color: black" href="/populasi/11">{{$populasi->november}}</a></td>
-                                                <td><a style="color: black" href="/populasi/12">{{$populasi->desember}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/populasi/1">{{$populasi->januari}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/populasi/2">{{$populasi->februari}}</a></td>
+                                                <td><a style="color: black" href="/populasi/3">{{$populasi->maret}}</a>
+                                                </td>
+                                                <td><a style="color: black" href="/populasi/4">{{$populasi->april}}</a>
+                                                </td>
+                                                <td><a style="color: black" href="/populasi/5">{{$populasi->mei}}</a>
+                                                </td>
+                                                <td><a style="color: black" href="/populasi/6">{{$populasi->juni}}</a>
+                                                </td>
+                                                <td><a style="color: black" href="/populasi/7">{{$populasi->juli}}</a>
+                                                </td>
+                                                <td><a style="color: black"
+                                                        href="/populasi/8">{{$populasi->agustus}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/populasi/9">{{$populasi->september}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/populasi/10">{{$populasi->oktober}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/populasi/11">{{$populasi->november}}</a></td>
+                                                <td><a style="color: black"
+                                                        href="/populasi/12">{{$populasi->desember}}</a></td>
                                                 <td><b>{{$populasi->jumlah}}</b></td>
                                             </tr>
                                             @endforeach
