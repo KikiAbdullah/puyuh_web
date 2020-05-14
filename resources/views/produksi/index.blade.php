@@ -58,6 +58,8 @@
                                                 <td>{{$produksi->id_kandang}}</td>
                                                 <td>{{$produksi->tanggal}}</td>
                                                 <td>{{$produksi->jumlah_telur}}</td>
+                                                <td><a class="btn btn-dark"
+                                                    href="/produksi/edit/{{ $produksi->id }}">Edit</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

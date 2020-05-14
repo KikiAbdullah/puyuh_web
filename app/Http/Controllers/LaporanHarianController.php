@@ -24,7 +24,7 @@ class LaporanHarianController extends Controller
         $monthName = $dateObj->format('F');
 
 
-        $produksiPerbulan = DB::select('SELECT id_kandang, tanggal, jumlah_telur FROM laporan_harians WHERE month(tanggal) = '.$month);
+        $produksiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = '.$month);
 
         $produksiPertahun = DB::select('SELECT id_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_telur, 0)) as januari, 
@@ -62,7 +62,7 @@ class LaporanHarianController extends Controller
 
         $all_kandang = Kandang::simplePaginate(10);
 
-        $populasiPerbulan = DB::select('SELECT id_kandang, tanggal, jumlah_kematian FROM laporan_harians WHERE month(tanggal) = '.$month);
+        $populasiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = '.$month);
 
         $populasiPertahun = DB::select('SELECT id_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_kematian, 0)) as januari, 
@@ -88,8 +88,8 @@ class LaporanHarianController extends Controller
 
     public function edit($id)
     {
-        $laporanHarian = LaporanHarian::find($id);
-        return view('laporanHarian/edit', compact('laporanHarian', 'id'));
+        $data_laporan = LaporanHarian::where('id',$id)->get();
+        return view('produksi/edit', compact('data_laporan', 'id'));
     }
 
     public function add()
@@ -123,21 +123,15 @@ class LaporanHarianController extends Controller
 
     public function update(request $request, $id)
     {
-        $id_user = $request->id_user;
-        $id_kandang = $request->id_kandang;
-        $tanggal = $request->tanggal;
         $jumlah_telur = $request->jumlah_telur;
         $jumlah_kematian = $request->jumlah_kematian;
 
         $laporanHarian = LaporanHarian::find($id);
-        $laporanHarian->id_user = $id_user;
-        $laporanHarian->id_kandang = $id_kandang;
-        $laporanHarian->tanggal = $tanggal;
         $laporanHarian->jumlah_telur = $jumlah_telur;
         $laporanHarian->jumlah_kematian = $jumlah_kematian;
         $laporanHarian->save();
 
-        return 'Data berhasil diubah';
+        return redirect('produksi');
     }
 
     public function delete($id)
