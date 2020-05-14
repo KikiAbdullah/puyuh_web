@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Alert;
+use Illuminate\Support\Facades\DB;
 use UxWeb\SweetAlert\SweetAlertServiceProvider;
 
 class HomeController extends Controller
@@ -25,7 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
-        return view('home');
+        timezone_open("Asia/Jakarta");
+        $month = date('m');
+        
+
+        $populasi = DB::select('SELECT sum(jumlah_ternak) as jumlah FROM `kandangs`');
+
+        $produksi = DB::select('SELECT sum(jumlah_telur) as jumlah FROM `laporan_harians` WHERE month(tanggal)='.$month);
+
+        return view('home', compact('populasi','produksi'));
     }
 }

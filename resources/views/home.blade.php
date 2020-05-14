@@ -55,9 +55,10 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="d-flex">
                         <div class="wrapper">
-                          <h3 class="mb-0 font-weight-semibold">32,451</h3>
+                          @foreach ($produksi as $item)
+                          <h3 class="mb-0 font-weight-semibold">{{ $item->jumlah}}</h3>
                           <h5 class="mb-0 font-weight-medium text-primary">Telur</h5>
-                          <p class="mb-0 text-muted">+14.00(+0.50%)</p>
+                          @endforeach
                         </div>
                         <div class="wrapper my-auto ml-auto ml-lg-4">
                           <canvas height="50" width="100" id="stats-line-graph-1"></canvas>
@@ -67,9 +68,10 @@
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
                       <div class="d-flex">
                         <div class="wrapper">
-                          <h3 class="mb-0 font-weight-semibold">15,236</h3>
-                          <h5 class="mb-0 font-weight-medium text-primary">Populasi</h5>
-                          <p class="mb-0 text-muted">+138.97(+0.54%)</p>
+                          @foreach ($populasi as $item)
+                          <h3 class="mb-0 font-weight-semibold">{{ $item->jumlah}}</h3>
+                          <h5 class="mb-0 font-weight-medium text-primary">Telur</h5>
+                          @endforeach
                         </div>
                         <div class="wrapper my-auto ml-auto ml-lg-4">
                           <canvas height="50" width="100" id="stats-line-graph-2"></canvas>
