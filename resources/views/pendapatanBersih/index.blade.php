@@ -36,101 +36,8 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <!-- TABEL Pendapatan pertahun -->
                     <div class="row">
-                    <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
-                <div class="card-body d-flex flex-column">
-                  <div class="wrapper">
-                    <h4 class="card-title mb-0">Pendapatan Bersih</h4>
-                    <p>Form Pendapatan Bersih</p>
-                    <div class="mb-4" id="net-profit-legend"></div>
-                  </div>
-                  <form class="forms-sample" method="POST" action="{{ url('api/pendapatanBersih')}}">
-                    @csrf
-                    <div class="form-group">
-                      <label for="tanggal">Tanggal</label>
-                      <input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
-                    </div>
-                    <div class="form-group">
-                      <label for="total_pendapatan">Total Pendapatan</label>
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="total_pendapatan" id="total_pendapatan" placeholder="Total Pendapatan">
-                      </div>
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-                    </div>
-                    <!-- TABEL PRODUKSI PERBULAN -->
-                    <div class="row">
-                        <div class="col-md-6 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Pendapatan Bersih Harian</h4>
-                                    <p class="card-description"> Per tanggal : <b>
-                                            <!-- {{ $date ?? '' }} --></b> </p>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr align="center">
-                                                <th>No.</th>
-                                                <th>Tanggal</th>
-                                                <th>Total Pendapatan</th>
-                                                <th>Tools</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($data_pendapatanBersih as $data)
-                                            <tr align="center">
-                                                <!-- <td>{{$index++}}</td>
-                                                    <td>{{$data->tanggal}}</td>
-                                                    <td>{{$data->jumlah}}</td>
-                                                    <td>{{$data->harga}}</td>
-                                                    <td>{{$data->total}}</td> -->
-                                                <td></td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Pendapatan Bersih Perbulan
-                                        <!-- {{ $monthName ?? '' }} -->
-                                    </h4>
-                                    <p class="card-description"> Per tanggal : <b>
-                                            <!--{{ $date ?? '' }}--></b> </p>
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr align="center">
-                                                <th>No.</th>
-                                                <th>Tanggal</th>
-                                                <th>Total Pendapatan</th>
-                                                <th>Tools</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($data_pendapatanBersih as $dataPerbulan)
-                                            <tr align="center">
-                                                <!-- <td>{{$index++}}</td>
-                                                    <td>{{$dataPerbulan->tanggal}}</td>
-                                                    <td>{{$dataPerbulan->jumlah}}</td>
-                                                    <td>{{$dataPerbulan->harga}}</td>
-                                                    <td>{{$dataPerbulan->total}}</td>
-                                                    <td></td> -->
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
@@ -159,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- END TABEL PRODUKSI PERBULAN -->
+                    <!-- END TABEL Pendapatan pertahun -->
                 </div>
                 <!-- content-wrapper ends -->
             </div>

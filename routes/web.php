@@ -24,10 +24,12 @@ Route::get('/profile', 'ProfileController@showProfile')->name('profile');
 //kandang
 
 Route::get('/populasi', 'LaporanHarianController@indexPopulasi')->name('populasi');
+Route::get('/populasi/edit-kematian/{id}', 'LaporanHarianController@editKematian');
+Route::get('/populasi/edit-kandang/{id}', 'KandangController@edit');
 Route::get('/populasi/{month}', 'LaporanHarianController@indexPopulasi')->name('populasi');
 
 Route::get('/produksi', 'LaporanHarianController@indexProduksi')->name('produksi');
-Route::get('/produksi/edit/{id}', 'LaporanHarianController@edit');
+Route::get('/produksi/edit/{id}', 'LaporanHarianController@editProduksi');
 Route::get('/produksi/{month}', 'LaporanHarianController@indexProduksi')->name('produksi');
 //Pendapatan
 Route::get('/pendapatan', 'PendapatanHarianController@index')->name('pendapatan');
@@ -47,8 +49,8 @@ Route::get('/kas/edit/{id}','KasController@edit');
 
 // //Hutang
 
-// Route::get('/hutang/edit', function () {
-//     return view('hutang/edit');
+// Route::get('/populasi/edit-kematian', function () {
+//     return view('populasi/edit-kematian');
 // });
 
 //Gaji
