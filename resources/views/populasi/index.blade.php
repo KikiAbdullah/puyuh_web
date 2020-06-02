@@ -82,13 +82,13 @@
                                                             <div class="modal-body">
 
                                                                 <div class="form-group">
-                                                                    <label for="noKandang">No. Kandang </label>
+                                                                    <label for="noKandang">No. Kandang</label>
                                                                     <input type="text" class="form-control"
                                                                         name="no_kandang" id="no_kandang"
                                                                         placeholder="Nomor Kandang">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="jumlahTernak">Jumlah Ternak</label>
+                                                                    <label for="jumlahTernak">Jumlah Ternak </label>
                                                                     <div class="input-group-prepend">
                                                                         <input type="text" class="form-control"
                                                                             name="jumlah_ternak" id="jumlah_ternak"
