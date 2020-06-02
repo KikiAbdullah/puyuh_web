@@ -82,7 +82,7 @@
                                                             <div class="modal-body">
 
                                                                 <div class="form-group">
-                                                                    <label for="noKandang">No. Kandang</label>
+                                                                    <label for="noKandang">No. Kandang </label>
                                                                     <input type="text" class="form-control"
                                                                         name="no_kandang" id="no_kandang"
                                                                         placeholder="Nomor Kandang">
