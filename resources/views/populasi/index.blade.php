@@ -88,7 +88,7 @@
                                                                         placeholder="Nomor Kandang">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="jumlahTernak">Jumlah Ternak </label>
+                                                                    <label for="jumlahTernak">Jumlah Ternak</label>
                                                                     <div class="input-group-prepend">
                                                                         <input type="text" class="form-control"
                                                                             name="jumlah_ternak" id="jumlah_ternak"
@@ -98,7 +98,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-light"
-                                                                    data-dismiss="modal">Close</button>
+                                                                    data-dismiss="modal">Close </button>
                                                                 <button type="submit" name="submit"
                                                                     class="btn btn-success mr-2"
                                                                     onclick="alert">Submit</button>
