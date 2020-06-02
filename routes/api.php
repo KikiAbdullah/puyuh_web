@@ -72,3 +72,5 @@ Route::get('/utang/{id}','UtangController@showById');
 Route::post('utang','UtangController@create');
 Route::put('/utang/{id}','UtangController@update');
 Route::delete('/utang/{id}','UtangController@delete');
+
+Route::get('keuangan','KeuanganController@show');
