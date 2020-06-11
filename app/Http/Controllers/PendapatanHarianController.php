@@ -15,8 +15,7 @@ class PendapatanHarianController extends Controller
         if ($month == null) {
             $month = date('m');
         }
-
-        
+          
         $date  = date("Y-m-d");
         $index=1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
@@ -57,12 +56,22 @@ class PendapatanHarianController extends Controller
 
     public function create(request $request)
     {
+        $harga = $request->harga;
+        $jumlah = $request->jumlah;
+        timezone_open("Asia/Jakarta");
+        $date  = date("Y-m-d");
+        $satuan = "kg";
+        $idUser = "1";
+
+
         $pendapatanHarian = new PendapatanHarian;
-        $pendapatanHarian->id_user = $request->id_user;
-        $pendapatanHarian->tanggal = $request->tanggal;
-        $pendapatanHarian->harga = $request->harga;
-        $pendapatanHarian->jumlah = $request->jumlah;
-        $pendapatanHarian->total = $request->total;
+        $pendapatanHarian->id_user = $idUser;
+        $pendapatanHarian->nama = "Jual Telur";
+        $pendapatanHarian->tanggal = $date;
+        $pendapatanHarian->harga = $harga;
+        $pendapatanHarian->jumlah = $jumlah;
+        $pendapatanHarian->satuan = $satuan;
+        $pendapatanHarian->total = $harga * $jumlah;
         $pendapatanHarian->save();
 
         return 'Data berhasil ditambahkan';
