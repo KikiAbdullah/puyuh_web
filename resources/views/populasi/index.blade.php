@@ -98,7 +98,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-light"
-                                                                    data-dismiss="modal">Close</button>
+                                                                    data-dismiss="modal">Close </button>
                                                                 <button type="submit" name="submit"
                                                                     class="btn btn-success mr-2"
                                                                     onclick="alert">Submit</button>
@@ -162,7 +162,7 @@
                         </div>
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body" style="overflow-x:auto;">
                                     <h4 class="card-title">Kematian Pertahun</h4>
                                     <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
                                     <table class="table table-hover">

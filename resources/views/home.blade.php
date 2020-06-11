@@ -70,7 +70,7 @@
                         <div class="wrapper">
                           @foreach ($populasi as $item)
                           <h3 class="mb-0 font-weight-semibold">{{ $item->jumlah}}</h3>
-                          <h5 class="mb-0 font-weight-medium text-primary">Telur</h5>
+                          <h5 class="mb-0 font-weight-medium text-primary">Puyuh</h5>
                           @endforeach
                         </div>
                         <div class="wrapper my-auto ml-auto ml-lg-4">
@@ -81,7 +81,7 @@
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
                       <div class="d-flex">
                         <div class="wrapper">
-                          <h3 class="mb-0 font-weight-semibold">Rp. 1.7475.450</h3>
+                          <h3 class="mb-0 font-weight-semibold">Rp. 5.000.000</h3>
                           <h5 class="mb-0 font-weight-medium text-primary">Pendapatan Bersih Total</h5>
                         </div>
                       </div>

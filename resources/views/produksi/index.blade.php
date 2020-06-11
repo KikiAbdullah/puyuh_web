@@ -73,10 +73,10 @@
                     <div class="row">
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body"  style="overflow-x:auto;">
                                     <h4 class="card-title">Produksi Tahun</h4>
                                     <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
-                                    <table class="table table-hover">
+                                    <table class="table table-hover" >
                                         <thead>
                                             <tr>
                                                 <th>No Kandang.</th>
