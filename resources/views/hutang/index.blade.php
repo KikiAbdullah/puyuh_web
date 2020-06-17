@@ -37,6 +37,7 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
+          {{-- CICILAN BARU --}}
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body d-flex flex-column">
@@ -71,13 +72,14 @@
               <div class="card">
                 <div class="card-body d-flex flex-column">
                   <div class="card-body">
-                    <h4 class="card-title">Hutang Sudah Terbayar</h4>
+                    <h4 class="card-title">Hutang</h4>
                     <table class="table table-hover">
                       <thead>
                         <tr>
                           <th>No.</th>
                           <th>Jumlah</th>
                           <th>Periode Sudah</th>
+                      <th>Periode Belum</th>
                           <th>Tools</th>
                         </tr>
                       </thead>
@@ -87,36 +89,9 @@
                           <td>{{$sudahTerbayar->id}}</td>
                           <td>{{$sudahTerbayar->cicilan_tetap}}</td>
                           <td>{{$sudahTerbayar->periode_sudah}}</td>
+                          <td>{{$sudahTerbayar->periode_kurang}}</td>
                           <td><a class="btn btn-dark" href="/hutang/edit/{{ $sudahTerbayar->id }}">Edit</a></td>
-                        </tr>
-                        @endforeach
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body d-flex flex-column">
-                  <div class="card-body">
-                    <h4 class="card-title">Hutang</h4>
-                    <table class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th>No.</th>
-                          <th>Jumlah</th>
-                          <th>Jumlah Periode</th>
-                          <th>Tools</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @foreach($data_utang as $hutang)
-                        <tr>
-                          <td>{{$hutang->id}}</td>
-                          <td>{{$hutang->cicilan_tetap}}</td>
-                          <td>{{$hutang->periode_kurang}}</td>
-                          <td><a class="btn btn-dark" href="/hutang/edit/{{ $hutang->id }}">Edit</a></td>
+                          <td><a class="btn btn-dark" href="/hutang/pembayaran/{{ $sudahTerbayar->id }}" onClick='return confirm("Ingin membayar Hutang sebesar Rp. {{$sudahTerbayar->cicilan_tetap}} ")'>Pembayaran</a></td>
                         </tr>
                         @endforeach
                       </tbody>
