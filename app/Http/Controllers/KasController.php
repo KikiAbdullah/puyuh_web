@@ -10,10 +10,14 @@ class KasController extends Controller
 {
     public function index()
     {
+
+        timezone_open("Asia/Jakarta");
+        $date  = date("Y-m-d");
+
         $data_kas = Kas::all();
-        $kas_pertahun = DB::select('SELECT YEAR(tanggal) as tahun ,sum(kas_perbulan) as total FROM `kas` GROUP BY tahun');
+        $kas_pertahun = DB::select('SELECT YEAR(tanggal) as tahun ,sum(total_kas) as total FROM `kas` GROUP BY tahun');
         $index = 1;
-        return view('kas/index', compact('data_kas', 'kas_pertahun','index'));
+        return view('kas/index', compact('data_kas', 'kas_pertahun','index', 'date'));
     }
 
     public function edit($id)
@@ -41,8 +45,7 @@ class KasController extends Controller
     public function create(request $request)
     {
         $kas = new Kas;
-        $kas->kas_perbulan = $request->kas_perbulan;
-        $kas->total_periode = $request->total_periode;
+        $kas->tanggal = $request->tanggal;
         $kas->total_kas = $request->total_kas;
         $kas->save();
 
@@ -51,10 +54,10 @@ class KasController extends Controller
 
     public function update(request $request, $id)
     {
-        $kas_perbulan = $request->kas_perbulan;
+        $total_kas = $request->total_kas;
 
         $kas = Kas::find($id);
-        $kas->kas_perbulan = $kas_perbulan;
+        $kas->total_kas = $total_kas;
         $kas->save();
 
         return redirect('kas')->with(['success' => 'Pesan Berhasil']);
@@ -65,7 +68,17 @@ class KasController extends Controller
         $kas = Kas::find($id);
         $kas->delete();
 
+         
         return 'Data berhasil dihapus';
+    }
+
+    public function payment($request)
+    {
+        $kas = new Kas;
+        $kas->total_kas = $request->total_kas;
+        $kas->save();
+
+        return 'Data berhasil ditambahkan';
     }
 }
 

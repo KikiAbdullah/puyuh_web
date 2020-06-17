@@ -25,7 +25,7 @@ class PendapatanHarianController extends Controller
 
         $pendapatanPerbulan = DB::select('SELECT id , tanggal, jumlah, harga, total FROM pendapatan_harians WHERE month(tanggal) = '.$month);
 
-        $pendapatanPertahun = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, total FROM `pendapatan_harians`');
+        $pendapatanPertahun = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, sum(total) as total FROM `pendapatan_harians` group by monthname(tanggal)');
 
         return view('pendapatan/index', compact('data_pendapatan','pendapatanPerbulan','pendapatanPertahun','date','index','month','monthName'));
 
@@ -66,7 +66,6 @@ class PendapatanHarianController extends Controller
 
         $pendapatanHarian = new PendapatanHarian;
         $pendapatanHarian->id_user = $idUser;
-        $pendapatanHarian->nama = "Jual Telur";
         $pendapatanHarian->tanggal = $date;
         $pendapatanHarian->harga = $harga;
         $pendapatanHarian->jumlah = $jumlah;
@@ -81,7 +80,6 @@ class PendapatanHarianController extends Controller
     {
         $id_user = $request->id_user;
         $tanggal = $request->tanggal;
-        $nama = $request->nama;
         $harga = $request->harga;
         $jumlah = $request->jumlah;
         $satuan = $request->satuan;
@@ -90,7 +88,6 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian = PendapatanHarian::find($id);
         $pendapatanHarian->id_user = $id_user;
         $pendapatanHarian->tanggal = $tanggal;
-        $pendapatanHarian->nama = $nama;
         $pendapatanHarian->harga = $harga;
         $pendapatanHarian->jumlah = $jumlah;
         $pendapatanHarian->satuan = $satuan;
@@ -106,6 +103,14 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian->delete();
 
         return 'Data berhasil dihapus';
+    }
+
+    public function kalkulasiPerbulan($month)
+    {
+        $pendapatan = DB::select('SELECT id , tanggal, sum(total) as total FROM pendapatan_harians WHERE month(tanggal) = '.$month);
+        
+
+
     }
 }
 

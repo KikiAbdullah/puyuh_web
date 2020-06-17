@@ -11,6 +11,7 @@
 |
 */
 //Auth
+
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Auth::routes();
@@ -40,9 +41,11 @@ Route::get('/pengeluaran/edit/{id}','PengeluaranHarianController@edit');
 //hutang
 Route::get('/hutang', 'UtangController@index')->name('utang');
 Route::get('/hutang/edit/{id}','UtangController@edit');
+Route::get('/hutang/pembayaran/{id}','UtangController@pembayaran');
 //gaji
 Route::get('/gaji', 'GajiController@index')->name('gaji');
 Route::get('/gaji/edit/{id}','GajiController@edit');
+Route::get('/gaji/pembayaran','GajiController@pembayaran');
 //Kas
 Route::get('/kas', 'KasController@index')->name('kas');
 Route::get('/kas/edit/{id}','KasController@edit');

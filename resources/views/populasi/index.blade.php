@@ -148,7 +148,7 @@
                                         <tbody>
                                             @foreach($populasiPerbulan as $populasi)
                                             <tr align="center">
-                                                <td>{{$populasi->id_kandang}}</td>
+                                                <td>{{$populasi->no_kandang}}</td>
                                                 <td>{{$populasi->tanggal}}</td>
                                                 <td>{{$populasi->jumlah_kematian}}</td>
                                                 <td><a class="btn btn-dark"
@@ -187,7 +187,7 @@
                                         <tbody>
                                             @foreach($populasiPertahun as $populasi)
                                             <tr align="center">
-                                                <td>{{$populasi->id_kandang}}</td>
+                                                <td>{{$populasi->no_kandang}}</td>
                                                 <td><a style="color: black"
                                                         href="/populasi/1">{{$populasi->januari}}</a></td>
                                                 <td><a style="color: black"

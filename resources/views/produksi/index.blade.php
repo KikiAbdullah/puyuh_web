@@ -55,7 +55,7 @@
                                         <tbody>
                                             @foreach($produksiPerbulan as $produksi)
                                             <tr align="center">
-                                                <td>{{$produksi->id_kandang}}</td>
+                                                <td>{{$produksi->no_kandang}}</td>
                                                 <td>{{$produksi->tanggal}}</td>
                                                 <td>{{$produksi->jumlah_telur}}</td>
                                                 <td><a class="btn btn-dark"

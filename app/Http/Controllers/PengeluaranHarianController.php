@@ -62,6 +62,7 @@ class PengeluaranHarianController extends Controller
     {
         timezone_open("Asia/Jakarta");
         $date  = date("Y-m-d");
+        $month = date("m");
 
         $harga = $request->harga;
         $jumlah = $request->jumlah;
@@ -78,7 +79,7 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian->save();
 
         alert()->success('Berhasil menambahkan data pengeluaran', 'Berhasil!')->persistent('Close');
-        return view('home');
+        return $this->index($month);
     }
 
     public function update(request $request, $id)

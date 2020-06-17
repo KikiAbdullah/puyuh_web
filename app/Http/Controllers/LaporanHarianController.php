@@ -26,7 +26,7 @@ class LaporanHarianController extends Controller
 
         $produksiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month);
 
-        $produksiPertahun = DB::select('SELECT id_kandang, 
+        $produksiPertahun = DB::select('SELECT no_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_telur, 0)) as januari, 
         sum(IF(month(tanggal) = 2, jumlah_telur, 0)) as februari,
         sum(IF(month(tanggal) = 3, jumlah_telur, 0)) as maret,
@@ -40,7 +40,7 @@ class LaporanHarianController extends Controller
         sum(IF(month(tanggal) = 11, jumlah_telur, 0)) as november,
         sum(IF(month(tanggal) = 12, jumlah_telur, 0)) as desember ,
         sum(jumlah_telur) as jumlah
-        FROM `laporan_harians` GROUP BY id_kandang');
+        FROM `laporan_harians` GROUP BY no_kandang');
 
 
 
@@ -64,7 +64,7 @@ class LaporanHarianController extends Controller
 
         $populasiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month);
 
-        $populasiPertahun = DB::select('SELECT id_kandang, 
+        $populasiPertahun = DB::select('SELECT no_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_kematian, 0)) as januari, 
         sum(IF(month(tanggal) = 2, jumlah_kematian, 0)) as februari,
         sum(IF(month(tanggal) = 3, jumlah_kematian, 0)) as maret,
@@ -78,7 +78,7 @@ class LaporanHarianController extends Controller
         sum(IF(month(tanggal) = 11, jumlah_kematian, 0)) as november,
         sum(IF(month(tanggal) = 12, jumlah_kematian, 0)) as desember ,
         sum(jumlah_kematian) as jumlah
-        FROM `laporan_harians` GROUP BY id_kandang');
+        FROM `laporan_harians` GROUP BY no_kandang');
 
 
 
@@ -118,7 +118,7 @@ class LaporanHarianController extends Controller
     {
         $laporanHarian = new LaporanHarian;
         $laporanHarian->id_user = $request->id_user;
-        $laporanHarian->id_kandang = $request->id_kandang;
+        $laporanHarian->no_kandang = $request->no_kandang;
         $laporanHarian->tanggal = $request->tanggal;
         $laporanHarian->jumlah_telur = $request->jumlah_telur;
         $laporanHarian->jumlah_kematian = $request->jumlah_kematian;

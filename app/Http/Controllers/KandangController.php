@@ -15,7 +15,7 @@ class KandangController extends Controller
         //SELECT DATA KANDANG
         $data_kandang = Kandang::simplePaginate(10);
         //SELECT DATA KEMATIAN
-        $kematian = DB::select('SELECT id_kandang, 
+        $kematian = DB::select('SELECT no_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_kematian, 0)) as januari, 
         sum(IF(month(tanggal) = 2, jumlah_kematian, 0)) as februari,
         sum(IF(month(tanggal) = 3, jumlah_kematian, 0)) as maret,
@@ -29,7 +29,7 @@ class KandangController extends Controller
         sum(IF(month(tanggal) = 11, jumlah_kematian, 0)) as november,
         sum(IF(month(tanggal) = 12, jumlah_kematian, 0)) as desember,
         
-        FROM `laporan_harians` GROUP BY id_kandang');
+        FROM `laporan_harians` GROUP BY no_kandang');
 
         //SELECT DATA KEMATIAN HARI INI
 

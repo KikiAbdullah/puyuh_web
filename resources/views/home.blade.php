@@ -55,10 +55,8 @@
                     <div class="col-lg-4 col-md-6">
                       <div class="d-flex">
                         <div class="wrapper">
-                          @foreach ($produksi as $item)
-                          <h3 class="mb-0 font-weight-semibold">{{ $item->jumlah}}</h3>
+                          <h3 class="mb-0 font-weight-semibold">{{ $produksi }} Butir</h3>
                           <h5 class="mb-0 font-weight-medium text-primary">Telur</h5>
-                          @endforeach
                         </div>
                         <div class="wrapper my-auto ml-auto ml-lg-4">
                           <canvas height="50" width="100" id="stats-line-graph-1"></canvas>
@@ -68,10 +66,8 @@
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
                       <div class="d-flex">
                         <div class="wrapper">
-                          @foreach ($populasi as $item)
-                          <h3 class="mb-0 font-weight-semibold">{{ $item->jumlah}}</h3>
+                          <h3 class="mb-0 font-weight-semibold">{{ $populasi}} Ekor</h3>
                           <h5 class="mb-0 font-weight-medium text-primary">Puyuh</h5>
-                          @endforeach
                         </div>
                         <div class="wrapper my-auto ml-auto ml-lg-4">
                           <canvas height="50" width="100" id="stats-line-graph-2"></canvas>
@@ -81,8 +77,8 @@
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
                       <div class="d-flex">
                         <div class="wrapper">
-                          <h3 class="mb-0 font-weight-semibold">Rp. 5.000.000</h3>
-                          <h5 class="mb-0 font-weight-medium text-primary">Pendapatan Bersih Total</h5>
+                          <h3 class="mb-0 font-weight-semibold">Rp. {{ $pendapatanBersih}}</h3>
+                          <h5 class="mb-0 font-weight-medium text-primary">Pendapatan Bersih</h5>
                         </div>
                       </div>
                     </div>
@@ -122,14 +118,14 @@
                       <div class="wrapper pr-5">
                         <h5 class="mb-0">Total Pengeluaran</h5>
                         <div class="d-flex align-items-center">
-                          <h4 class="font-weight-semibold mb-0">Rp. 15.263.912</h4>
+                          <h4 class="font-weight-semibold mb-0">Rp. {{$pengeluaran}}</h4>
                           <!-- <small class="ml-2 text-gray d-none d-lg-block"><b>89.5%</b> of 20,000 Total</small> -->
                         </div>
                       </div>
                       <div class="wrapper">
                         <h5 class="mb-0">Total Pendapatan</h5>
                         <div class="d-flex align-items-center">
-                          <h4 class="font-weight-semibold mb-0">Rp. 753.098.812</h4>
+                          <h4 class="font-weight-semibold mb-0">Rp. {{ $pendapatan }}</h4>
                           <!-- <small class="ml-2 text-gray d-none d-lg-block"><b>10.5%</b> of 20,000 Total</small> -->
                         </div>
                       </div>

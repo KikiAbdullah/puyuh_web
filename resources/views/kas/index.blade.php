@@ -45,9 +45,8 @@
                     <thead>
                       <tr>
                         <th>No.</th>
-                        <th>Periode</th>
                         <th>Tanggal / Bulan</th>
-                        <th>Kas Perbulan</th>
+                        <th>Total</th>
                         <th>Tools</th>
                       </tr>
                     </thead>
@@ -55,9 +54,8 @@
                       @foreach ($data_kas as $item)
                       <tr>
                         <td>{{ $index++ }}</td>
-                        <td>{{$item->total_periode}}</td>
                         <td>{{$item->tanggal}}</td>
-                        <td>Rp. {{$item->kas_perbulan}}</td>
+                        <td>Rp. {{$item->total_kas}}</td>
                         <td><a class="btn btn-dark" href="/kas/edit/{{ $item->id }}">Edit</a></td>
                       </tr>
                       @endforeach
@@ -66,7 +64,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-12 grid-margin stretch-card">
+            <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Kas Pertahun</h4>
@@ -88,6 +86,30 @@
                       @endforeach
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Kas Pertahun</h4>
+                  <form class="forms-sample" method="POST" action="{{url('api/kas')}}">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="POST">
+                    <div class="form-group">
+                      <label for="tanggal">Tanggal : {{$date}}</label>
+                    </div>
+                    <div class="form-group">
+                      <label for="kas">Nilai Kas</label>
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="hidden" name="tanggal" id="tanggal" value="{{$date}}" />
+                        <input type="text" class="form-control" name="total_kas" id="total_kas" />
+                      </div>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
                 </div>
               </div>
             </div>

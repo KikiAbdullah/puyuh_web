@@ -53,7 +53,7 @@
                     <input type="hidden" name="jumlah_kematian" id="jumlah_kematian"
                       value="{{$item['jumlah_kematian']}}">
                     <div class="form-group">
-                      <label for="no">No. Kandang : {{ $item['id_kandang']}}</label>
+                      <label for="no">No. Kandang : {{ $item['no_kandang']}}</label>
                     </div>
                     <div class="form-group">
                       <label for="Tanggal">Tanggal : {{$item['tanggal']}}</label>

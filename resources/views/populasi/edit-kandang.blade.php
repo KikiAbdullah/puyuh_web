@@ -52,7 +52,7 @@
                     <input type="hidden" name="jenis" value="kematian">
                     <input type="hidden" name="jumlah_telur" id="jumlah_telur" value="{{$item['jumlah_telur']}}">
                     <div class="form-group">
-                      <label for="no">No. Kandang : {{ $item['id_kandang']}}</label>
+                      <label for="no">No. Kandang : {{ $item['no_kandang']}}</label>
                     </div>
                     <div class="form-group">
                       <label for="harga">Jumlah Populasi</label>
