@@ -43,6 +43,15 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Gaji</h4>
+                  Pembayaran Gaji Perbulan <br>
+                  <a href="/gaji/pembayaran" class="btn btn-primary">Pembayaran</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Gaji</h4>
                   <table class="table table-hover">
                     <thead>
                       <tr>
