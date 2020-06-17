@@ -17,7 +17,6 @@ class CreatePendapatanHariansTable extends Migration
             $table->bigIncrements('id');
             $table->integer('id_user');
             $table->date('tanggal');
-            $table->string('nama');
             $table->integer('harga');
             $table->integer('jumlah');
             $table->string('satuan');

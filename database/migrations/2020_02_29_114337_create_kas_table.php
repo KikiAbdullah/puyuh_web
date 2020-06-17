@@ -15,8 +15,6 @@ class CreateKasTable extends Migration
     {
         Schema::create('kas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('kas_perbulan');
-            $table->integer('total_periode');
             $table->integer('total_kas');
             $table->date('tanggal');
             $table->timestamps();

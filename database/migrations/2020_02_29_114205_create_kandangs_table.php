@@ -15,6 +15,7 @@ class CreateKandangsTable extends Migration
     {
         Schema::create('kandangs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('no_kandang');
             $table->integer('jumlah_ternak');
             $table->timestamps();
         });

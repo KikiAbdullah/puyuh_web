@@ -16,7 +16,7 @@ class CreateLaporanHariansTable extends Migration
         Schema::create('laporan_harians', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_user');
-            $table->integer('id_kandang');
+            $table->integer('no_kandang');
             $table->date('tanggal');
             $table->integer('jumlah_telur');
             $table->integer('jumlah_kematian');
