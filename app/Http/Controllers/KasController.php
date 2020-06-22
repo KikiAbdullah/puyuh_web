@@ -49,7 +49,7 @@ class KasController extends Controller
         $kas->total_kas = $request->total_kas;
         $kas->save();
 
-        return 'Data berhasil ditambahkan';
+        return redirect('kas')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function update(request $request, $id)

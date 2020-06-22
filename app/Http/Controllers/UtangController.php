@@ -78,7 +78,7 @@ class UtangController extends Controller
 
     public function pembayaran($id)
     {
-        $utang = $kas_pertahun = DB::select('UPDATE `utangs` SET periode_sudah = periode_sudah+1, periode_kurang=periode_kurang-1 WHERE id ='.$id);
+        $kas_pertahun = DB::select('UPDATE `utangs` SET periode_sudah = periode_sudah+1, periode_kurang=periode_kurang-1 WHERE id ='.$id);
 
         return redirect('hutang');
     }

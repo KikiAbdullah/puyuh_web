@@ -51,6 +51,9 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @php
+                          $index=1;
+                      @endphp
                       @foreach ($data_kas as $item)
                       <tr>
                         <td>{{ $index++ }}</td>
@@ -77,6 +80,9 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @php
+                          $index=1;
+                      @endphp
                       @foreach ($kas_pertahun as $item)
                       <tr>
                         <td>{{ $index++ }}</td>

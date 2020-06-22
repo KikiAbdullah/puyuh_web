@@ -53,6 +53,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                            $index=1;
+                                            @endphp
                                             @foreach($data_pendapatanBersih as $pertahun)
                                             <tr align="center">
                                                 <td>{{$pertahun->id}}</td>

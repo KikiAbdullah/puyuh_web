@@ -62,9 +62,12 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @php
+                          $index=1;
+                      @endphp
                       @foreach($data_gaji as $gajis)
                       <tr align="center">
-                        <td>{{ $index }}</td>
+                        <td>{{ $index++}}</td>
                         <td>{{$gajis->tanggal}}</td>
                         <td>{{$gajis->jumlah_gaji}}</td>
                         <td><a class="btn btn-dark" href="/gaji/edit/{{ $gajis->id }}">Edit</a></td>
