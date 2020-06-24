@@ -14,8 +14,8 @@ class KasController extends Controller
         timezone_open("Asia/Jakarta");
         $date  = date("Y-m-d");
 
-        $data_kas = Kas::all();
-        $kas_pertahun = DB::select('SELECT YEAR(tanggal) as tahun ,sum(total_kas) as total FROM `kas` GROUP BY tahun');
+        $data_kas = Kas::all()->sortByDesc('tanggal');;
+        $kas_pertahun = DB::select('SELECT YEAR(tanggal) as tahun ,sum(total_kas) as total FROM `kas` GROUP BY tahun ORDER BY tanggal');
         $index = 1;
         return view('kas/index', compact('data_kas', 'kas_pertahun','index', 'date'));
     }
@@ -33,7 +33,7 @@ class KasController extends Controller
     
     public function show()
     {
-        $kas = Kas::all();
+        $kas = Kas::all()->sortByDesc('tanggal');;
         return $kas;
     }
 

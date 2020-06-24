@@ -49,14 +49,14 @@
                     @csrf
                     <div class="form-group">
                       <label for="tanggal">Tanggal</label>
-                      <input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal">
+                      <input type="text" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" required>
                     </div>
                     <div class="form-group">
                       <label for="total_pendapatan">Total Pendapatan</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                         <input type="text" class="form-control" name="total_pendapatan" id="total_pendapatan"
-                          placeholder="Total Pendapatan">
+                          placeholder="Total Pendapatan" required>
                       </div>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>

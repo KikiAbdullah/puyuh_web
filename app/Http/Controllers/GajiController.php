@@ -10,7 +10,7 @@ class GajiController extends Controller
 {
     public function index()
     {
-        $data_gaji = Gaji::all();
+        $data_gaji = Gaji::all()->sortByDesc('tanggal');;
         $index = 1;
         return view('gaji/index', compact('data_gaji', 'index'));
     }
@@ -28,7 +28,7 @@ class GajiController extends Controller
 
     public function show()
     {
-        $gaji = Gaji::all();
+        $gaji = Gaji::all()->sortByDesc('tanggal');;
         return $gaji;
     }
 

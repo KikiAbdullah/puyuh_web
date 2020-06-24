@@ -55,13 +55,13 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                         <input type="text" class="form-control" name="jumlah_gaji" id="jumlah_gaji"
-                          value="{{ $gajis['jumlah_gaji'] }}">
+                          value="{{ $gajis['jumlah_gaji'] }}" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="Tanggal Gaji">Tanggal / Bulan</label>
                       <input type="date" class="form-control" name="tanggal" id="tanggal"
-                        value="{{ $gajis['tanggal'] }}">
+                        value="{{ $gajis['tanggal'] }}" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>

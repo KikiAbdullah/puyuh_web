@@ -53,14 +53,14 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                         <input type="text" class="form-control" name="cicilan_tetap" id="cicilan_tetap"
-                          placeholder="Cicilan Tetap">
+                          placeholder="Cicilan Tetap" required>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label for="periode_kurang">Periode</label>
                       <input type="number" class="form-control" name="periode_kurang" id="periode_kurang"
-                        placeholder="Periode">
+                        placeholder="Periode" required >
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>

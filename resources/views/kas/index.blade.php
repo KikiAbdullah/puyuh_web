@@ -109,8 +109,8 @@
                       <label for="kas">Nilai Kas</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="hidden" name="tanggal" id="tanggal" value="{{$date}}" />
-                        <input type="text" class="form-control" name="total_kas" id="total_kas" />
+                        <input type="hidden" name="tanggal" id="tanggal" value="{{$date}}" required />
+                        <input type="text" class="form-control" name="total_kas" id="total_kas" required />
                       </div>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>

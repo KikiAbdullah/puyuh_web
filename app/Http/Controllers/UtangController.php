@@ -16,7 +16,7 @@ class UtangController extends Controller
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $data_utang = Utang::all();
+        $data_utang = Utang::all()->sortByDesc('tanggal');;
         return view('hutang/index', compact('data_utang','monthName'));
     }
 
@@ -33,7 +33,7 @@ class UtangController extends Controller
     
     public function show()
     {
-        $utang = Utang::all();
+        $utang = Utang::all()->sortByDesc('tanggal');
         return $utang;
     }
 

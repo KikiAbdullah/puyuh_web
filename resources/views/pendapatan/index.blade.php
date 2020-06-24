@@ -51,7 +51,7 @@
                                             <label for="jumlah">Jumlah</label>
                                             <div class="input-group-prepend">
                                                 <input type="text" class="form-control" name="jumlah" id="jumlah"
-                                                    placeholder="Jumlah">
+                                                    placeholder="Jumlah" required>
                                                 <span class="input-group-text">Kg</span>
                                             </div>
                                         </div>
@@ -60,7 +60,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
                                                 <input type="text" class="form-control" name="harga" id="harga"
-                                                    placeholder="Harga">
+                                                    placeholder="Harga" required>
                                             </div>
                                         </div>
                                         <button type="submit" name="submit" class="btn btn-success mr-2"

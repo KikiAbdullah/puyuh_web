@@ -49,20 +49,20 @@
                     @csrf
                     <div class="form-group">
                       <label for="jumlah">Jumlah</label>
-                      <input type="text" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Pendapatan">
+                      <input type="text" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah Pendapatan" required>
                     </div>
                     <div class="form-group">
                       <label for="harga">Harga</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
+                        <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="total">Total</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="total" id="total" placeholder="Total">
+                        <input type="text" class="form-control" name="total" id="total" placeholder="Total" required>
                       </div>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>

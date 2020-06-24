@@ -21,9 +21,9 @@ class PendapatanHarianController extends Controller
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $data_pendapatan = PendapatanHarian::simplePaginate(10);
+        $data_pendapatan = PendapatanHarian::simplePaginate(10)->sortByDesc('tanggal');
 
-        $pendapatanPerbulan = DB::select('SELECT id , tanggal, jumlah, harga, total FROM pendapatan_harians WHERE month(tanggal) = '.$month);
+        $pendapatanPerbulan = DB::select('SELECT id , tanggal, jumlah, harga, total FROM pendapatan_harians WHERE month(tanggal) = '.$month.' ORDER BY tanggal DESC');
 
         $pendapatanPertahun = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, sum(total) as total FROM `pendapatan_harians` group by monthname(tanggal)');
 
@@ -45,7 +45,7 @@ class PendapatanHarianController extends Controller
     
     public function show()
     {
-        $pendapatanHarian = PendapatanHarian::all();
+        $pendapatanHarian = PendapatanHarian::all()->sortByDesc('tanggal');
         return $pendapatanHarian;
     }
 

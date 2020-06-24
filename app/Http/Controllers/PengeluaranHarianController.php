@@ -28,9 +28,9 @@ class PengeluaranHarianController extends Controller
 
         $data_pengeluaran = PengeluaranHarian::whereMonth('tanggal', $month)->get();
 
-        $pengeluaranPerbulan = DB::select('SELECT tanggal, SUM(total) as totalharga FROM `pengeluaran_harians` WHERE month(tanggal) = '.$month.' GROUP BY tanggal');
+        $pengeluaranPerbulan = DB::select('SELECT tanggal, SUM(total) as totalharga FROM `pengeluaran_harians` WHERE month(tanggal) = '.$month.'  GROUP BY tanggal ORDER BY tanggal DESC');
 
-        $pengeluaranPertahun = DB::select('SELECT MONTHNAME(tanggal) as bulan, YEAR(tanggal) as tahun, SUM(total) as totalharga FROM `pengeluaran_harians` GROUP BY bulan, tahun');
+        $pengeluaranPertahun = DB::select('SELECT MONTHNAME(tanggal) as bulan, YEAR(tanggal) as tahun, SUM(total) as totalharga FROM `pengeluaran_harians` GROUP BY bulan, tahun ORDER BY tanggal DESC');
 
         return view('pengeluaran/index', compact('data_pengeluaran','pengeluaranPerbulan','pengeluaranPertahun','date','index0','index1','index2','month','monthName'));
 

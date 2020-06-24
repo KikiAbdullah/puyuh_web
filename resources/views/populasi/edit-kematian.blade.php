@@ -62,7 +62,7 @@
                                         <div class="form-group">
                                             <label for="harga">Jumlah Kematian</label>
                                             <input type="number" class="form-control" name="jumlah_kematian"
-                                                id="jumlah_kematian" value="{{$item['jumlah_kematian']}}">
+                                                id="jumlah_kematian" value="{{$item['jumlah_kematian']}}" required>
                                         </div>
                                         <button type="submit" name="submit" class="btn btn-success mr-2"
                                             onclick="alert">Submit</button>

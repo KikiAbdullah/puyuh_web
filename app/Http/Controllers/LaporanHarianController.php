@@ -40,7 +40,7 @@ class LaporanHarianController extends Controller
         sum(IF(month(tanggal) = 11, jumlah_telur, 0)) as november,
         sum(IF(month(tanggal) = 12, jumlah_telur, 0)) as desember ,
         sum(jumlah_telur) as jumlah
-        FROM `laporan_harians` GROUP BY no_kandang');
+        FROM `laporan_harians` GROUP BY no_kandang ORDER BY tanggal DESC');
 
 
 
@@ -78,7 +78,7 @@ class LaporanHarianController extends Controller
         sum(IF(month(tanggal) = 11, jumlah_kematian, 0)) as november,
         sum(IF(month(tanggal) = 12, jumlah_kematian, 0)) as desember ,
         sum(jumlah_kematian) as jumlah
-        FROM `laporan_harians` GROUP BY no_kandang');
+        FROM `laporan_harians` GROUP BY no_kandang ORDER BY tanggal');
 
 
 
@@ -105,7 +105,7 @@ class LaporanHarianController extends Controller
 
     public function show()
     {
-        $laporanHarian = LaporanHarian::all();
+        $laporanHarian = LaporanHarian::all()->sortByDesc('tanggal');
         return $laporanHarian;
     }
 

@@ -57,7 +57,7 @@
                     <div class="form-group">
                       <label for="harga">Jumlah Populasi</label>
                       <input type="number" class="form-control" name="jumlah_ternak" id="jumlah_ternak"
-                        value="{{$item['jumlah_ternak']}}">
+                        value="{{$item['jumlah_ternak']}}" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>

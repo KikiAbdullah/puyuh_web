@@ -50,14 +50,14 @@
                                         <div class="form-group">
                                             <label for="nama_pengeluaran">Nama Pengeluaran</label>
                                             <input type="text" class="form-control" name="nama" id="nama"
-                                                placeholder="Nama Pengeluaran">
+                                                placeholder="Nama Pengeluaran" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="harga">Harga</label>
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
                                                 <input type="text" class="form-control" name="harga" id="harga"
-                                                    placeholder="Harga">
+                                                    placeholder="Harga" required>
                                             </div>
 
                                         </div>
@@ -67,12 +67,12 @@
                                                     <div class="col-md-6">
                                                         <label for="jumlah">Jumlah</label>
                                                         <input type="number" class="form-control" name="jumlah"
-                                                            id="jumlah" placeholder="Jumlah">
+                                                            id="jumlah" placeholder="Jumlah" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="satuan">Satuan</label>
                                                         <input type="text" class="form-control" name="satuan"
-                                                            id="satuan" placeholder="Satuan">
+                                                            id="satuan" placeholder="Satuan" required>
                                                     </div>
                                                 </div>
                                             </div>
