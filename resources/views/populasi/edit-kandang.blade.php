@@ -41,7 +41,7 @@
               <div class="card">
                 <div class="card-body d-flex flex-column">
                   <div class="wrapper">
-                    <h4 class="card-title mb-0">Edit Kematian</h4>
+                    <h4 class="card-title mb-0">Edit Kandang</h4>
                     <p>Form Edit Produksi</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>

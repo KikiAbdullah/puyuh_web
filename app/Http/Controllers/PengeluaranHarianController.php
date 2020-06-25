@@ -13,33 +13,33 @@ class PengeluaranHarianController extends Controller
 {
 
 
-    public function index($month = null){
-    
+    public function index($month = null)
+    {
+
         timezone_open("Asia/Jakarta");
         if ($month == null) {
             $month = date('m');
         }
 
-        
+
         $date  = date("Y-m-d");
-        $index0=$index1=$index2=1;
+        $index0 = $index1 = $index2 = 1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
         $data_pengeluaran = PengeluaranHarian::whereMonth('tanggal', $month)->get();
 
-        $pengeluaranPerbulan = DB::select('SELECT tanggal, SUM(total) as totalharga FROM `pengeluaran_harians` WHERE month(tanggal) = '.$month.'  GROUP BY tanggal ORDER BY tanggal DESC');
+        $pengeluaranPerbulan = DB::select('SELECT tanggal, SUM(total) as totalharga FROM `pengeluaran_harians` WHERE month(tanggal) = ' . $month . '  GROUP BY tanggal ORDER BY tanggal DESC');
 
         $pengeluaranPertahun = DB::select('SELECT MONTHNAME(tanggal) as bulan, YEAR(tanggal) as tahun, SUM(total) as totalharga FROM `pengeluaran_harians` GROUP BY bulan, tahun ORDER BY tanggal DESC');
 
-        return view('pengeluaran/index', compact('data_pengeluaran','pengeluaranPerbulan','pengeluaranPertahun','date','index0','index1','index2','month','monthName'));
-
+        return view('pengeluaran/index', compact('data_pengeluaran', 'pengeluaranPerbulan', 'pengeluaranPertahun', 'date', 'index0', 'index1', 'index2', 'month', 'monthName'));
     }
 
     public function edit($id)
     {
         $data_pengeluaran = PengeluaranHarian::where('id', $id)->get();
-        return view('pengeluaran/edit', compact('data_pengeluaran','id'));
+        return view('pengeluaran/edit', compact('data_pengeluaran', 'id'));
     }
 
     public function add()
@@ -62,7 +62,6 @@ class PengeluaranHarianController extends Controller
     {
         timezone_open("Asia/Jakarta");
         $date  = date("Y-m-d");
-        $month = date("m");
 
         $harga = $request->harga;
         $jumlah = $request->jumlah;
@@ -78,8 +77,8 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian->total = $total;
         $pengeluaranHarian->save();
 
-        alert()->success('Berhasil menambahkan data pengeluaran', 'Berhasil!')->persistent('Close');
-        return $this->index($month);
+        flash('data pengeluaran berhasil ditambahkan!')->success();
+        return $this->index();
     }
 
     public function update(request $request, $id)
@@ -100,7 +99,8 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian->total = $total;
         $pengeluaranHarian->save();
 
-        return redirect('pengeluaran')->with('success', 'Data berhasil diubah');
+        flash('data pengeluaran berhasil diubah!')->success();
+        return $this->index();
     }
 
     public function delete($id)
@@ -108,6 +108,7 @@ class PengeluaranHarianController extends Controller
         $pengeluaranHarian = PengeluaranHarian::find($id);
         $pengeluaranHarian->delete();
 
-        return redirect('pengeluaranHarian')->with('success', 'Data berhasil dihapus');
+        flash('data pengeluaran berhasil dihapus!')->warning();
+        return $this->index();
     }
 }

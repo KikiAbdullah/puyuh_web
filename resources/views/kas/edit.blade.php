@@ -51,7 +51,7 @@
                     <input type="hidden" name="_method" value="PUT">
                     <div class="form-group">
                       <label for="tanggal">Tanggal : {{ $item['tanggal'] }}</label>
-                    </div>
+                    </div> 
                     <div class="form-group">
                       <label for="kas">Nilai Kas</label>
                       <div class="input-group-prepend">

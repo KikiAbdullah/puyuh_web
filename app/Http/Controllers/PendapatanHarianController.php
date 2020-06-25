@@ -34,8 +34,8 @@ class PendapatanHarianController extends Controller
 
     public function edit($id)
     {
-        $pendapatanHarian = PendapatanHarian::find($id);
-        return view('pendapatanHarian/edit', compact('pendapatanHarian','id'));
+        $data_pendapatan =  PendapatanHarian::where('id', $id)->get();
+        return view('pendapatan/edit', compact('data_pendapatan','id'));
     }
 
     public function add()
@@ -73,28 +73,24 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian->total = $harga * $jumlah;
         $pendapatanHarian->save();
 
-        return redirect('pendapatan')->with('success', 'Data berhasil ditambahkan');
+        flash('Pendapatan berhasil ditambahkan!')->success();
+        return $this->index();
     }
 
     public function update(request $request, $id)
     {
-        $id_user = $request->id_user;
-        $tanggal = $request->tanggal;
         $harga = $request->harga;
         $jumlah = $request->jumlah;
-        $satuan = $request->satuan;
-        $total = $request->total;
+        $total = $harga * $jumlah;
 
         $pendapatanHarian = PendapatanHarian::find($id);
-        $pendapatanHarian->id_user = $id_user;
-        $pendapatanHarian->tanggal = $tanggal;
         $pendapatanHarian->harga = $harga;
         $pendapatanHarian->jumlah = $jumlah;
-        $pendapatanHarian->satuan = $satuan;
         $pendapatanHarian->total = $total;
         $pendapatanHarian->save();
 
-        return 'Data berhasil diubah';
+        flash('Pendapatan berhasil diubah')->success();
+        return $this->index();
     }
 
     public function delete($id)
@@ -102,7 +98,8 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian = PendapatanHarian::find($id);
         $pendapatanHarian->delete();
 
-        return 'Data berhasil dihapus';
+        flash('Pendapatan berhasil dihapus!')->warning();
+        return $this->index();
     }
 
     public function kalkulasiPerbulan($month)

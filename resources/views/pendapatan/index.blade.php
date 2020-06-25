@@ -36,6 +36,7 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    @include('flash::message')
                     <div class="row">
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card">
@@ -50,8 +51,7 @@
                                         <div class="form-group">
                                             <label for="jumlah">Jumlah</label>
                                             <div class="input-group-prepend">
-                                                <input type="text" class="form-control" name="jumlah" id="jumlah"
-                                                    placeholder="Jumlah" required>
+                                                <input type="text" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" required>
                                                 <span class="input-group-text">Kg</span>
                                             </div>
                                         </div>
@@ -59,12 +59,10 @@
                                             <label for="harga">Harga</label>
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
-                                                <input type="text" class="form-control" name="harga" id="harga"
-                                                    placeholder="Harga" required>
+                                                <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga" required>
                                             </div>
                                         </div>
-                                        <button type="submit" name="submit" class="btn btn-success mr-2"
-                                            onclick="alert">Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                                         <button class="btn btn-light">Cancel</button>
                                     </form>
                                 </div>
@@ -100,7 +98,13 @@
                                                 <td>{{$data->jumlah}}</td>
                                                 <td>{{$data->harga}}</td>
                                                 <td>{{$data->total}}</td>
-                                                <td></td>
+                                                <td><a class="btn btn-dark" href="/pendapatan/edit/{{ $data->id }}">Edit</a>
+                                                    <form action="{{ action('PendapatanHarianController@delete', $data->id)}}" method="POST">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="_method" type="hidden" value="DELETE">
+                                                        <button class="btn btn-danger" onclick="window.alert('Apakah yakin akan menghapus data pendapatan?')" type="submit">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -121,7 +125,6 @@
                                                 <th>Jumlah</th>
                                                 <th>Harga</th>
                                                 <th>Total</th>
-                                                <th>Tools</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -135,7 +138,6 @@
                                                 <td>{{$dataPerbulan->jumlah}}</td>
                                                 <td>{{$dataPerbulan->harga}}</td>
                                                 <td>{{$dataPerbulan->total}}</td>
-                                                <td></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -194,6 +196,12 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
 </body>
 
 </html>

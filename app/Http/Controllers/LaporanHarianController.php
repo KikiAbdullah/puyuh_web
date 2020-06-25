@@ -42,8 +42,6 @@ class LaporanHarianController extends Controller
         sum(jumlah_telur) as jumlah
         FROM `laporan_harians` GROUP BY no_kandang ORDER BY tanggal DESC');
 
-
-
         return view('produksi/index', compact('produksiPerbulan', 'produksiPertahun', 'date', 'index', 'month', 'monthName'));
     }
 
@@ -124,7 +122,7 @@ class LaporanHarianController extends Controller
         $laporanHarian->jumlah_kematian = $request->jumlah_kematian;
         $laporanHarian->save();
 
-        return 'Data berhasil ditambahka';
+        return 'Data berhasil ditambahkan';
     }
 
     public function update(request $request, $id)
@@ -138,19 +136,28 @@ class LaporanHarianController extends Controller
         $laporanHarian->jumlah_kematian = $jumlah_kematian;
         $laporanHarian->save();
         if ($jenis === 'kematian') {
-            return redirect('populasi');
+            flash('data kematian berhasil diubah!')->success();
+            return $this->indexPopulasi();
         } else {
-            return redirect('produksi');
+            flash('data produksi berhasil diubah!')->success();
+            return $this->indexProduksi();
         }
-        
     }
 
 
-    public function delete($id)
+    public function delete(request $request ,$id)
     {
+        $jenis = $request->jenis;
+        
         $laporanHarian = LaporanHarian::find($id);
         $laporanHarian->delete();
 
-        return 'Data berhasil dihapus';
+        if ($jenis === 'kematian') {
+            flash('data kematian berhasil diubah!')->warning();
+            return $this->indexPopulasi();
+        } else {
+            flash('data produksi berhasil diubah!')->warning();
+            return $this->indexProduksi();
+        }
     }
 }

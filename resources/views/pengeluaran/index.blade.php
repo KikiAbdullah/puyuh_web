@@ -36,6 +36,7 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    @include('flash::message')
                     <div class="row">
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card">
@@ -49,15 +50,13 @@
                                         @csrf
                                         <div class="form-group">
                                             <label for="nama_pengeluaran">Nama Pengeluaran</label>
-                                            <input type="text" class="form-control" name="nama" id="nama"
-                                                placeholder="Nama Pengeluaran" required>
+                                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pengeluaran" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="harga">Harga</label>
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Rp.</span>
-                                                <input type="text" class="form-control" name="harga" id="harga"
-                                                    placeholder="Harga" required>
+                                                <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga" required>
                                             </div>
 
                                         </div>
@@ -66,19 +65,16 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <label for="jumlah">Jumlah</label>
-                                                        <input type="number" class="form-control" name="jumlah"
-                                                            id="jumlah" placeholder="Jumlah" required>
+                                                        <input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="satuan">Satuan</label>
-                                                        <input type="text" class="form-control" name="satuan"
-                                                            id="satuan" placeholder="Satuan" required>
+                                                        <input type="text" class="form-control" name="satuan" id="satuan" placeholder="Satuan" required>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" name="submit" class="btn btn-success mr-2"
-                                            onclick="alert">Submit</button>
+                                        <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                                         <button class="btn btn-light">Cancel</button>
                                     </form>
                                 </div>
@@ -113,8 +109,13 @@
                                                 <td>{{$data->jumlah}}</td>
                                                 <td align="left"> Rp. {{$data->harga}}</td>
                                                 <td align="left">Rp. {{$data->total}}</td>
-                                                <td><a class="btn btn-dark"
-                                                        href="/pengeluaran/edit/{{ $data->id }}">Edit</a></td>
+                                                <td><a class="btn btn-dark" href="/pengeluaran/edit/{{ $data->id }}">Edit</a> <br>
+                                                    <form action="{{ action('PengeluaranHarianController@delete', $data->id)}}" method="POST">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="_method" type="hidden" value="DELETE">
+                                                        <button class="btn btn-danger" onclick="window.alert('Apakah yakin akan menghapus data pengeluaran?')" type="submit">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -202,6 +203,12 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
 </body>
 
 </html>

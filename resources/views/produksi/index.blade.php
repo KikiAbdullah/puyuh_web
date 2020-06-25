@@ -38,6 +38,7 @@
                 <div class="content-wrapper">
                     <!-- TABEL PRODUKSI PERBULAN -->
                     <div class="row">
+                        @include('flash::message')
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
@@ -58,8 +59,14 @@
                                                 <td>{{$produksi->no_kandang}}</td>
                                                 <td>{{$produksi->tanggal}}</td>
                                                 <td>{{$produksi->jumlah_telur}}</td>
-                                                <td><a class="btn btn-dark"
-                                                    href="/produksi/edit/{{ $produksi->id }}">Edit</a></td>
+                                                <td><a class="btn btn-dark" href="/produksi/edit/{{ $produksi->id }}">Edit</a>
+                                                    <form action="{{ action('LaporanHarianController@delete', $produksi->id)}}" method="POST">
+                                                        {{csrf_field()}}
+                                                        <input type="hidden" name="_method" type="hidden" value="DELETE">
+                                                        <input type="hidden" name="jenis" value="produksi">
+                                                        <button class="btn btn-danger" onclick="window.alert('Apakah yakin akan menghapus data produksi?')" type="submit">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -73,10 +80,10 @@
                     <div class="row">
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
-                                <div class="card-body"  style="overflow-x:auto;">
+                                <div class="card-body" style="overflow-x:auto;">
                                     <h4 class="card-title">Produksi Tahun</h4>
                                     <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
-                                    <table class="table table-hover" >
+                                    <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No Kandang.</th>
@@ -98,11 +105,9 @@
                                         <tbody>
                                             @foreach($produksiPertahun as $produksi)
                                             <tr align="center">
-                                                <td>{{$produksi->id_kandang}}</td>
-                                                <td><a style="color: black"
-                                                        href="/produksi/1">{{$produksi->januari}}</a></td>
-                                                <td><a style="color: black"
-                                                        href="/produksi/2">{{$produksi->februari}}</a></td>
+                                                <td>{{$produksi->no_kandang}}</td>
+                                                <td><a style="color: black" href="/produksi/1">{{$produksi->januari}}</a></td>
+                                                <td><a style="color: black" href="/produksi/2">{{$produksi->februari}}</a></td>
                                                 <td><a style="color: black" href="/produksi/3">{{$produksi->maret}}</a>
                                                 </td>
                                                 <td><a style="color: black" href="/produksi/4">{{$produksi->april}}</a>
@@ -113,16 +118,11 @@
                                                 </td>
                                                 <td><a style="color: black" href="/produksi/7">{{$produksi->juli}}</a>
                                                 </td>
-                                                <td><a style="color: black"
-                                                        href="/produksi/8">{{$produksi->agustus}}</a></td>
-                                                <td><a style="color: black"
-                                                        href="/produksi/9">{{$produksi->september}}</a></td>
-                                                <td><a style="color: black"
-                                                        href="/produksi/10">{{$produksi->oktober}}</a></td>
-                                                <td><a style="color: black"
-                                                        href="/produksi/11">{{$produksi->november}}</a></td>
-                                                <td><a style="color: black"
-                                                        href="/produksi/12">{{$produksi->desember}}</a></td>
+                                                <td><a style="color: black" href="/produksi/8">{{$produksi->agustus}}</a></td>
+                                                <td><a style="color: black" href="/produksi/9">{{$produksi->september}}</a></td>
+                                                <td><a style="color: black" href="/produksi/10">{{$produksi->oktober}}</a></td>
+                                                <td><a style="color: black" href="/produksi/11">{{$produksi->november}}</a></td>
+                                                <td><a style="color: black" href="/produksi/12">{{$produksi->desember}}</a></td>
                                                 <td><b>{{$produksi->jumlah}}</b></td>
                                             </tr>
                                             @endforeach
@@ -153,9 +153,11 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <script>
-
+        $('#flash-overlay-modal').modal();
     </script>
 </body>
 

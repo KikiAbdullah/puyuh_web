@@ -49,7 +49,8 @@ class KasController extends Controller
         $kas->total_kas = $request->total_kas;
         $kas->save();
 
-        return redirect('kas')->with('success', 'Data berhasil ditambahkan');
+        flash('Kas bulan ini berhasil ditambahkan!')->success();
+        return $this->index();
     }
 
     public function update(request $request, $id)
@@ -60,7 +61,8 @@ class KasController extends Controller
         $kas->total_kas = $total_kas;
         $kas->save();
 
-        return redirect('kas')->with(['success' => 'Pesan Berhasil']);
+        flash('Kas berhasil diubah')->success();
+        return $this->index();
     }
 
     public function delete($id)
@@ -68,17 +70,8 @@ class KasController extends Controller
         $kas = Kas::find($id);
         $kas->delete();
 
-         
-        return 'Data berhasil dihapus';
-    }
-
-    public function payment($request)
-    {
-        $kas = new Kas;
-        $kas->total_kas = $request->total_kas;
-        $kas->save();
-
-        return 'Data berhasil ditambahkan';
+        flash('Kas berhasil dihapus')->warning();
+        return $this->index();
     }
 }
 

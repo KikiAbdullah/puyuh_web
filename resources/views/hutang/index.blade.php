@@ -35,9 +35,10 @@
       @include('layouts.sidebar')
       <!-- partial -->
       <div class="main-panel">
+        @include('flash::message')
         <div class="content-wrapper">
           <div class="row">
-          {{-- CICILAN BARU --}}
+            {{-- CICILAN BARU --}}
             <div class="col-md-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body d-flex flex-column">
@@ -52,15 +53,13 @@
                       <label for="cicilan_tetap">Cicilan Tetap</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="text" class="form-control" name="cicilan_tetap" id="cicilan_tetap"
-                          placeholder="Cicilan Tetap" required>
+                        <input type="text" class="form-control" name="cicilan_tetap" id="cicilan_tetap" placeholder="Cicilan Tetap" required>
                       </div>
                     </div>
 
                     <div class="form-group">
                       <label for="periode_kurang">Periode</label>
-                      <input type="number" class="form-control" name="periode_kurang" id="periode_kurang"
-                        placeholder="Periode" required >
+                      <input type="number" class="form-control" name="periode_kurang" id="periode_kurang" placeholder="Periode" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>
@@ -79,7 +78,7 @@
                           <th>No.</th>
                           <th>Jumlah</th>
                           <th>Periode Sudah</th>
-                      <th>Periode Belum</th>
+                          <th>Periode Belum</th>
                           <th>Tools</th>
                         </tr>
                       </thead>
@@ -90,8 +89,8 @@
                           <td>{{$sudahTerbayar->cicilan_tetap}}</td>
                           <td>{{$sudahTerbayar->periode_sudah}}</td>
                           <td>{{$sudahTerbayar->periode_kurang}}</td>
-                          <td><a class="btn btn-dark" href="/hutang/edit/{{ $sudahTerbayar->id }}">Edit</a></td>
-                          <td><a class="btn btn-dark" href="/hutang/pembayaran/{{ $sudahTerbayar->id }}" onClick='return confirm("Ingin membayar Hutang sebesar Rp. {{$sudahTerbayar->cicilan_tetap}} ")'>Pembayaran</a></td>
+                          <td><a class="btn btn-dark" href="/hutang/edit/{{ $sudahTerbayar->id }}">Edit</a>
+                            <a class="btn btn-primary" href="/hutang/pembayaran/{{ $sudahTerbayar->id }}" onClick='return confirm("Ingin membayar Hutang sebesar Rp. {{$sudahTerbayar->cicilan_tetap}} ")'>Pembayaran</a></td>
                         </tr>
                         @endforeach
                       </tbody>
@@ -122,6 +121,12 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script>
+    $('#flash-overlay-modal').modal();
+  </script>
 </body>
 
 </html>

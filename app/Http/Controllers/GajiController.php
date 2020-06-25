@@ -44,7 +44,8 @@ class GajiController extends Controller
         $gaji->tanggal = $request->tanggal;
         $gaji->save();
 
-        return 'Data berhasil ditambahkan';
+        flash('Data gaji berhasil ditambahkan!')->success();
+        return $this->index();
     }
 
     public function update(request $request, $id)
@@ -58,7 +59,8 @@ class GajiController extends Controller
         $gaji->save();
 
 
-        return redirect('gaji')->with(['success' => 'Pesan Berhasil']);
+        flash('Data gaji berhasil diubah')->success();
+        return $this->index();
     }
 
     public function delete($id)
@@ -66,7 +68,8 @@ class GajiController extends Controller
         $gaji = Gaji::find($id);
         $gaji->delete();
 
-        return redirect('gaji')->with('success', 'Data berhasil dihapus');
+        flash('Data gaji berhasil dihapus!')->warning();
+        return $this->index();
     }
 
     public function pembayaran()
@@ -84,6 +87,8 @@ class GajiController extends Controller
         $gaji->jumlah_gaji = $total;
         $gaji->tanggal = $date;
         $gaji->save();
-        return redirect('gaji');
+
+        flash('Pembayaran Gaji Bulan Ini berhasil!')->success();
+        return $this->index();
     }
 }
