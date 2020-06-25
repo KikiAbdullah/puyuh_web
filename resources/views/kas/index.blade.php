@@ -92,12 +92,12 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Kas Pertahun</h4>
+                  <h4 class="card-title">Kas</h4>
                   <form class="forms-sample" method="POST" action="{{url('api/kas')}}">
                     {{ csrf_field() }}
                     <input type="hidden" name="_method" value="POST">
                     <div class="form-group">
-                      <label for="tanggal">Tanggal : {{$date}}</label>
+                      <label for="tanggal">Form Pemasukan Kas</label>
                     </div>
                     <div class="form-group">
                       <label for="kas">Nilai Kas</label>
