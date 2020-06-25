@@ -70,7 +70,7 @@ class KandangController extends Controller
     public function create(request $request)
     {
         $kandang = new Kandang;
-        $kandang->id = $request->no_kandang;
+        $kandang->no_kandang = $request->no_kandang;
         $kandang->jumlah_ternak = $request->jumlah_ternak;
         $kandang->save();
 

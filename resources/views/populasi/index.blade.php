@@ -85,14 +85,14 @@
                                                                     <label for="noKandang">No. Kandang</label>
                                                                     <input type="text" class="form-control"
                                                                         name="no_kandang" id="no_kandang"
-                                                                        placeholder="Nomor Kandang">
+                                                                        placeholder="Nomor Kandang" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="jumlahTernak">Jumlah Ternak</label>
                                                                     <div class="input-group-prepend">
                                                                         <input type="text" class="form-control"
                                                                             name="jumlah_ternak" id="jumlah_ternak"
-                                                                            placeholder="Jumlah Ternak">
+                                                                            placeholder="Jumlah Ternak" required>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -118,12 +118,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                            $index=1;
+                                            @endphp
                                             @foreach($all_kandang as $kandangs)
                                             <tr align="center">
                                                 <td>{{$kandangs->id}}</td>
                                                 <td>{{$kandangs->jumlah_ternak}}</td>
                                                 <td><a class="btn btn-dark"
-                                                    href="/populasi/edit-kandang/{{ $kandangs->id }}">Edit</a></td>
+                                                        href="/populasi/edit-kandang/{{ $kandangs->id }}">Edit</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -146,13 +149,14 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            
                                             @foreach($populasiPerbulan as $populasi)
                                             <tr align="center">
                                                 <td>{{$populasi->no_kandang}}</td>
                                                 <td>{{$populasi->tanggal}}</td>
                                                 <td>{{$populasi->jumlah_kematian}}</td>
                                                 <td><a class="btn btn-dark"
-                                                    href="/populasi/edit-kematian/{{ $populasi->id }}">Edit</a></td>
+                                                        href="/populasi/edit-kematian/{{ $populasi->id }}">Edit</a></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

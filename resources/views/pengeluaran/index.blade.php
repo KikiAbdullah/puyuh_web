@@ -136,9 +136,12 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                            $index=1;
+                                            @endphp
                                             @foreach($pengeluaranPerbulan as $dataPerbulan)
                                             <tr align="center">
-                                                <td>{{$index1++}}</td>
+                                                <td>{{$index++}}</td>
                                                 <td>{{$dataPerbulan->tanggal}}</td>
                                                 <td>Rp. {{$dataPerbulan->totalharga}}</td>
                                             </tr>
@@ -162,6 +165,9 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                            $index=1;
+                                            @endphp
                                             @foreach($pengeluaranPertahun as $pertahun)
                                             <tr align="center">
                                                 <td>{{$index2++}}</td>

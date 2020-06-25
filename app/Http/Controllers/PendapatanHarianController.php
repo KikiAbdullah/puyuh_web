@@ -73,7 +73,7 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian->total = $harga * $jumlah;
         $pendapatanHarian->save();
 
-        return 'Data berhasil ditambahkan';
+        return redirect('pendapatan')->with('success', 'Data berhasil ditambahkan');
     }
 
     public function update(request $request, $id)
