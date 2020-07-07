@@ -86,7 +86,7 @@
                         @foreach($data_utang as $sudahTerbayar)
                         <tr>
                           <td>{{$sudahTerbayar->id}}</td>
-                          <td>{{$sudahTerbayar->cicilan_tetap}}</td>
+                          <td>Rp. {{$sudahTerbayar->cicilan_tetap}}</td>
                           <td>{{$sudahTerbayar->periode_sudah}}</td>
                           <td>{{$sudahTerbayar->periode_kurang}}</td>
                           <td><a class="btn btn-dark" href="/hutang/edit/{{ $sudahTerbayar->id }}">Edit</a>

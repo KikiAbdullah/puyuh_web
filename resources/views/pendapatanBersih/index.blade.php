@@ -60,7 +60,7 @@
                                             <tr align="center">
                                                 <td>{{$pertahun->id}}</td>
                                                 <td>{{$pertahun->bulan}} {{$pertahun->tahun}}</td>
-                                                <td><b>{{$pertahun->total}}</b></td>
+                                                <td><b>Rp. {{$pertahun->total}}</b></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

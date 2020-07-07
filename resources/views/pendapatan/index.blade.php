@@ -96,8 +96,8 @@
                                                 <td>{{$index++}}</td>
                                                 <td>{{$data->tanggal}}</td>
                                                 <td>{{$data->jumlah}}</td>
-                                                <td>{{$data->harga}}</td>
-                                                <td>{{$data->total}}</td>
+                                                <td>Rp. {{$data->harga}}</td>
+                                                <td>Rp. {{$data->total}}</td>
                                                 <td><a class="btn btn-dark" href="/pendapatan/edit/{{ $data->id }}">Edit</a>
                                                     <form action="{{ action('PendapatanHarianController@delete', $data->id)}}" method="POST">
                                                         {{csrf_field()}}
@@ -136,8 +136,8 @@
                                                 <td>{{$index++}}</td>
                                                 <td>{{$dataPerbulan->tanggal}}</td>
                                                 <td>{{$dataPerbulan->jumlah}}</td>
-                                                <td>{{$dataPerbulan->harga}}</td>
-                                                <td>{{$dataPerbulan->total}}</td>
+                                                <td>Rp. {{$dataPerbulan->harga}}</td>
+                                                <td>Rp. {{$dataPerbulan->total}}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -147,12 +147,12 @@
                         </div>
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body" style="overflow-y:auto;">
                                     <h4 class="card-title">Pendapatan Pertahun</h4>
                                     <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
                                     <table class="table table-hover">
                                         <thead>
-                                            <tr align="center">
+                                            <tr>
                                                 <th>No.</th>
                                                 <th>Bulan</th>
                                                 <th>Total</th>
@@ -163,10 +163,10 @@
                                             $index=1;
                                             @endphp
                                             @foreach($pendapatanPertahun as $pertahun)
-                                            <tr align="center">
-                                                <td>{{$pertahun->id}}</td>
+                                            <tr>
+                                                <td>{{$index++}}</td>
                                                 <td>{{$pertahun->bulan}} {{$pertahun->tahun}}</td>
-                                                <td><b>{{$pertahun->total}}</b></td>
+                                                <td><b>Rp. {{$pertahun->total}}</b></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

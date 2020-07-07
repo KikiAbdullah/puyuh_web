@@ -36,6 +36,26 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <div class="row">
+                        @include('flash::message')
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <b>
+                                                <h1>Data Produksi</h1>
+                                            </b>
+                                        </div>
+                                        <div class="col-md-6" >
+                                            <h6>Tanggal : {{$date}}</h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- TABEL PRODUKSI PERBULAN -->
                     <div class="row">
                         @include('flash::message')

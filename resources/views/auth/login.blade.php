@@ -56,19 +56,12 @@
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary submit-btn btn-block">{{ __('Login') }}</button>
                                 </div>
-                                <div class="form-group d-flex justify-content-between">
-                                    <div class="form-check form-check-flat mt-0">
-                                        <label class="form-check-label" for="remember">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                        </label>
-                                    </div>
-                                    @if (Route::has('password.request'))
-                                    <a class="text-small forgot-password text-black" href="{{ route('password.request') }}"> {{ __('Forgot Your Password?') }} </a>
-                                    @endif
+                                <div class="text-block text-center my-3">
+                                    <span class="text-small font-weight-semibold">Sebagai Pengawas ?</span>
+                                    <a href="../../../puyuhin.apk" class="text-black text-small">Unduh disini!</a>
                                 </div>
                                 <div class="text-block text-center my-3">
-                                    <span class="text-small font-weight-semibold">Not a member ?</span>
-                                    <a href="{{ route('register') }}" class="text-black text-small">Create new account</a>
+                                    <a href="{{ route('register') }}" class="text-black text-small">Buat Akun Baru</a>
                                 </div>
                             </form>
                         </div>

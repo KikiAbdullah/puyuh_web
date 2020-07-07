@@ -74,7 +74,7 @@
                       <tr align="center">
                         <td>{{ $index++}}</td>
                         <td>{{$gaji->tanggal}}</td>
-                        <td>{{$gaji->jumlah_gaji}}</td>
+                        <td>Rp. {{$gaji->jumlah_gaji}}</td>
                         <td><a class="btn btn-dark" href="/gaji/edit/{{ $gaji->id }}">Edit</a> <br>
                           <form action="{{ action('GajiController@delete', $gaji->id)}}" method="POST">
                             {{csrf_field()}}

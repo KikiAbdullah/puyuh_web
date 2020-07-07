@@ -104,7 +104,7 @@
                   <button class="btn btn-primary submit-btn btn-block">Register</button>
                 </div>
                 <div class="text-block text-center my-3">
-                  <span class="text-small font-weight-semibold">Already have and account ?</span>
+                  <span class="text-small font-weight-semibold">Sudah memiliki akun ?</span>
                   <a href="{{ route('login') }}" class="text-black text-small">Login</a>
                 </div>
               </form>

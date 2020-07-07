@@ -7,6 +7,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -40,8 +42,40 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         FacadesAuth::logout();
         return redirect('/login');
-      }
+    }
+
+    public function loginAndroid(request $request)
+    {
+        $email = $request->emailUser;
+        $pass = $request->passUser;
+        
+        $login = DB::select("SELECT * FROM `users` WHERE email='" . $email."'" );
+        // $login = DB::select("SELECT * FROM `users`");
+
+        $data = [];
+        $ada = 0;
+        foreach($login as $item){
+            if (Hash::check($pass ,$item->password)) {
+                return $data = [
+                    'ada' => true,
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'status' => $item->status
+                ];
+            }else{
+                return $data = [
+                    'ada' => false,
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'status' => $item->status
+                ];
+            }
+        }
+
+        
+    }
 }
