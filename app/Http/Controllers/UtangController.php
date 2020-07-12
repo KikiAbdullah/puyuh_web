@@ -23,8 +23,7 @@ class UtangController extends Controller
     public function edit($id)
     {
         $data_utang = Utang::where('id', $id)->get();
-        flash('data pengeluaran berhasil diubah!')->success();
-        return $this->index();
+        return view('hutang/edit', compact('data_utang','id'));
     }
 
     public function add()
