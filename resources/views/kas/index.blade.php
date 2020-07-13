@@ -39,18 +39,17 @@
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="overflow-x:auto;">
                   <h4 class="card-title">Kas Bulan Ini</h4>
-                  <table class="table table-hover">
+                  <table class="table table-fixed">
                     <thead>
                       <tr>
-                        <th>No.</th>
-                        <th>Tanggal / Bulan</th>
-                        <th>Total</th>
-                        <th>Tools</th>
+                        <th >No.</th>
+                        <th >Tanggal / Bulan</th>
+                        <th >Total</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="overflow-y:auto;">
                       @php
                           $index=1;
                       @endphp
@@ -69,7 +68,7 @@
             </div>
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body" style="overflow-x:auto;">
                   <h4 class="card-title">Kas Pertahun</h4>
                   <table class="table table-hover">
                     <thead>
@@ -79,7 +78,7 @@
                         <th>Total Uang Kas</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="overflow-y:auto;">
                       @php
                           $index=1;
                       @endphp

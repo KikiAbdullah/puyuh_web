@@ -76,7 +76,7 @@
                                 <div class="card-body"  style="overflow-x:auto;">
                                     <h4 class="card-title">Produksi Tahun</h4>
                                     <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
-                                    <table class="table table-hover" >
+                                    <table class="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No Kandang.</th>
@@ -95,7 +95,7 @@
                                                 <th>Jumlah</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody style="overflow-y:auto;">
                                             @foreach($produksiPertahun as $produksi)
                                             <tr align="center">
                                                 <td>{{$produksi->id_kandang}}</td>
