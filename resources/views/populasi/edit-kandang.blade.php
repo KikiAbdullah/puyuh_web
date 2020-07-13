@@ -41,7 +41,7 @@
               <div class="card">
                 <div class="card-body d-flex flex-column">
                   <div class="wrapper">
-                    <h4 class="card-title mb-0">Edit Kematian</h4>
+                    <h4 class="card-title mb-0">Edit Kandang</h4>
                     <p>Form Edit Produksi</p>
                     <div class="mb-4" id="net-profit-legend"></div>
                   </div>
@@ -57,7 +57,7 @@
                     <div class="form-group">
                       <label for="harga">Jumlah Populasi</label>
                       <input type="number" class="form-control" name="jumlah_ternak" id="jumlah_ternak"
-                        value="{{$item['jumlah_ternak']}}">
+                        value="{{$item['jumlah_ternak']}}" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>

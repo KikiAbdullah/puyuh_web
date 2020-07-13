@@ -34,6 +34,7 @@ Route::get('/produksi/edit/{id}', 'LaporanHarianController@editProduksi');
 Route::get('/produksi/{month}', 'LaporanHarianController@indexProduksi')->name('produksi');
 //Pendapatan
 Route::get('/pendapatan', 'PendapatanHarianController@index')->name('pendapatan');
+Route::get('/pendapatan/edit/{id}','PendapatanHarianController@edit');
 Route::get('/pendapatanBersih', 'PendapatanBersihController@index')->name('pendapatanBersih');
 //Pengeluaran
 Route::get('/pengeluaran', 'PengeluaranHarianController@index')->name('pengeluaranHarian');

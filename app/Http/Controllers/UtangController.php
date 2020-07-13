@@ -16,7 +16,7 @@ class UtangController extends Controller
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $data_utang = Utang::all();
+        $data_utang = Utang::all()->where('periode_kurang', '>', '0')->sortByDesc('tanggal');
         return view('hutang/index', compact('data_utang','monthName'));
     }
 
@@ -33,7 +33,7 @@ class UtangController extends Controller
     
     public function show()
     {
-        $utang = Utang::all();
+        $utang = Utang::all()->sortByDesc('tanggal');
         return $utang;
     }
 
@@ -50,7 +50,8 @@ class UtangController extends Controller
         $utang->periode_kurang = $request->periode_kurang;
         $utang->save();
 
-        return redirect('hutang');
+        flash('data hutang berhasil ditambahkan!')->success();
+        return $this->index();
     }
 
     public function update(request $request, $id)
@@ -65,7 +66,8 @@ class UtangController extends Controller
         $utang->periode_kurang = $periode_kurang;
         $utang->save();
 
-        return redirect('hutang');
+        flash('data hutang berhasil diubah!')->success();
+        return $this->index();
     }
 
     public function delete($id)
@@ -73,14 +75,20 @@ class UtangController extends Controller
         $utang = Utang::find($id);
         $utang->delete();
 
-        return 'Data berhasil dihapus';
+        flash('data hutang berhasil dihapus!')->danger();
+        return $this->index();
     }
 
     public function pembayaran($id)
     {
-        $kas_pertahun = DB::select('UPDATE `utangs` SET periode_sudah = periode_sudah+1, periode_kurang=periode_kurang-1 WHERE id ='.$id);
-
-        return redirect('hutang');
+        try {
+            $kas_pertahun = DB::select('UPDATE `utangs` SET periode_sudah = periode_sudah+1, periode_kurang=periode_kurang-1 WHERE id ='.$id);
+            flash('hutang telah terbayar!')->success();
+            return $this->index();
+        } catch (\Throwable $th) {
+            flash('hutang telah terbayar!')->success();
+        return $this->index();
+        }
     }
 }
 

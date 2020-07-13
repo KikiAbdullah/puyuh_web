@@ -54,18 +54,18 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
                         <input type="text" class="form-control" name="cicilan_tetap" id="cicilan_tetap"
-                          value="{{ $item['cicilan_tetap']}}">
+                          value="{{ $item['cicilan_tetap']}}" required>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="periode_kurang">Jumlah Periode</label>
                       <input type="number" class="form-control" name="periode_kurang" id="periode_kurang"
-                        value="{{ $item['periode_kurang']}}">
+                        value="{{ $item['periode_kurang']}}" required>
                     </div>
                     <div class="form-group">
                       <label for="periode_sudah">Periode Sudah</label>
                       <input type="number" class="form-control" name="periode_sudah" id="periode_sudah"
-                        value="{{ $item['periode_sudah']}}">
+                        value="{{ $item['periode_sudah']}}" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>

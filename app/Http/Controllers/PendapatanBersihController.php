@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PendapatanBersih;
+use Illuminate\Support\Facades\DB;
 
 class PendapatanBersihController extends Controller
 {
     public function index()
     {
-        $data_pendapatanBersih = PendapatanBersih::simplePaginate(10);
-        return view('pendapatanBersih/index', compact('data_pendapatanBersih'));
+        timezone_open("Asia/Jakarta");
+        $date  = date("Y-m-d");
+
+        $data_pendapatanBersih  = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, sum(total) as total FROM `pendapatan_bersihs` group by monthname(tanggal)');
+        return view('pendapatanBersih/index', compact('data_pendapatanBersih','date'));
     }
 
     public function edit($id)

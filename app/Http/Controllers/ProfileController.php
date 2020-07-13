@@ -31,7 +31,7 @@ class ProfileController extends Controller
     {
         $idUser = FacadesAuth::user()->id;
         $user = User::all()->where('id', $idUser);
-        return view('user/profile', compact('user'));
+        return view('user/index', compact('user'));
         //show profile
     }
 }

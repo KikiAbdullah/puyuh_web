@@ -24,7 +24,7 @@ class LaporanHarianController extends Controller
         $monthName = $dateObj->format('F');
 
 
-        $produksiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month);
+        $produksiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY tanggal DESC');
 
         $produksiPertahun = DB::select('SELECT no_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_telur, 0)) as januari, 
@@ -40,9 +40,7 @@ class LaporanHarianController extends Controller
         sum(IF(month(tanggal) = 11, jumlah_telur, 0)) as november,
         sum(IF(month(tanggal) = 12, jumlah_telur, 0)) as desember ,
         sum(jumlah_telur) as jumlah
-        FROM `laporan_harians` GROUP BY no_kandang');
-
-
+        FROM `laporan_harians` GROUP BY no_kandang ORDER BY created_at DESC');
 
         return view('produksi/index', compact('produksiPerbulan', 'produksiPertahun', 'date', 'index', 'month', 'monthName'));
     }
@@ -62,7 +60,7 @@ class LaporanHarianController extends Controller
 
         $all_kandang = Kandang::simplePaginate(10);
 
-        $populasiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month);
+        $populasiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY tanggal DESC  LIMIT 10');
 
         $populasiPertahun = DB::select('SELECT no_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_kematian, 0)) as januari, 
@@ -78,7 +76,7 @@ class LaporanHarianController extends Controller
         sum(IF(month(tanggal) = 11, jumlah_kematian, 0)) as november,
         sum(IF(month(tanggal) = 12, jumlah_kematian, 0)) as desember ,
         sum(jumlah_kematian) as jumlah
-        FROM `laporan_harians` GROUP BY no_kandang');
+        FROM `laporan_harians` GROUP BY no_kandang ORDER BY tanggal DESC LIMIT 10');
 
 
 
@@ -105,7 +103,10 @@ class LaporanHarianController extends Controller
 
     public function show()
     {
-        $laporanHarian = LaporanHarian::all();
+        timezone_open("Asia/Jakarta");
+        $month = date('m');
+
+        $laporanHarian = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY created_at DESC  LIMIT 10');;
         return $laporanHarian;
     }
 
@@ -124,7 +125,7 @@ class LaporanHarianController extends Controller
         $laporanHarian->jumlah_kematian = $request->jumlah_kematian;
         $laporanHarian->save();
 
-        return 'Data berhasil ditambahka';
+        return 'Data berhasil ditambahkan';
     }
 
     public function update(request $request, $id)
@@ -138,19 +139,28 @@ class LaporanHarianController extends Controller
         $laporanHarian->jumlah_kematian = $jumlah_kematian;
         $laporanHarian->save();
         if ($jenis === 'kematian') {
-            return redirect('populasi');
+            flash('data kematian berhasil diubah!')->success();
+            return $this->indexPopulasi();
         } else {
-            return redirect('produksi');
+            flash('data produksi berhasil diubah!')->success();
+            return $this->indexProduksi();
         }
-        
     }
 
 
-    public function delete($id)
+    public function delete(request $request, $id)
     {
+        $jenis = $request->jenis;
+
         $laporanHarian = LaporanHarian::find($id);
         $laporanHarian->delete();
 
-        return 'Data berhasil dihapus';
+        if ($jenis === 'kematian') {
+            flash('data kematian berhasil diubah!')->warning();
+            return $this->indexPopulasi();
+        } else {
+            flash('data produksi berhasil diubah!')->warning();
+            return $this->indexProduksi();
+        }
     }
 }

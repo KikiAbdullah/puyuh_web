@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         date_default_timezone_set('Asia/Jakarta');
+        $date = date('Y-m-d');
         $month = date('m');
         
         $populasi = $this->populasi($month);
@@ -36,7 +37,7 @@ class HomeController extends Controller
         $pengeluaran = $this->pengeluaran($month);
         $pendapatan = $this->pendapatan($month);
 
-        return view('home', compact('populasi','produksi','pendapatanBersih','pengeluaran','pendapatan'));
+        return view('home', compact('populasi','produksi','pendapatanBersih','pengeluaran','pendapatan', 'date'));
     }
 
     public function pendapatanBersih($month)

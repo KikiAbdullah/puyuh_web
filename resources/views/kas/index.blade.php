@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../../assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
   <link rel="stylesheet" href="../../../assets/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../../../assets/vendors/css/vendor.bundle.addons.css">
+
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -23,6 +24,8 @@
   <link rel="stylesheet" href="../../../assets/css/demo_1/style.css">
   <!-- End Layout styles -->
   <link rel="shortcut icon" href="../../../assets/images/favicon.ico" />
+
+
 </head>
 
 <body>
@@ -36,6 +39,7 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+          @include('flash::message')
           <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
@@ -51,14 +55,20 @@
                     </thead>
                     <tbody style="overflow-y:auto;">
                       @php
-                          $index=1;
+                      $index=1;
                       @endphp
                       @foreach ($data_kas as $item)
                       <tr>
                         <td>{{ $index++ }}</td>
                         <td>{{$item->tanggal}}</td>
                         <td>Rp. {{$item->total_kas}}</td>
-                        <td><a class="btn btn-dark" href="/kas/edit/{{ $item->id }}">Edit</a></td>
+                        <td><a class="btn btn-dark" href="/kas/edit/{{ $item->id }}">Edit</a>
+                          <form action="{{ action('KasController@delete', $item->id)}}" method="POST">
+                            {{csrf_field()}}
+                            <input type="hidden" name="_method" type="hidden" value="DELETE">
+                            <button class="btn btn-danger" onclick="window.alert('Apakah yakin akan menghapus data kas?')" type="submit">Delete</button>
+                          </form>
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -66,6 +76,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body" style="overflow-x:auto;">
@@ -80,7 +91,7 @@
                     </thead>
                     <tbody style="overflow-y:auto;">
                       @php
-                          $index=1;
+                      $index=1;
                       @endphp
                       @foreach ($kas_pertahun as $item)
                       <tr>
@@ -108,8 +119,8 @@
                       <label for="kas">Nilai Kas</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="hidden" name="tanggal" id="tanggal" value="{{$date}}" />
-                        <input type="text" class="form-control" name="total_kas" id="total_kas" />
+                        <input type="hidden" name="tanggal" id="tanggal" value="{{$date}}" required />
+                        <input type="text" class="form-control" name="total_kas" id="total_kas" required />
                       </div>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
@@ -140,6 +151,13 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+  <!-- If using flash()->important() or flash()->overlay(), you'll need to pull in the JS for Twitter Bootstrap. -->
+  <script src="//code.jquery.com/jquery.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <script>
+    $('#flash-overlay-modal').modal();
+  </script>
 </body>
 
 </html>

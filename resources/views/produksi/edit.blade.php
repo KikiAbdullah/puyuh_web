@@ -61,7 +61,7 @@
                     <div class="form-group">
                       <label for="harga">Jumlah Produksi Telur</label>
                       <input type="number" class="form-control" name="jumlah_telur" id="jumlah_telur"
-                        value="{{$item['jumlah_telur']}}">
+                        value="{{$item['jumlah_telur']}}" required>
                     </div>
                     <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
                     <button class="btn btn-light">Cancel</button>

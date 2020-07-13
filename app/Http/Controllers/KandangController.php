@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Kandang;
 use App\LaporanHarian;
 use Illuminate\Support\Facades\DB;
+use Alert;
 
 class KandangController extends Controller
 {
@@ -69,12 +70,20 @@ class KandangController extends Controller
 
     public function create(request $request)
     {
-        $kandang = new Kandang;
-        $kandang->no_kandang = $request->no_kandang;
-        $kandang->jumlah_ternak = $request->jumlah_ternak;
-        $kandang->save();
+        try {
+            $kandang = new Kandang;
+            $kandang->no_kandang = $request->no_kandang;
+            $kandang->jumlah_ternak = $request->jumlah_ternak;
+            $kandang->save();
 
-        return redirect('populasi')->with('success', 'Data berhasil ditambahkan');
+            $laporan = new LaporanHarianController();
+            flash('Kandang berhasil ditambahkan!')->success();
+            return $laporan->indexPopulasi();
+        } catch (\Throwable $th) {
+            $laporan = new LaporanHarianController();
+            flash('No. Kandang tidak boleh sama!')->warning();
+            return $laporan->indexPopulasi();
+        }
     }
 
     public function update(request $request, $id)
@@ -85,7 +94,9 @@ class KandangController extends Controller
         $kandang->jumlah_ternak = $jumlah_ternak;
         $kandang->save();
 
-        return redirect('populasi')->with('success', 'Data berhasil diubah');
+        $laporan = new LaporanHarianController();
+        flash('Kandang berhasil diubah!')->success();
+        return $laporan->indexPopulasi();
     }
 
     public function delete($id)
@@ -93,6 +104,8 @@ class KandangController extends Controller
         $kandang = Kandang::find($id);
         $kandang->delete();
 
-        return redirect('kandang')->with('success', 'Data berhasil dihapus');
+        $laporan = new LaporanHarianController();
+        flash('Kandang berhasil dihapus!')->warning();
+        return $laporan->indexPopulasi();
     }
 }

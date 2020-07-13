@@ -9,43 +9,47 @@ use Illuminate\Support\Facades\DB;
 
 class PendapatanHarianController extends Controller
 {
-    public function index($month = null){
-    
+    public function index($month = null)
+    {
+
         timezone_open("Asia/Jakarta");
+
         if ($month == null) {
             $month = date('m');
         }
-          
         $date  = date("Y-m-d");
-        $index=1;
+        $tanggal  = date("Y-m-d");
+        $index = 1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $data_pendapatan = PendapatanHarian::simplePaginate(10);
+        $data_pendapatan =  PendapatanHarian::where('tanggal', $date)->get();
 
-        $pendapatanPerbulan = DB::select('SELECT id , tanggal, jumlah, harga, total FROM pendapatan_harians WHERE month(tanggal) = '.$month);
+        $pendapatanPerbulan = DB::select('SELECT id , tanggal, jumlah, harga, total FROM pendapatan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY tanggal DESC');
 
-        $pendapatanPertahun = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, sum(total) as total FROM `pendapatan_harians` group by monthname(tanggal)');
+        $pendapatanPertahun = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, sum(total) as total FROM `pendapatan_harians` group by monthname(tanggal) ORDER BY tanggal ASC');
 
-        return view('pendapatan/index', compact('data_pendapatan','pendapatanPerbulan','pendapatanPertahun','date','index','month','monthName'));
-
+        return view('pendapatan/index', compact('data_pendapatan', 'pendapatanPerbulan', 'pendapatanPertahun', 'date', 'index', 'month', 'monthName'));
     }
 
 
     public function edit($id)
     {
-        $pendapatanHarian = PendapatanHarian::find($id);
-        return view('pendapatanHarian/edit', compact('pendapatanHarian','id'));
+        $data_pendapatan =  PendapatanHarian::where('id', $id)->get();
+        return view('pendapatan/edit', compact('data_pendapatan', 'id'));
     }
 
     public function add()
     {
         return view('pendapatanHarian/create');
     }
-    
+
     public function show()
     {
-        $pendapatanHarian = PendapatanHarian::all();
+        timezone_open("Asia/Jakarta");
+        $month = date('m');
+        // $pendapatanHarian = PendapatanHarian::all();
+        $pendapatanHarian = DB::select('SELECT * FROM pendapatan_harians WHERE month(tanggal) = '.$month.' ORDER BY created_at DESC LIMIT 10');
         return $pendapatanHarian;
     }
 
@@ -73,28 +77,24 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian->total = $harga * $jumlah;
         $pendapatanHarian->save();
 
-        return redirect('pendapatan')->with('success', 'Data berhasil ditambahkan');
+        flash('Pendapatan berhasil ditambahkan!')->success();
+        return $this->index();
     }
 
     public function update(request $request, $id)
     {
-        $id_user = $request->id_user;
-        $tanggal = $request->tanggal;
         $harga = $request->harga;
         $jumlah = $request->jumlah;
-        $satuan = $request->satuan;
-        $total = $request->total;
+        $total = $harga * $jumlah;
 
         $pendapatanHarian = PendapatanHarian::find($id);
-        $pendapatanHarian->id_user = $id_user;
-        $pendapatanHarian->tanggal = $tanggal;
         $pendapatanHarian->harga = $harga;
         $pendapatanHarian->jumlah = $jumlah;
-        $pendapatanHarian->satuan = $satuan;
         $pendapatanHarian->total = $total;
         $pendapatanHarian->save();
 
-        return 'Data berhasil diubah';
+        flash('Pendapatan berhasil diubah')->success();
+        return $this->index();
     }
 
     public function delete($id)
@@ -102,15 +102,12 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian = PendapatanHarian::find($id);
         $pendapatanHarian->delete();
 
-        return 'Data berhasil dihapus';
+        flash('Pendapatan berhasil dihapus!')->warning();
+        return $this->index();
     }
 
     public function kalkulasiPerbulan($month)
     {
-        $pendapatan = DB::select('SELECT id , tanggal, sum(total) as total FROM pendapatan_harians WHERE month(tanggal) = '.$month);
-        
-
-
+        $pendapatan = DB::select('SELECT id , tanggal, sum(total) as total FROM pendapatan_harians WHERE month(tanggal) = ' . $month);
     }
 }
-

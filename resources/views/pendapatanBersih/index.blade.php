@@ -42,7 +42,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Pendapatan Bersih Pertahun</h4>
-                                    <p class="card-description"> Per tanggal : <b>
+                                    <p class="card-description"> Per tanggal : {{ $date }} <b>
                                             <!--{{ $date ?? '' }}--></b> </p>
                                     <table class="table table-hover">
                                         <thead>
@@ -60,7 +60,7 @@
                                             <tr align="center">
                                                 <td>{{$pertahun->id}}</td>
                                                 <td>{{$pertahun->bulan}} {{$pertahun->tahun}}</td>
-                                                <td><b>{{$pertahun->total}}</b></td>
+                                                <td><b>Rp. {{$pertahun->total}}</b></td>
                                             </tr>
                                             @endforeach
                                         </tbody>

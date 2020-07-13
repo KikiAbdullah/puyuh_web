@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('loginAndroid','Auth\LoginController@loginAndroid');
+
 //API Gaji
 Route::get('gaji','GajiController@show');
 Route::get('/gaji/{id}','GajiController@showById');

@@ -51,13 +51,13 @@
                     <input type="hidden" name="_method" value="PUT">
                     <div class="form-group">
                       <label for="nama_pengeluaran">Nama Pengeluaran</label>
-                    <input type="text" class="form-control" name="nama" id="nama" value="{{ $item['nama']}}">
+                    <input type="text" class="form-control" name="nama" id="nama" value="{{ $item['nama']}}" required>
                     </div>
                     <div class="form-group">
                       <label for="harga">Harga</label>
                       <div class="input-group-prepend">
                         <span class="input-group-text">Rp.</span>
-                        <input type="number" class="form-control" name="harga" id="harga" value="{{ $item['harga']}}">
+                        <input type="number" class="form-control" name="harga" id="harga" value="{{ $item['harga']}}" required>
                       </div>
                     </div>
                     <div class="form-group">
@@ -65,11 +65,11 @@
                         <div class="row">
                           <div class="col-md-6">
                             <label for="jumlah">Jumlah</label>
-                            <input type="number" class="form-control" name="jumlah" id="jumlah" value="{{ $item['jumlah']}}">
+                            <input type="number" class="form-control" name="jumlah" id="jumlah" value="{{ $item['jumlah']}}" required>
                           </div>
                           <div class="col-md-6">
                             <label for="satuan">Satuan</label>
-                            <input type="text" class="form-control" name="satuan" id="satuan" value="{{ $item['satuan']}}">
+                            <input type="text" class="form-control" name="satuan" id="satuan" value="{{ $item['satuan']}}" required>
                           </div>
                         </div>
                       </div>
