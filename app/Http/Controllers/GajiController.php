@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class GajiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
-        $data_gaji = Gaji::all()->sortByDesc('tanggal');;
+        $data_gaji = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM gajis ORDER BY tanggal DESC');
+
         $index = 1;
         return view('gaji/index', compact('data_gaji', 'index'));
     }

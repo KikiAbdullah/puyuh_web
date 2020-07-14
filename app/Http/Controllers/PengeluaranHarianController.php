@@ -11,7 +11,10 @@ use UxWeb\SweetAlert\SweetAlertServiceProvider;
 
 class PengeluaranHarianController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index($month = null)
     {
@@ -22,14 +25,14 @@ class PengeluaranHarianController extends Controller
         }
 
 
-        $date  = date("Y-m-d");
+        $date  = date("d-m-Y");
         $index0 = $index1 = $index2 = 1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $data_pengeluaran = PengeluaranHarian::whereMonth('tanggal', $month)->get();
+        $data_pengeluaran = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM `pengeluaran_harians` WHERE tanggal= CURRENT_DATE() GROUP BY tanggal ORDER BY tanggal DESC');
 
-        $pengeluaranPerbulan = DB::select('SELECT tanggal, SUM(total) as totalharga FROM `pengeluaran_harians` WHERE month(tanggal) = ' . $month . '  GROUP BY tanggal ORDER BY tanggal DESC');
+        $pengeluaranPerbulan = DB::select('SELECT  DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal, SUM(total) as totalharga FROM `pengeluaran_harians` WHERE month(tanggal) = ' . $month . '  GROUP BY tanggal ORDER BY tanggal DESC');
 
         $pengeluaranPertahun = DB::select('SELECT MONTHNAME(tanggal) as bulan, YEAR(tanggal) as tahun, SUM(total) as totalharga FROM `pengeluaran_harians` GROUP BY bulan, tahun ORDER BY tanggal DESC');
 

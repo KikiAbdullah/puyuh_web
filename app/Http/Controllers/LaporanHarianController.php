@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\DB;
 
 class LaporanHarianController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function indexProduksi($month = null)
     {
         timezone_open("Asia/Jakarta");
@@ -18,13 +23,13 @@ class LaporanHarianController extends Controller
         }
 
 
-        $date  = date("Y-m-d");
+        $date  = date("d-m-Y");
         $index = 1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
 
-        $produksiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY tanggal DESC');
+        $produksiPerbulan = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM laporan_harians WHERE month(tanggal)='.$month.' ORDER BY tanggal DESC');
 
         $produksiPertahun = DB::select('SELECT no_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_telur, 0)) as januari, 
@@ -52,15 +57,14 @@ class LaporanHarianController extends Controller
             $month = date('m');
         }
 
-
-        $date  = date("Y-m-d");
+        $date  = date("d-m-Y");
         $index = 1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
         $all_kandang = Kandang::simplePaginate(10);
 
-        $populasiPerbulan = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY tanggal DESC  LIMIT 10');
+        $populasiPerbulan = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM laporan_harians WHERE month(tanggal)='.$month.' ORDER BY tanggal DESC');
 
         $populasiPertahun = DB::select('SELECT no_kandang, 
         sum(IF(month(tanggal) = 1, jumlah_kematian, 0)) as januari, 
@@ -106,7 +110,9 @@ class LaporanHarianController extends Controller
         timezone_open("Asia/Jakarta");
         $month = date('m');
 
-        $laporanHarian = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY created_at DESC  LIMIT 10');;
+        // $laporanHarian = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY created_at DESC  LIMIT 10');
+        $laporanHarian = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM laporan_harians WHERE month(tanggal)='.$month.' ORDER BY tanggal DESC LIMIT 10');
+
         return $laporanHarian;
     }
 

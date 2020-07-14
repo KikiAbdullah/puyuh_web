@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class PendapatanBersihController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         timezone_open("Asia/Jakarta");
-        $date  = date("Y-m-d");
+        $date  = date("d-m-Y");
 
         $data_pendapatanBersih  = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, sum(total) as total FROM `pendapatan_bersihs` group by monthname(tanggal)');
         return view('pendapatanBersih/index', compact('data_pendapatanBersih','date'));

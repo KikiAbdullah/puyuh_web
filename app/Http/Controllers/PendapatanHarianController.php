@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class PendapatanHarianController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index($month = null)
     {
 
@@ -17,15 +22,16 @@ class PendapatanHarianController extends Controller
         if ($month == null) {
             $month = date('m');
         }
-        $date  = date("Y-m-d");
-        $tanggal  = date("Y-m-d");
+        $date  = date("d-m-Y");
+        $tanggal  = date("d-m-Y");
         $index = 1;
         $dateObj   = DateTime::createFromFormat('!m', $month);
         $monthName = $dateObj->format('F');
 
-        $data_pendapatan =  PendapatanHarian::where('tanggal', $date)->get();
+        // $data_pendapatan =  PendapatanHarian::where('tanggal', $date)->get();
+        $data_pendapatan = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM pendapatan_harians WHERE tanggal = CURRENT_DATE() ORDER BY tanggal DESC');
 
-        $pendapatanPerbulan = DB::select('SELECT id , tanggal, jumlah, harga, total FROM pendapatan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY tanggal DESC');
+        $pendapatanPerbulan = DB::select('SELECT id , DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal, jumlah, harga, total FROM pendapatan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY tanggal DESC');
 
         $pendapatanPertahun = DB::select('SELECT id, monthname(tanggal) as bulan ,YEAR(tanggal) as tahun, sum(total) as total FROM `pendapatan_harians` group by monthname(tanggal) ORDER BY tanggal ASC');
 
