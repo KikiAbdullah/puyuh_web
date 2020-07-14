@@ -38,6 +38,23 @@
                 <div class="content-wrapper">
                     @include('flash::message')
                     <div class="row">
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <b>
+                                                <h1>Data Pengeluaran</h1>
+                                            </b>
+                                        </div>
+                                        <div class="col-md-6" >
+                                            <h6>Tanggal : {{$date}}</h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body d-flex flex-column">
@@ -95,6 +112,7 @@
                                                 <th>Tanggal</th>
                                                 <th>Nama</th>
                                                 <th>Jumlah</th>
+                                                <th>Satuan</th>
                                                 <th>Harga</th>
                                                 <th>Total</th>
                                                 <th>Tools</th>
@@ -107,8 +125,9 @@
                                                 <td>{{$data->tanggal}}</td>
                                                 <td>{{$data->nama}}</td>
                                                 <td>{{$data->jumlah}}</td>
-                                                <td align="left"> Rp. {{$data->harga}}</td>
-                                                <td align="left">Rp. {{$data->total}}</td>
+                                                <td>{{$data->satuan}}</td>
+                                                <td>Rp. {{ number_format($data->harga,2,",",".") }}</td>
+                                                <td>Rp. {{ number_format($data->total,2,",",".") }}</td>
                                                 <td><a class="btn btn-dark" href="/pengeluaran/edit/{{ $data->id }}">Edit</a> <br>
                                                     <form action="{{ action('PengeluaranHarianController@delete', $data->id)}}" method="POST">
                                                         {{csrf_field()}}
@@ -144,7 +163,7 @@
                                             <tr align="center">
                                                 <td>{{$index++}}</td>
                                                 <td>{{$dataPerbulan->tanggal}}</td>
-                                                <td>Rp. {{$dataPerbulan->totalharga}}</td>
+                                                <td>Rp. {{ number_format($dataPerbulan->totalharga,2,",",".") }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -173,7 +192,7 @@
                                             <tr align="center">
                                                 <td>{{$index2++}}</td>
                                                 <td>{{$pertahun->bulan}} {{$pertahun->tahun}}</td>
-                                                <td><b>Rp. {{$pertahun->totalharga}}</b></td>
+                                                <td>Rp. {{ number_format($pertahun->totalharga,2,",",".") }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>

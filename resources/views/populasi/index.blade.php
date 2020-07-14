@@ -43,6 +43,23 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
+                                        <div class="col-md-6">
+                                            <b>
+                                                <h1>Data Populasi</h1>
+                                            </b>
+                                        </div>
+                                        <div class="col-md-6" >
+                                            <h6>Tanggal : {{$date}}</h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
                                         <div class="col-md-10">
                                             <h4 class="card-title">Populasi Kandang</h4>
                                             <p class="card-description"> Per tanggal : <b>{{ $date }}</b> </p>
@@ -69,12 +86,12 @@
 
                                                                 <div class="form-group">
                                                                     <label for="noKandang">No. Kandang</label>
-                                                                    <input type="text" class="form-control" name="no_kandang" id="no_kandang" placeholder="Nomor Kandang" required>
+                                                                    <input type="number" class="form-control" name="no_kandang" id="no_kandang" placeholder="Nomor Kandang" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="jumlahTernak">Jumlah Ternak</label>
                                                                     <div class="input-group-prepend">
-                                                                        <input type="text" class="form-control" name="jumlah_ternak" id="jumlah_ternak" placeholder="Jumlah Ternak" required>
+                                                                        <input type="number" class="form-control" max="50" name="jumlah_ternak" id="jumlah_ternak" placeholder="Jumlah Ternak" required>
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -41,6 +41,47 @@
         <div class="content-wrapper">
           @include('flash::message')
           <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <b>
+                        <h1>Data Kas</h1>
+                      </b>
+                    </div>
+                    <div class="col-md-6">
+                      <h6>Tanggal : {{$date}}</h6>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Kas</h4>
+                  <form class="forms-sample" method="POST" action="{{url('api/kas')}}">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="_method" value="POST">
+                    <div class="form-group">
+                      <label for="tanggal">Tanggal : {{$date}}</label>
+                    </div>
+                    <div class="form-group">
+                      <label for="kas">Nilai Kas</label>
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="hidden" name="tanggal" id="tanggal" value="{{$date}}" required />
+                        <input type="text" class="form-control" name="total_kas" id="total_kas" required />
+                      </div>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -62,7 +103,7 @@
                       <tr>
                         <td>{{ $index++ }}</td>
                         <td>{{$item->tanggal}}</td>
-                        <td>Rp. {{$item->total_kas}}</td>
+                        <td>Rp. {{ number_format($item->total_kas,2,",",".") }}</td>
                         <td><a class="btn btn-dark" href="/kas/edit/{{ $item->id }}">Edit</a>
                           <form action="{{ action('KasController@delete', $item->id)}}" method="POST">
                             {{csrf_field()}}
@@ -78,7 +119,7 @@
               </div>
             </div>
 
-            <div class="col-lg-6 grid-margin stretch-card">
+            <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Kas Pertahun</h4>
@@ -98,7 +139,7 @@
                       <tr>
                         <td>{{ $index++ }}</td>
                         <td>{{$item->tahun}}</td>
-                        <td>Rp. {{$item->total}}</td>
+                        <td>Rp. {{ number_format($item->total,2,",",".") }}</td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -106,30 +147,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Kas Pertahun</h4>
-                  <form class="forms-sample" method="POST" action="{{url('api/kas')}}">
-                    {{ csrf_field() }}
-                    <input type="hidden" name="_method" value="POST">
-                    <div class="form-group">
-                      <label for="tanggal">Tanggal : {{$date}}</label>
-                    </div>
-                    <div class="form-group">
-                      <label for="kas">Nilai Kas</label>
-                      <div class="input-group-prepend">
-                        <span class="input-group-text">Rp.</span>
-                        <input type="hidden" name="tanggal" id="tanggal" value="{{$date}}" required />
-                        <input type="text" class="form-control" name="total_kas" id="total_kas" required />
-                      </div>
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-success mr-2" onclick="alert">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>

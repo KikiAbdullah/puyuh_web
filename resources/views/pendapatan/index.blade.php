@@ -37,7 +37,25 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     @include('flash::message')
+                    
                     <div class="row">
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <b>
+                                                <h1>Data Pendapatan</h1>
+                                            </b>
+                                        </div>
+                                        <div class="col-md-6" >
+                                            <h6>Tanggal : {{$date}}</h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-6 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body d-flex flex-column">
@@ -96,7 +114,7 @@
                                                 <td>{{$index++}}</td>
                                                 <td>{{$data->tanggal}}</td>
                                                 <td>{{$data->jumlah}}</td>
-                                                <td>Rp. {{$data->harga}}</td>
+                                                <td>Rp. {{ number_format($data->harga,2,",",".") }}</td>
                                                 <td>Rp. {{$data->total}}</td>
                                                 <td><a class="btn btn-dark" href="/pendapatan/edit/{{ $data->id }}">Edit</a>
                                                     <form action="{{ action('PendapatanHarianController@delete', $data->id)}}" method="POST">
@@ -136,8 +154,8 @@
                                                 <td>{{$index++}}</td>
                                                 <td>{{$dataPerbulan->tanggal}}</td>
                                                 <td>{{$dataPerbulan->jumlah}}</td>
-                                                <td>Rp. {{$dataPerbulan->harga}}</td>
-                                                <td>Rp. {{$dataPerbulan->total}}</td>
+                                                <td>Rp. {{ number_format($dataPerbulan->harga,2,",",".") }}</td>
+                                                <td>Rp. {{ number_format($dataPerbulan->total,2,",",".") }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -166,7 +184,7 @@
                                             <tr>
                                                 <td>{{$index++}}</td>
                                                 <td>{{$pertahun->bulan}} {{$pertahun->tahun}}</td>
-                                                <td><b>Rp. {{$pertahun->total}}</b></td>
+                                                <td>Rp. {{ number_format($pertahun->total,2,",",".") }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>
