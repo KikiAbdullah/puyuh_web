@@ -41,6 +41,23 @@
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <b>
+                                                <h1>Data Pendapatan Bersih</h1>
+                                            </b>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>Tanggal : {{$date}}</h6>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
                                     <h4 class="card-title">Pendapatan Bersih Pertahun</h4>
                                     <p class="card-description"> Per tanggal : {{ $date }} <b>
                                             <!--{{ $date ?? '' }}--></b> </p>
@@ -58,9 +75,9 @@
                                             @endphp
                                             @foreach($data_pendapatanBersih as $pertahun)
                                             <tr align="center">
-                                                <td>{{$pertahun->id}}</td>
+                                                <td>{{$index++}}</td>
                                                 <td>{{$pertahun->bulan}} {{$pertahun->tahun}}</td>
-                                                <td><b>Rp. {{$pertahun->total}}</b></td>
+                                                <td>Rp. {{ number_format($pertahun->total,2,",",".") }}</td>
                                             </tr>
                                             @endforeach
                                         </tbody>

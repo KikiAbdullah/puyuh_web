@@ -71,7 +71,7 @@
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
                       <div class="d-flex">
                         <div class="wrapper">
-                          <h3 class="mb-0 font-weight-semibold">Rp. {{ $pendapatanBersih}}</h3>
+                          <h3 class="mb-0 font-weight-semibold">Rp. {{ number_format($pendapatanBersih,2,",",".") }}</h3>
                           <h5 class="mb-0 font-weight-medium text-primary">Pendapatan Bersih</h5>
                         </div>
                       </div>
@@ -100,7 +100,7 @@
                     <div class="col-lg-7 col-md-6">
                       <div class="d-flex">
                         <div class="wrapper">
-                          <h3 class="mb-0 font-weight-semibold">Rp. {{ $pendapatan }}</h3>
+                        <h3 class="mb-0 font-weight-semibold">Rp. {{ number_format($pendapatan,2,",",".") }}</h3>
                           <h5 class="mb-0 font-weight-medium text-primary">Total Pendapatan</h5>
                         </div>
                         <div class="wrapper my-auto ml-auto ml-lg-4">
@@ -111,7 +111,7 @@
                     <div class="col-lg-5 col-md-6">
                       <div class="d-flex">
                         <div class="wrapper">
-                          <h3 class="mb-0 font-weight-semibold">Rp. {{ $pengeluaran}}</h3>
+                        <h3 class="mb-0 font-weight-semibold">Rp. {{ number_format($pengeluaran,2,",",".") }}</h3>
                           <h5 class="mb-0 font-weight-medium text-primary">Total Pengeluaran</h5>
                         </div>
                       </div>

@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         date_default_timezone_set('Asia/Jakarta');
-        $date = date('Y-m-d');
+        $date = date('d-m-Y');
         $month = date('m');
         
         $populasi = $this->populasi($month);

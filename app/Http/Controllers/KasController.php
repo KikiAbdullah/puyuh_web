@@ -8,13 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class KasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
 
         timezone_open("Asia/Jakarta");
-        $date  = date("Y-m-d");
+        $date  = date("d-m-Y");
 
-        $data_kas = Kas::all()->sortByDesc('tanggal');;
+        $data_kas = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM kas ORDER BY tanggal DESC');
+        
         $kas_pertahun = DB::select('SELECT YEAR(tanggal) as tahun ,sum(total_kas) as total FROM `kas` GROUP BY tahun ORDER BY tanggal');
         $index = 1;
         return view('kas/index', compact('data_kas', 'kas_pertahun','index', 'date'));

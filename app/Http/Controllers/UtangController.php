@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class UtangController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         date_default_timezone_set('Asia/Jakarta');
