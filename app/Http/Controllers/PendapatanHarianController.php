@@ -74,7 +74,7 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian->harga = $harga;
         $pendapatanHarian->jumlah = $jumlah;
         $pendapatanHarian->satuan = $satuan;
-        $pendapatanHarian->total = $harga * $jumlah;
+        $pendapatanHarian->total = $harga;
         $pendapatanHarian->save();
 
         flash('Pendapatan berhasil ditambahkan!')->success();
