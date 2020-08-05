@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class PendapatanBersihController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
     {
         timezone_open("Asia/Jakarta");
@@ -36,7 +31,7 @@ class PendapatanBersihController extends Controller
     public function show()
     {
         $pendapatanBersih = PendapatanBersih::all();
-        return $pendapatanBersih;
+        return response()->json($pendapatanBersih, 200);
     }
 
     public function showById($id)

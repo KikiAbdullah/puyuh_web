@@ -5,14 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Gaji;
 use Illuminate\Support\Facades\DB;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class GajiController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
     {
         $data_gaji = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM gajis ORDER BY tanggal DESC');
@@ -34,8 +30,8 @@ class GajiController extends Controller
 
     public function show()
     {
-        $gaji = Gaji::all()->sortByDesc('tanggal');;
-        return $gaji;
+        $gaji = Gaji::all()->sortByDesc('tanggal');
+        return response()->json($gaji, 200);
     }
 
     public function showById($id)
@@ -56,6 +52,7 @@ class GajiController extends Controller
 
     public function update(request $request, $id)
     {
+        
         $jumlah_gaji = $request->jumlah_gaji;
         $tanggal = $request->tanggal;
 

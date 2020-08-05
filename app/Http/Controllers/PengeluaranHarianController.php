@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 use App\PengeluaranHarian;
 use Alert;
 use DateTime;
+use JWTAuth;
 use Illuminate\Support\Facades\DB;
 use UxWeb\SweetAlert\SweetAlertServiceProvider;
 
 class PengeluaranHarianController extends Controller
 {
+    protected $user;
+
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->user = JWTAuth::parseToken()->authenticate();
     }
-
     public function index($month = null)
     {
 
@@ -53,7 +55,7 @@ class PengeluaranHarianController extends Controller
     public function show()
     {
         $pengeluaranHarian = PengeluaranHarian::all();
-        return $pengeluaranHarian;
+        return response()->json($pengeluaranHarian, 200);
     }
 
     public function showById($id)

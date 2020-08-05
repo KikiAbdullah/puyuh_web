@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class LaporanHarianController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function indexProduksi($month = null)
     {
         timezone_open("Asia/Jakarta");
@@ -112,8 +107,7 @@ class LaporanHarianController extends Controller
 
         // $laporanHarian = DB::select('SELECT * FROM laporan_harians WHERE month(tanggal) = ' . $month . ' ORDER BY created_at DESC  LIMIT 10');
         $laporanHarian = DB::select('SELECT *, DATE_FORMAT(tanggal,"%d-%m-%Y") AS tanggal FROM laporan_harians WHERE month(tanggal)='.$month.' ORDER BY tanggal DESC LIMIT 10');
-
-        return $laporanHarian;
+        return response()->json($laporanHarian, 200);
     }
 
     public function showById($id)

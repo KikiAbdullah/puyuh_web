@@ -29,7 +29,7 @@
                 <div class="row w-100">
                     <div class="col-lg-4 mx-auto">
                         <div class="auto-form-wrapper">
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="/api/login">
                                 @csrf
                                 <div class="form-group">
                                     <label for="email" class="label">{{ __('E-Mail Address') }}</label>
@@ -61,7 +61,7 @@
                                     <a href="../../../puyuhin.apk" class="text-black text-small">Unduh disini!</a>
                                 </div>
                                 <div class="text-block text-center my-3">
-                                    <a href="{{ route('register') }}" class="text-black text-small">Buat Akun Baru</a>
+                                    <a href="/register" class="text-black text-small">Buat Akun Baru</a>
                                 </div>
                             </form>
                         </div>

@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class UtangController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
     {
         date_default_timezone_set('Asia/Jakarta');
@@ -39,12 +34,13 @@ class UtangController extends Controller
     public function show()
     {
         $utang = Utang::all()->sortByDesc('tanggal');
-        return $utang;
+        return response()->json($utang, 200);
     }
 
     public function showById($id)
     {
-        return Utang::all()->where('id', $id);
+        $utang = Utang::all()->where('id', $id);
+        return response()->json($utang, 200);
     }
 
     public function create(request $request)

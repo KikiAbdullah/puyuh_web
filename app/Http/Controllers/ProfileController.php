@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class ProfileController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index()
     {
         $data_user = User::simplePaginate(10);
@@ -24,12 +19,13 @@ class ProfileController extends Controller
     public function show()
     {
         $user = User::all();
-        return $user;
+        return response()->json($user, 200);
     }
 
     public function showById($id)
     {
-        return User::all()->where('id', $id);
+        $user = User::all()->where('id', $id);
+        return response()->json($user, 200);
     }
 
     public function showProfile()

@@ -6,12 +6,7 @@ use Illuminate\Http\Request;
 use App\Kas;
 use Illuminate\Support\Facades\DB;
 
-class KasController extends Controller
-{
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+class KasController extends Controller{
 
     public function index()
     {
@@ -40,7 +35,7 @@ class KasController extends Controller
     public function show()
     {
         $kas = Kas::all()->sortByDesc('tanggal');;
-        return $kas;
+        return response()->json($kas, 200);
     }
 
     public function showById($id)

@@ -4,22 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Alert;
+use JWTAuth;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use UxWeb\SweetAlert\SweetAlertServiceProvider;
 
 
 class HomeController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -30,27 +28,27 @@ class HomeController extends Controller
         date_default_timezone_set('Asia/Jakarta');
         $date = date('d-m-Y');
         $month = date('m');
-        
+
         $populasi = $this->populasi($month);
         $produksi = $this->produksi($month);
         $pendapatanBersih = $this->pendapatanBersih($month);
         $pengeluaran = $this->pengeluaran($month);
         $pendapatan = $this->pendapatan($month);
 
-        return view('home', compact('populasi','produksi','pendapatanBersih','pengeluaran','pendapatan', 'date'));
+        return view('home', compact('populasi', 'produksi', 'pendapatanBersih', 'pengeluaran', 'pendapatan', 'date'));
     }
 
     public function pendapatanBersih($month)
     {
-        $pendapatanBersih = DB::table('pendapatan_bersihs')->whereMonth('tanggal',$month)->get();
+        $pendapatanBersih = DB::table('pendapatan_bersihs')->whereMonth('tanggal', $month)->get();
         foreach ($pendapatanBersih as $itemPendapatan) {
-         return  $total = $itemPendapatan->total;
+            return  $total = $itemPendapatan->total;
         }
     }
 
     public function populasi()
     {
-       return $populasi = DB::table('kandangs')->sum('jumlah_ternak');
+        return $populasi = DB::table('kandangs')->sum('jumlah_ternak');
     }
 
     public function produksi($month)
@@ -71,11 +69,9 @@ class HomeController extends Controller
     public function hutang()
     {
         $hutang = DB::select('SELECT * FROM `utangs`');
-        foreach($hutang as $itemHutang){
+        foreach ($hutang as $itemHutang) {
             $updateHutang = DB::select('UPDATE `utangs` SET periode_kurang=periode_kurang-1');
-            $updatePendapatan = DB::select('UPDATE `pendapatan_bersihs` SET total=total-'.$itemHutang->cicilan_tetap);
+            $updatePendapatan = DB::select('UPDATE `pendapatan_bersihs` SET total=total-' . $itemHutang->cicilan_tetap);
         }
     }
-    
-
 }

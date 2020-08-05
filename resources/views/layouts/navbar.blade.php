@@ -17,7 +17,7 @@
                         <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
                     </div>
                     <a class="dropdown-item" href="{{ route('profile') }}">My Profile <span class="badge badge-pill badge-danger"></span><i class="dropdown-item-icon ti-dashboard"></i></a>
-                    <a class="dropdown-item" href="{{ route('logout') }}">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+                    <a class="dropdown-item" href="/logout">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
                 </div>
             </li>
         </ul>

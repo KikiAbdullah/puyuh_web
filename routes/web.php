@@ -11,17 +11,21 @@
 |
 */
 //Auth
-
+Route::get('/login', function () {
+    return view('auth/login');
+});
+Route::get('/register', function () {
+    return view('auth/register');
+});
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-Auth::routes();
 
 //NAVBAR
 Route::get('/', 'HomeController@index')->name('home');
 //dashboard
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 //profile
-Route::get('/profile', 'ProfileController@showProfile')->name('profile');
+Route::get('/profile', 'ProfileController@showProfile')->name('profile');   
 //kandang
 
 Route::get('/populasi', 'LaporanHarianController@indexPopulasi')->name('populasi');
@@ -40,7 +44,7 @@ Route::get('/pendapatanBersih', 'PendapatanBersihController@index')->name('penda
 Route::get('/pengeluaran', 'PengeluaranHarianController@index')->name('pengeluaranHarian');
 Route::get('/pengeluaran/edit/{id}','PengeluaranHarianController@edit');
 //hutang
-Route::get('/hutang', 'UtangController@index')->name('utang');
+Route::get('/hutang', 'UtangController@index',)->name('utang');
 Route::get('/hutang/edit/{id}','UtangController@edit');
 Route::get('/hutang/pembayaran/{id}','UtangController@pembayaran');
 //gaji
@@ -51,16 +55,3 @@ Route::get('/gaji/pembayaran','GajiController@pembayaran');
 Route::get('/kas', 'KasController@index')->name('kas');
 Route::get('/kas/edit/{id}','KasController@edit');
 
-// //Hutang
-
-// Route::get('/populasi/edit-kematian', function () {
-//     return view('populasi/edit-kematian');
-// });
-
-//Gaji
-// Route::get('/gaji', function () {
-//     return view('gaji/index');
-// });
-// Route::get('/gaji/edit', function () {
-//     return view('gaji/edit');
-// });

@@ -89,7 +89,7 @@
                     <div class="col-lg-12">
                       <div class="d-flex">
                         <div class="wrapper">
-                          <h5>Per-tanggal : {{ $date }}</h5>
+                          <h5>Per-tanggal : {{ $token }}</h5>
                           <h5 class="mb-0 font-weight-medium text-primary">Laporan Keuangan</h5>
                         </div>
                       </div>

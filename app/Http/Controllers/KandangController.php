@@ -10,10 +10,6 @@ use Alert;
 
 class KandangController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     
     public function index()
     {
@@ -64,7 +60,7 @@ class KandangController extends Controller
     public function show()
     {
         $kandang = Kandang::all();
-        return $kandang;
+        return response()->json($kandang, 200);
     }
 
     public function showById($id)

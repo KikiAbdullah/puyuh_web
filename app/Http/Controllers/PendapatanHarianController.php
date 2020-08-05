@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class PendapatanHarianController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
     public function index($month = null)
     {
 
@@ -56,7 +51,7 @@ class PendapatanHarianController extends Controller
         $month = date('m');
         // $pendapatanHarian = PendapatanHarian::all();
         $pendapatanHarian = DB::select('SELECT * FROM pendapatan_harians WHERE month(tanggal) = '.$month.' ORDER BY created_at DESC LIMIT 10');
-        return $pendapatanHarian;
+        return response()->json($pendapatanHarian, 200);
     }
 
     public function showById($id)
@@ -80,7 +75,7 @@ class PendapatanHarianController extends Controller
         $pendapatanHarian->harga = $harga;
         $pendapatanHarian->jumlah = $jumlah;
         $pendapatanHarian->satuan = $satuan;
-        $pendapatanHarian->total = $harga;
+        $pendapatanHarian->total = $harga*$jumlah;
         $pendapatanHarian->save();
 
         flash('Pendapatan berhasil ditambahkan!')->success();
